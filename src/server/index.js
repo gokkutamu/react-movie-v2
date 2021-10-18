@@ -10,10 +10,12 @@ const nowPlayingUrl = `${url}/movie/now_playing`;
 const topratedUrl = `${url}/movie/top_rated`;
 // Categories movie
 const genreUrl = `${url}/genre/movie/list`;
+const personsUrl = `${url}/person`;
 // List movie
 const moviesUrl = `${url}/discover/movie`;
 // Person week
 const personUrl = `${url}/trending/person/week`;
+const peopleUrl = `${url}/person/popular`;
 // TV
 const tvsUrl = `${url}/discover/tv`;
 const tvUrl = `${url}/tv`;
@@ -156,6 +158,29 @@ export const fetchTopratedMovie = async () => {
 
     }
 }
+// Chi tiết tv
+export const fetchTVDetail = async (id) => {
+    try {
+        const { data } = await axios.get(`${tvUrl}/${id}`, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US'
+            }
+        });
+        return data;
+    } catch (error) { }
+}
+export const fetchTVVideos = async (id) => {
+    try {
+        const { data } = await axios.get(`${tvUrl}/${id}/videos`, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US',
+            }
+        });
+        return data['results'][0];
+    } catch (error) { }
+}
 // TV
 export const fetchDiscover = async (genre_ids) => {
     try {
@@ -287,7 +312,61 @@ export const fetchTVCredits = async (id) => {
         return modifiedData;
     } catch (error) { }
 }
+export const fetchTVDetail = async (id) => {
+    try {
+        const { data } = await axios.get(`${tvUrl}/${id}`, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US'
+            }
+        });
+        return data;
+    } catch (error) { }
+}
+// Phim đóng góp:
+export const fetchTV = async (id) => {
+    try {
+        const { data } = await axios.get(`${personsUrl}/${id}/movie_credits`, {
+            params: {
+                api_key: apiKey,
+            }
+        });
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
+        const modifiedData = data['cast'].map((c) => ({
+            id: c['id'],
+            backPoster: posterUrl + c['backdrop_path'],
+            popularity: c['popularith'],
+            title: c['title'],
+            poster: posterUrl + c['poster_path'],
+            overview: c['overview'],
+            rating: c['vote_average'],
+        }))
 
+        return modifiedData;
+    } catch (error) { }
+}
+export const fetchSimilarMovie = async (id) => {
+    try {
+        const { data } = await axios.get(`${movieUrl}/${id}/similar`, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US'
+            }
+        });
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
+        const modifiedData = data['results'].map((m) => ({
+            id: m['id'],
+            backPoster: posterUrl + m['backdrop_path'],
+            popularity: m['popularith'],
+            title: m['title'],
+            poster: posterUrl + m['poster_path'],
+            overview: m['overview'],
+            rating: m['vote_average'],
+        }))
+
+        return modifiedData;
+    } catch (error) { }
+}
 // Chi tiet phim
 export const fetchMovieDetail = async (id) => {
     try {
@@ -329,7 +408,7 @@ export const fetchMovieCredits = async (id) => {
 }
 export const fetchSessionTV = async (id) => {
     try {
-        const { data } = await axios.get(${tvUrl}/${id}, {
+        const { data } = await axios.get(`${tvUrl}/${id}`, {
             params: {
                 api_key: apiKey,
                 language: 'en_US'
@@ -352,7 +431,7 @@ export const fetchSessionTV = async (id) => {
 // Danh sách khuyến nghị:
 export const fetchTVRecommendations = async (id) => {
     try {
-        const { data } = await axios.get(${tvUrl}/${id}/recommendations, {
+        const { data } = await axios.get(`${tvUrl}/${id}/recommendations`, {
             params: {
                 api_key: apiKey,
             }
@@ -373,7 +452,7 @@ export const fetchTVRecommendations = async (id) => {
 }
 export const fetchSimilarTV = async (id) => {
     try {
-        const { data } = await axios.get(${tvUrl}/${id}/similar, {
+        const { data } = await axios.get(`${tvUrl}/${id}/similar`, {
             params: {
                 api_key: apiKey,
                 language: 'en_US'
@@ -393,4 +472,38 @@ export const fetchSimilarTV = async (id) => {
         return modifiedData;
     } catch (error) { }
 }
+// Phần Person
+// Lấy danh sách các diễn viên:
+export const fetchPeople = async () => {
+    try {
+        const { data } = await axios.get(peopleUrl, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US',
+                page: 1
+            }
+        })
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
+        const modifiedData = data['results'].map((m) => ({
+            id: m['id'],
+            img: posterUrl + m['profile_path'],
+            title: m['name'],
+            name:m['title'],
+            popularity:m['popularity'],
+        }))
+        return modifiedData;
+    } catch (error) {
 
+    }
+}
+export const fetchPersonDetail = async (id) => {
+    try {
+        const { data } = await axios.get(`${personsUrl}/${id}`, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US'
+            }
+        });
+        return data;
+    } catch (error) { }
+}

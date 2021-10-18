@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
     fetchTVDetail,
     fetchSessionTV,
-} from "../../../service";
+} from "../../../server";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Link } from "react-router-dom";
 import "../Style.css";
