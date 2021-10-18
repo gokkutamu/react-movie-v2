@@ -15,7 +15,38 @@ const moviesUrl = `${url}/discover/movie`;
 // Person week
 const personUrl = `${url}/trending/person/week`;
 // TV
+const tvsUrl = `${url}/discover/tv`;
 const tvUrl = `${url}/tv`;
+const onTvUrl = `${url}/tv/on_the_air`;
+const tvPopular = `${url}/tv/popular`;
+const tvTopRate = `${url}/tv/top_rated`;
+const genereTVUrl = `${url}/genre/tv/list`;
+const discoverUrl = `${url}/tv/airing_today`;
+
+export const fetchTVAriting = async () => {
+    try {
+        const { data } = await axios.get(discoverUrl, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US',
+                page: 1,
+            }
+        })
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
+        const modifiedData = data['results'].map((m) => ({
+            id: m['id'],
+            backPoster: posterUrl + m['backdrop_path'],
+            popularity: m['popularith'],
+            title: m['name'],
+            poster: posterUrl + m['poster_path'],
+            overview: m['overview'],
+            rating: m['vote_average'],
+        }))
+        return modifiedData;
+    } catch (error) {
+
+    }
+}
 // Page home : 
 export const fetchMovies = async () => {
     try {
@@ -123,28 +154,119 @@ export const fetchTopratedMovie = async () => {
 
     }
 }
-// Chi tiet truyen hinh
-export const fetchTVDetail = async (id) => {
+// TV
+export const fetchDiscover = async (genre_ids) => {
     try {
-        const { data } = await axios.get(`${tvUrl}/${id}`, {
-            params: {
-                api_key: apiKey,
-                language: 'en_US'
-            }
-        });
-        return data;
-    } catch (error) { }
-}
-export const fetchTVVideos = async (id) => {
-    try {
-        const { data } = await axios.get(`${tvUrl}/${id}/videos`, {
+        const { data } = await axios.get(tvsUrl, {
             params: {
                 api_key: apiKey,
                 language: 'en_US',
+                page: 1,
+                with_genres: genre_ids
             }
-        });
-        return data['results'][0];
+        })
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
+        const modifiedData = data['results'].map((m) => ({
+            id: m['id'],
+            backPoster: posterUrl + m['backdrop_path'],
+            popularity: m['popularith'],
+            title: m['name'],
+            poster: posterUrl + m['poster_path'],
+            overview: m['overview'],
+            rating: m['vote_average'],
+        }))
+        return modifiedData;
+    } catch (error) {
+
+    }
+}
+export const fetchOnTV = async () => {
+    try {
+        const { data } = await axios.get(onTvUrl, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US',
+                page: 1
+            }
+        })
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
+        const modifiedData = data['results'].map((m) => ({
+            id: m['id'],
+            backPoster: posterUrl + m['backdrop_path'],
+            popularity: m['popularith'],
+            title: m['name'],
+            poster: posterUrl + m['poster_path'],
+            overview: m['overview'],
+            rating: m['vote_average'],
+        }))
+        return modifiedData;
+    } catch (error) {
+
+    }
+}
+export const fetchTVGenre = async () => {
+    try {
+        const { data } = await axios.get(genereTVUrl, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US',
+                page: 1
+            }
+        })
+        const modifiedData = data['genres'].map((g) => ({
+            id: g['id'],
+            name: g['name']
+        }))
+        return modifiedData;
     } catch (error) { }
+}
+export const fetchTVPopular = async () => {
+    try {
+        const { data } = await axios.get(tvPopular, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US',
+                page: 1
+            }
+        })
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
+        const modifiedData = data['results'].map((m) => ({
+            id: m['id'],
+            backPoster: posterUrl + m['backdrop_path'],
+            popularity: m['popularity'],
+            title: m['name'],
+            poster: posterUrl + m['poster_path'],
+            overview: m['overview'],
+            rating: m['vote_average'],
+        }))
+        return modifiedData;
+    } catch (error) {
+
+    }
+}
+export const fetchTVTopRate = async () => {
+    try {
+        const { data } = await axios.get(tvTopRate, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US',
+                page: 1
+            }
+        })
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
+        const modifiedData = data['results'].map((m) => ({
+            id: m['id'],
+            backPoster: posterUrl + m['backdrop_path'],
+            popularity: m['popularity'],
+            title: m['name'],
+            poster: posterUrl + m['poster_path'],
+            overview: m['overview'],
+            rating: m['vote_average'],
+        }))
+        return modifiedData;
+    } catch (error) {
+
+    }
 }
 export const fetchTVCredits = async (id) => {
     try {
@@ -180,50 +302,6 @@ export const fetchSessionTV = async (id) => {
             episode_count: c['episode_count'],
             date: c['air_date'],
             number_count: c['season_number'],
-        }))
-
-        return modifiedData;
-    } catch (error) { }
-}
-// Danh sách khuyến nghị:
-export const fetchTVRecommendations = async (id) => {
-    try {
-        const { data } = await axios.get(`${tvUrl}/${id}/recommendations`, {
-            params: {
-                api_key: apiKey,
-            }
-        });
-        const modifiedData = data['results'].map((c) => ({
-            id: c['id'],
-            name: c['name'],
-            img: 'https://image.tmdb.org/t/p/w200' + c['profile_path'],
-            backdrop: 'https://image.tmdb.org/t/p/w200' + c['backdrop_path'],
-            overview: c['overview'],
-            first_air_date: c['first_air_date'],
-            original_name: c['original_name'],
-            vote_average: c['vote_average'],
-            popularity: c['popularity'],
-        }))
-        return modifiedData;
-    } catch (error) { }
-}
-export const fetchSimilarTV = async (id) => {
-    try {
-        const { data } = await axios.get(`${tvUrl}/${id}/similar`, {
-            params: {
-                api_key: apiKey,
-                language: 'en_US'
-            }
-        });
-        const posterUrl = 'https://image.tmdb.org/t/p/original/';
-        const modifiedData = data['results'].map((m) => ({
-            id: m['id'],
-            backPoster: posterUrl + m['backdrop_path'],
-            popularity: m['popularity'],
-            title: m['name'],
-            poster: posterUrl + m['poster_path'],
-            overview: m['overview'],
-            rating: m['vote_average'],
         }))
 
         return modifiedData;

@@ -7,6 +7,7 @@
 .pnp.js
 
 # testing
+/node_modules
 /coverage
 /node_modules
 
