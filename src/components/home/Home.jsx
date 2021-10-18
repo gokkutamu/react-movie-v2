@@ -7,12 +7,10 @@ import {
   fetchTopratedMovie,
 
 } from "../../server";
-import { Footer } from "../Footer/Footer";
 import RBCarousel from "react-bootstrap-carousel";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
-import './Aminition/Home.css';
+import '../Home/Aminition/Home.css';
 import { Link } from "react-router-dom";
-import InfiniteCarousel from "react-leaf-carousel";
 export function Home() {
   const [nowPlaying, setNowPlaying] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -37,7 +35,7 @@ export function Home() {
   };
 
 
-  const movies = nowPlaying.slice(0, 30).map((item, index) => {
+  const movies = nowPlaying.slice(0, 20).map((item, index) => {
     const youtubeUrl = "https://www.youtube.com/watch?v=";
     return (
       <div style={{ height: 500, width: "100%" }} key={index}>
@@ -65,7 +63,7 @@ export function Home() {
 
   const genreList = genres.map((item, index) => {
     return (
-      <nav className="link-effect-1" key={index}>
+      <nav className="link-effect-1">
         <div className="Link-hover" key={index} onClick={() => {
           handleGenreClick(item.id);
         }}><span data-hover={item.name}> {item.name}</span></div>
@@ -74,95 +72,75 @@ export function Home() {
   });
 
 
-  const movieList = movieByGenre.slice(0, 18).map((value, i) => {
+  const movieList = movieByGenre.slice(0, 30).map((value, i) => {
     return (
       <div className="col-md-2 col-sm-6" key={i}>
         <div className="card-img">
           <Link to={`/movie/${value.id}`}>
             <img className="img-fluids" src={value.poster} alt={value.title}></img>
           </Link>
-          <a className="info" href={`/movie/${value.id}`}>Xem</a>
+          <a class="info" href={`/movie/${value.id}`}>Xem</a>
         </div>
         <div className="title-movie">
           {value.title}
+
         </div>
+
       </div>
     );
   });
   const trendingPersons = persons.slice(0, 50).map((p, i) => {
     return (
-      // <div key={i}>
-      //   <Link to={`/person/${p.id}`}>
-      //     <img
-      //       className="img-person"
-      //       src={p.profileImg}
-      //       alt={p.name}
-      //     />
-      //   </Link>
+      <div className="col-md-2 text-center" key={i}>
+        <Link to={`/person/${p.id}`}>
+          <img
+            className="img-person"
+            src={p.profileImg}
+            alt={p.name}
 
-      //   <p className="font-weight-bold text-center">{p.name}</p>
-      //   <p
-      //     className="font-weight-light text-center"
-      //     style={{ color: "#5a606b" }}
-      //   >
-      //     Trending for {p.known}
-      //   </p>
-      // </div>
-      <div key={i} style={{ textAlign: "center" }}>
-        <div className="card">
-          <Link to={`/person/${p.id}`}>
-            <img className="img-fluid" src={p.profileImg} alt={p.name}></img>
-          </Link>
-        </div>
-        <div className="mt-3">
-          <p style={{ fontWeight: "bolder" }}>{p.name}</p>
-          <p style={{ fontWeight: "bolder" }}>Trending For {p.known}</p>
-        </div>
+          />
+        </Link>
 
-      </div >
+        <p className="font-weight-bold text-center">{p.name}</p>
+        <p
+          className="font-weight-light text-center"
+          style={{ color: "#5a606b" }}
+        >
+          Trending for {p.known}
+        </p>
+      </div>
     );
   });
   // Các phim được đánh giá cao nhất 
   const topRatedList = topRated.slice(0, 30).map((item, index) => {
     return (
-      // <div className="col-md-2" key={index}>
-      //   <div className="card-img">
-      //     <Link to={`/movie/${item.id}`}>
-      //       <img className="img-fluids" src={item.poster} alt={item.title}></img>
-      //     </Link>
-      //   </div>
-      //   <div className="mt-3">
-      //     <p style={{ fontWeight: "bolder", textAlign: "center" }}>{item.title}</p>
-      //     <p style={{ textAlign: "center" }}>Rated: {item.rating}</p>
-      //     {/* <ReactStars
-      //       count={item.rating}
-      //       size={20}
-      //       color1={"#f4c10f"}
-      //     ></ReactStars> */}
-      //   </div >
-      // </div>
-      <div key={index} style={{ textAlign: "center" }}>
-        <div className="card">
-          <Link to={`/person/${item.id}`}>
-            <img className="img-fluid" src={item.poster} alt={item.title}></img>
+      <div className="col-md-2" key={index}>
+        <div className="card-img">
+          <Link to={`/movie/${item.id}`}>
+            <img className="img-fluids" src={item.poster} alt={item.title}></img>
           </Link>
         </div>
         <div className="mt-3">
-          <p style={{ fontWeight: "bolder" }}>{item.title}</p>
-          <p style={{ fontWeight: "bolder" }}>Rated: {item.rating}</p>
+          <p style={{ fontWeight: "bolder", textAlign: "center" }}>{item.title}</p>
+          <p style={{ textAlign: "center" }}>Rated: {item.rating}</p>
+          {/* <ReactStars
+            count={item.rating}
+            size={20}
+            color1={"#f4c10f"}
+          ></ReactStars> */}
         </div>
-
-      </div >
+      </div>
     );
   });
   // Lấy các tấm hình:
-  const images = movieByGenre.slice(0, 12).map((i, index) => {
+  const images = movieByGenre.slice(0, 12).map((i) => {
     return (
-      <img src={i.poster} alt={i.title} className="pic" key={index} />
+      <img src={i.poster} alt={i.title} className="pic" />
     );
   });
 
   return (
+
     <div className="main-container">
       <div className="header">
         <div className="container">
@@ -171,8 +149,18 @@ export function Home() {
               <nav>
                 <ul className="menu">
                   <li className="nav-hover"><a href="/">Home</a></li>
-                  <li className="nav-hover"><a href="/discover/tv">TV</a></li>
+                  <li className="nav-hover">
+                     <div className="login-templeta">
+                        <a href="/login">Login</a>
+                       </div>
+                  </li>
+                  <li className="nav-hover">
+                     <div className="login-templeta">
+                        <a href="#">Register</a>
+                       </div>
+                  </li>
                 </ul>
+
               </nav>
             </div>
           </div>
@@ -192,6 +180,7 @@ export function Home() {
           </div>
         </div>
       </div>
+
 
       <div className="baner-movie">
         <div className="container">
@@ -250,7 +239,13 @@ export function Home() {
                 <p className="font-weight-bold-1  line-1" style={{ color: "white", paddingTop: 30 }}>
                   <a href="#" className="hover-trending">NHỮNG DIỄN VIÊN</a> XU HƯỚNG TRONG TUẦN
                 </p>
-                <CarouselTrendingPerson />
+                <div className="knowwn">
+                  <div className="row">
+                    <div className="list-person list-sroll">
+                      {trendingPersons}
+                    </div>
+                  </div>
+                </div>
               </div>
 
             </div>
@@ -267,96 +262,86 @@ export function Home() {
               <p className="font-weight-bold-1  line-1" style={{ color: "white" }}>
                 <a href="#" className="hover-trending"> TOP PHIM ĐƯỢC ĐÁNH GIÁ CAO</a>
               </p>
-              <CarouselTopRatedList />
+              <div className="knowwn">
+                <div className="row">
+                  <div className="list-person list-sroll">
+                    {topRatedList}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <hr className="mt-5" ></hr>
+      <hr className="mt-5" style={{ border: "1px solid #5a606b" }}></hr>
+      <div className="footer-container">
 
-      <Footer></Footer>
+        <div className="container">
+
+
+          <div className="row">
+            <div className="bg"></div>
+            <div className="bg bg2"></div>
+            <div className="bg bg3"></div>
+            <div className="col-md-5 col-sm-6" style={{ color: "#5a606b" }}>
+              <h3>THÔNG TIN</h3>
+
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
+                perspiciatis? Numquam, enim illo voluptatum neque facere aut sed ut
+                dolore nihil? Nulla sit, recusandae ea tenetur rerum deserunt sequi
+                earum?
+              </p>
+              <div className="button">
+                <div className="icon">
+                  <i className="fab fa-facebook"></i>
+                </div>
+                <span>Facebook</span>
+              </div>
+              <div className="button">
+                <div className="icon">
+                  <i className="fab fa-instagram"></i>
+                </div>
+                <span>Instagram</span>
+              </div>
+              <div className="button">
+                <div className="icon">
+
+                  <i className="fab fa-twitter"></i>
+                </div>
+                <span>Twitter</span>
+              </div>
+
+              <div className="button">
+                <div className="icon">
+                  <i className="fab fa-youtube"></i>
+                </div>
+                <span>Youtube</span>
+              </div>
+            </div>
+            <div className="col-md-7 col-sm-6" style={{ color: "#5a606b" }}>
+              <div className="main-top">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <div className="bg-blog">
+                        <div className="pic-ctn bore">
+                          {images}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
     </div>
   );
-  function CarouselTrendingPerson() {
-    return (
-      <InfiniteCarousel
-        breakpoints={[
-          {
-            breakpoint: 200,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          },
-          {
-            breakpoint: 640,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 768,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3
-            }
-          }
-        ]}
-        lazyLoad={false}
-        autoCycle={true}
-        cycleInterval={5000}
-        showSides={true}
-        sidesOpacity={0.5}
-        sideSize={0.1}
-        slidesToScroll={1}
-        slidesToShow={5}
-        scrollOnDevice={true}
-      >
-        {trendingPersons}
-      </InfiniteCarousel>
-    );
-  }
-  function CarouselTopRatedList() {
-    return (
-      <InfiniteCarousel
-        breakpoints={[
-          {
-            breakpoint: 200,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          },
-          {
-            breakpoint: 640,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 768,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3
-            }
-          }
-        ]}
-        lazyLoad={false}
-        autoCycle={true}
-        cycleInterval={3000}
-        showSides={true}
-        sidesOpacity={0.5}
-        sideSize={0.1}
-        slidesToScroll={1}
-        slidesToShow={6}
-        scrollOnDevice={true}
-      >
-        {topRatedList
-        }
-      </InfiniteCarousel>
-    );
-  }
 }

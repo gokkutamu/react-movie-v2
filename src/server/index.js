@@ -14,7 +14,64 @@ const genreUrl = `${url}/genre/movie/list`;
 const moviesUrl = `${url}/discover/movie`;
 // Person week
 const personUrl = `${url}/trending/person/week`;
+const peopleUrl = `${url}/person/popular`;
+const personsUrl = `${url}/person`;
+// Phim đóng góp:
+export const fetchTV = async (id) => {
+    try {
+        const { data } = await axios.get(`${personsUrl}/${id}/movie_credits`, {
+            params: {
+                api_key: apiKey,
+            }
+        });
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
+        const modifiedData = data['cast'].map((c) => ({
+            id: c['id'],
+            backPoster: posterUrl + c['backdrop_path'],
+            popularity: c['popularith'],
+            title: c['title'],
+            poster: posterUrl + c['poster_path'],
+            overview: c['overview'],
+            rating: c['vote_average'],
+        }))
 
+        return modifiedData;
+    } catch (error) { }
+}
+// Diễn viên chi tiết
+export const fetchPersonDetail = async (id) => {
+    try {
+        const { data } = await axios.get(`${personsUrl}/${id}`, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US'
+            }
+        });
+        return data;
+    } catch (error) { }
+}
+export const fetchPeople = async () => {
+    try {
+        const { data } = await axios.get(peopleUrl, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US',
+                page: 1
+            }
+        })
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
+        const modifiedData = data['results'].map((m) => ({
+            id: m['id'],
+            img: posterUrl + m['profile_path'],
+            title: m['name'],
+            name:m['title'],
+            popularity:m['popularity'],
+        }))
+        return modifiedData;
+    } catch (error) {
+
+    }
+}
 // Page home : 
 export const fetchMovies = async () => {
     try {

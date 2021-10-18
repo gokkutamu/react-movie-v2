@@ -7,8 +7,7 @@ import {
 
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Link } from "react-router-dom";
-import "../home/Aminition/Home.css";
-import { Footer } from "../Footer/Footer";
+import "../Home/Aminition/Home.css";
 import InfiniteCarousel from "react-leaf-carousel";
 
 export function Person({ match }) {
@@ -132,9 +131,6 @@ export function Person({ match }) {
                     </div>
                 </div>
 
-            </div>
-            <div className="footer1">
-                <Footer></Footer>
             </div>
 
         </div>
