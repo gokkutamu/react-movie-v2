@@ -83,7 +83,6 @@ export function Home() {
         </div>
         <div className="title-movie">
           {value.title}
-
         </div>
 
       </div>

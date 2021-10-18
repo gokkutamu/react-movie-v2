@@ -7,6 +7,8 @@ import { Person } from "./components/Person/Person";
 import { DiscoverDetail } from "./components/DetailTV/DiscoverDetail";
 //TV
 import { Discover } from "./components/TV/Discover";
+import {MovieDetail} from "./components/DetailMovie/MovieDetail";
+
 export function App() {
   return (
     
@@ -17,6 +19,8 @@ export function App() {
         <Route path="/login" component={Login} exact />
         <Route path="/person/:id" component={Person} />
         <Route path="/tv/:id" component={DiscoverDetail} exact />
+        <Route path="/movie/:id" component={MovieDetail} />
+
       </Switch>
     </main>
   );
