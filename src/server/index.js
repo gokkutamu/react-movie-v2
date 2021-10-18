@@ -307,3 +307,14 @@ export const fetchSessionTV = async (id) => {
         return modifiedData;
     } catch (error) { }
 }
+export const fetchTVDetail = async (id) => {
+    try {
+        const { data } = await axios.get(`${tvUrl}/${id}`, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US'
+            }
+        });
+        return data;
+    } catch (error) { }
+}

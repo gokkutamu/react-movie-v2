@@ -5,6 +5,7 @@ import { Home } from "./components/Home/Home";
 import { Login } from "./components/Account/Login";
 //TV
 import { Discover } from "./components/TV/Discover";
+import {Seasons} from "./components/TV/Session/Seasons";
 export function App() {
   return (
     
@@ -13,6 +14,7 @@ export function App() {
         <Route path="/" component={Home} exact />
         <Route path="/discover/tv" component={Discover} />
         <Route path="/login" component={Login} exact />
+        <Route path="/session/:id/seasons" component={Seasons} exact/>
       </Switch>
     </main>
   );
