@@ -377,8 +377,21 @@ export function DiscoverDetail({ match }) {
                     </div>
                 </div>
             </div>
-
-
+            {/* Phần hiện tại */}
+            <div className="person-list">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="person">
+                                <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Phần hiện tại</p>
+                            </div>
+                            <div className="person-session">
+                                {listSession}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {/* Danh sách khuyến nghị */}
             <div className="recommendations-list">
                 <div className="container">
@@ -399,7 +412,7 @@ export function DiscoverDetail({ match }) {
                     </div>
                 </div>
             </div>
-           
+
             {/* Footer */}
             <div className="footer">
                 <hr className="mt-5" style={{ borderTop: "5px solid #5a606b" }}></hr>
