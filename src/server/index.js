@@ -21,6 +21,32 @@ const onTvUrl = `${url}/tv/on_the_air`;
 const tvPopular = `${url}/tv/popular`;
 const tvTopRate = `${url}/tv/top_rated`;
 const genereTVUrl = `${url}/genre/tv/list`;
+const discoverUrl = `${url}/tv/airing_today`;
+
+export const fetchTVAriting = async () => {
+    try {
+        const { data } = await axios.get(discoverUrl, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US',
+                page: 1,
+            }
+        })
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
+        const modifiedData = data['results'].map((m) => ({
+            id: m['id'],
+            backPoster: posterUrl + m['backdrop_path'],
+            popularity: m['popularith'],
+            title: m['name'],
+            poster: posterUrl + m['poster_path'],
+            overview: m['overview'],
+            rating: m['vote_average'],
+        }))
+        return modifiedData;
+    } catch (error) {
+
+    }
+}
 // Page home : 
 export const fetchMovies = async () => {
     try {

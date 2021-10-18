@@ -5,6 +5,7 @@ import {
     fetchTVPopular,
     fetchTVTopRate,
     fetchTVGenre,
+    fetchTVAriting,
 } from "../../server";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Link } from "react-router-dom";
@@ -17,7 +18,7 @@ export function Discover() {
     const [popular, setTVPopular] = useState([]);
     const [topRate, setTVTopRate] = useState([]);
     const [gerenes, setGerenes] = useState([]);
-
+    const [airing, setAiring] = useState([]);
     useEffect(() => {
         const fetchAPI = async () => {
             setDiscover(await fetchDiscover(28));
@@ -25,6 +26,7 @@ export function Discover() {
             setTVPopular(await fetchTVPopular(28));
             setTVTopRate(await fetchTVTopRate(28));
             setGerenes(await fetchTVGenre());
+            setAiring(await fetchTVAriting(28));
         };
         fetchAPI();
     }, []);
@@ -47,7 +49,22 @@ export function Discover() {
             </li>
         );
     });
-
+    //Chương trình phát sóng hôm nay
+    const AiringList = airing.slice(0, 18).map((value, i) => {
+        return (
+            <div className="col-md-2 col-sm-6" key={i}>
+                <div className="card-img">
+                    <Link to={`/tv/${value.id}`}>
+                        <img className="img-fluids" src={value.poster} alt={value.title}></img>
+                    </Link>
+                    <a class="info" href={`/tv/${value.id}`}>Xem</a>
+                </div>
+                <div className="title-movie">
+                    {value.title}
+                </div>
+            </div>
+        );
+    });
     const lisrOnTV = onTV.slice(1, 10).map((i, index) => {
         return (
             <div className="carousel__face" key={index}>
@@ -185,6 +202,20 @@ export function Discover() {
                             </div>
                         </div>
 
+                    </div>
+                </div>
+            </div>
+            <div className="Airing">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h5>CHƯƠNG TRÌNH PHÁT SÓNG HÔM NAY</h5>
+                            <div className="list-tv">
+                                <div className="row">
+                                    {AiringList}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
