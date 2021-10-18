@@ -9,6 +9,7 @@ import { DiscoverDetail } from "./components/DetailTV/DiscoverDetail";
 import { Discover } from "./components/TV/Discover";
 import {MovieDetail} from "./components/DetailMovie/MovieDetail";
 
+import Search from "./components/Search/Search";
 export function App() {
   return (
     
@@ -21,6 +22,7 @@ export function App() {
         <Route path="/tv/:id" component={DiscoverDetail} exact />
         <Route path="/movie/:id" component={MovieDetail} />
 
+        <Route path="/search" component={Search} exact />
       </Switch>
     </main>
   );
