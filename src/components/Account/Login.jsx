@@ -20,6 +20,7 @@ export function Login() {
         fetchAPI();
     }, []);
 
+    // Validatete form
     function validateForm() {
         return email.length > 0 && password.length > 0;
     }
@@ -40,6 +41,7 @@ export function Login() {
                             <nav>
                                 <ul className="menu">
                                     <li className="nav-hover"><a href="/">Home</a></li>
+                                    <li className="nav-hover"><a href="/search">Search</a></li>
                                     <li className="nav-hover">
                                         <div className="login-templeta">
                                             <a href="#">Login</a>
