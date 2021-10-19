@@ -28,7 +28,7 @@ export function Login() {
     function handleSubmit(event) {
         event.preventDefault();
     }
-
+    
 
 
     return (
@@ -41,10 +41,11 @@ export function Login() {
                             <nav>
                                 <ul className="menu">
                                     <li className="nav-hover"><a href="/">Home</a></li>
+                                    <li className="nav-hover"><a href="/tredding">Treding Movie</a></li>
                                     <li className="nav-hover"><a href="/search">Search</a></li>
                                     <li className="nav-hover">
                                         <div className="login-templeta">
-                                            <a href="#">Login</a>
+                                            <a href="/login">Login</a>
                                         </div>
                                     </li>
                                     <li className="nav-hover">

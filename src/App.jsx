@@ -10,7 +10,8 @@ import { Discover } from "./components/TV/Discover";
 import {MovieDetail} from "./components/DetailMovie/MovieDetail";
 
 import Search from "./components/Search/Search";
-import {Seasons} from "./components/TV/Session/Seasons";
+import { Treding } from "./components/Treding/Treding";
+
 export function App() {
   return (
     
@@ -19,10 +20,7 @@ export function App() {
         <Route path="/" component={Home} exact />
         <Route path="/discover/tv" component={Discover} />
         <Route path="/login" component={Login} exact />
-        <Route path="/person/:id" component={Person} />
-        <Route path="/tv/:id" component={DiscoverDetail} exact />
-        <Route path="/movie/:id" component={MovieDetail} />
-
+        <Route path="/tredding" component={Treding} exact />
         <Route path="/search" component={Search} exact />
         <Route path="/session/:id/seasons" component={Seasons} exact/>
       </Switch>
