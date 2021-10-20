@@ -5,12 +5,14 @@ import {
   fetchMovieByGenre,
   fetchPersons,
   fetchTopratedMovie,
+  listUser
 
 } from "../../server";
 import RBCarousel from "react-bootstrap-carousel";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import '../Home/Aminition/Home.css';
 import { Link } from "react-router-dom";
+
 export function Home() {
   const [nowPlaying, setNowPlaying] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -18,7 +20,7 @@ export function Home() {
   const [persons, setPersons] = useState([]);
   const [topRated, setTopRated] = useState([]);
   const [video] = useState([]);
-
+  const [list, getListUser] = useState([]);
   useEffect(() => {
     const fetchAPI = async () => {
       setNowPlaying(await fetchMovies());
@@ -26,15 +28,34 @@ export function Home() {
       setMovieByGenre(await fetchMovieByGenre(28));
       setPersons(await fetchPersons());
       setTopRated(await fetchTopratedMovie());
+      getListUser(await listUser());
     };
     fetchAPI();
   }, []);
 
+
   const handleGenreClick = async (genre_ids) => {
     setMovieByGenre(await fetchMovieByGenre(genre_ids));
   };
-
-
+  
+  // var xhr = new XMLHttpRequest();
+  // var list = [];
+  // xhr.open("GET", "http://localhost/Api_react_movie/public/api/list-user", true);
+  // xhr.onload = function (e) {
+  //   list = JSON.parse(xhr.responseText);
+  // };
+  // console.log(list);
+  // xhr.send();
+  //Lay danh sach user
+  const listUser123 = list.slice(0, 20).map((item, index) => {
+    return (
+      <div className="list-user" key={index}>
+        <h2>{item.name}</h2>
+        <h2>{item.email}</h2>
+      </div>
+    );
+  });
+ 
   const movies = nowPlaying.slice(0, 20).map((item, index) => {
     const youtubeUrl = "https://www.youtube.com/watch?v=";
     return (
@@ -63,8 +84,8 @@ export function Home() {
 
   const genreList = genres.map((item, index) => {
     return (
-      <nav className="link-effect-1">
-        <div className="Link-hover" key={index} onClick={() => {
+      <nav className="link-effect-1" key={index}>
+        <div className="Link-hover" onClick={() => {
           handleGenreClick(item.id);
         }}><span data-hover={item.name}> {item.name}</span></div>
       </nav>
@@ -79,7 +100,7 @@ export function Home() {
           <Link to={`/movie/${value.id}`}>
             <img className="img-fluids" src={value.poster} alt={value.title}></img>
           </Link>
-          <a class="info" href={`/movie/${value.id}`}>Xem</a>
+          <a className="info" href={`/movie/${value.id}`}>Xem</a>
         </div>
         <div className="title-movie">
           {value.title}
@@ -133,9 +154,9 @@ export function Home() {
     );
   });
   // Lấy các tấm hình:
-  const images = movieByGenre.slice(0, 12).map((i) => {
+  const images = movieByGenre.slice(0, 12).map((i,index) => {
     return (
-      <img src={i.poster} alt={i.title} className="pic" />
+      <img src={i.poster} alt={i.title} key={index} className="pic" />
     );
   });
 
@@ -150,14 +171,14 @@ export function Home() {
                 <ul className="menu">
                   <li className="nav-hover"><a href="/">Home</a></li>
                   <li className="nav-hover">
-                     <div className="login-templeta">
-                        <a href="/login">Login</a>
-                       </div>
+                    <div className="login-templeta">
+                      <a href="/login">Login</a>
+                    </div>
                   </li>
                   <li className="nav-hover">
-                     <div className="login-templeta">
-                        <a href="#">Register</a>
-                       </div>
+                    <div className="login-templeta">
+                      <a href="/register">Register</a>
+                    </div>
                   </li>
                 </ul>
 
@@ -339,9 +360,7 @@ export function Home() {
 
         </div>
       </div>
-
-
-
+     
     </div>
   );
 }

@@ -14,6 +14,19 @@ const genreUrl = `${url}/genre/movie/list`;
 const moviesUrl = `${url}/discover/movie`;
 // Person week
 const personUrl = `${url}/trending/person/week`;
+//DB 
+const db = 'http://localhost/Api_react_movie/public/api/list-user';
+
+export const listUser = async () => {
+    const repo  = await axios.get(db)
+    return repo.data;
+}
+
+export const addUser = async () => {
+    const repo  = await axios.post(db,)
+    return repo.data;
+}
+
 
 // Page home : 
 export const fetchMovies = async () => {
