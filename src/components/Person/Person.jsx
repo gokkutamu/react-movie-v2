@@ -2,27 +2,64 @@ import React, { useState, useEffect } from "react";
 import {
     fetchPersonDetail,
     fetchTV,
+    fetchCreditsTV,
     fetchPeople,
 } from "../../server";
 
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Link } from "react-router-dom";
 import "../Home/Aminition/Home.css";
+import '../Person/Style.css';
+
 import InfiniteCarousel from "react-leaf-carousel";
 
 export function Person({ match }) {
     let params = match.params;
     const [detail, setDetail] = useState([]);
     const [KnonwnPerson, setKnonwnPerson] = useState([]);
+    const [KnonwnPersonTv, setKnonwnPersonTV] = useState([]);
     const [popularPersonTMDB, setpopularPersonTMDB] = useState([]);
     useEffect(() => {
         const fetchAPI = async () => {
             setDetail(await fetchPersonDetail(params.id));
             setKnonwnPerson(await fetchTV(params.id));
+            setKnonwnPersonTV(await fetchCreditsTV(params.id));
             setpopularPersonTMDB(await fetchPeople());
         };
         fetchAPI();
     }, [params.id]);
+    //Nhận tín dụng truyền hình: 
+    const listhistoryTV = KnonwnPersonTv.slice(0, 8).map((item, input) => {
+        return (
+            <div key={input}>
+                <tr>
+                    <td>{item.date}</td>
+                    <td className="name-link">
+                        <Link to={`/tv/${item.id}`}>
+                            {item.name} as {item.charater}
+                        </Link>
+                    </td>
+                    <td>{item.nameOther}</td>
+                </tr>
+            </div >
+        );
+    });
+      //Nhận tín dụng phim: 
+      const listhistoryMovie = KnonwnPerson.slice(0, 8).map((item, input) => {
+        return (
+            <div key={input}>
+                <tr>
+                    <td>{item.date}</td>
+                    <td className="name-link">
+                        <Link to={`/movie/${item.id}`}>
+                            {item.title} as {item.charater}
+                        </Link>
+                    </td>
+                    <td>{item.nameOther}</td>
+                </tr>
+            </div >
+        );
+    });
     //Những người nỗi tiếng trong TMDB
     const popularPerson = popularPersonTMDB.slice(0, 12).map((item, index) => {
         return (
@@ -62,24 +99,24 @@ export function Person({ match }) {
         <div className="top-header">
             <div className="container">
                 <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-md-12">
                         <nav>
                             <ul className="menu">
                                 <li className="nav-hover"><a href="/">Home</a></li>
-                                <li className="nav-hover"><a href="/trending/all/day">Trending</a></li>
-                                <li className="nav-hover"><a href="/discover/tv">TV Shows</a></li>
-                                <li className="nav-hover"><a href="/people/popular">People</a></li>
+                                <li className="nav-hover">
+                                    <div className="login-templeta">
+                                        <a href="/login">Login</a>
+                                    </div>
+                                </li>
+                                <li className="nav-hover">
+                                    <div className="login-templeta">
+                                        <a href="#">Register</a>
+                                    </div>
+                                </li>
                             </ul>
                         </nav>
                     </div>
-                    <div className="col-md-4">
-                        <form action="" className="search-bar">
-                            <input type="search" name="search" pattern=".*\S.*" required />
-                            <button type="submit" className="search-btn">
-                                <span>Search</span>
-                            </button>
-                        </form>
-                    </div>
+
                 </div>
                 <div className="detail-pofile">
                     <div className="row">
@@ -120,22 +157,64 @@ export function Person({ match }) {
                             <RLCarousel />
 
                         </div>
-                        <div className="title-popularPersonTMDB">
-                            <h2>Người nổi tiếng trong tuần TMDB</h2>
-                        </div>
-                        <div className="container">
-                            <RLCarouselPerson />
-                        </div>
+
+
+
+
 
 
                     </div>
                 </div>
+                <div className="table-tv">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <table class="table table-dark">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">History TV</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {listhistoryTV}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
+                </div>
+                <div className="table-movie">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <table class="table table-dark">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">History Movie</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {listhistoryMovie}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div className="title-popularPersonTMDB">
+                    <h4>Người nổi tiếng trong tuần TMDB</h4>
+                    <div className="container">
+                        <RLCarouselPerson />
+                    </div>
+                </div>
             </div>
 
         </div>
 
     );
+
     function RLCarouselPerson() {
         return (
             <InfiniteCarousel

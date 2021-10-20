@@ -16,6 +16,32 @@ const moviesUrl = `${url}/discover/movie`;
 const personUrl = `${url}/trending/person/week`;
 const peopleUrl = `${url}/person/popular`;
 const personsUrl = `${url}/person`;
+
+
+// Danh sách phim đã đóng có mặt diễn viên trong đó (phim):
+export const fetchCreditsTV = async (id) => {
+    try {
+        const { data } = await axios.get(`${personsUrl}/${id}/tv_credits`, {
+            params: {
+                api_key: apiKey,
+            }
+        });
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
+        const modifiedData = data['cast'].map((c) => ({
+            id: c['id'],
+            backPoster: posterUrl + c['backdrop_path'],
+            popularity: c['popularith'],
+            name: c['name'],
+            date: c['first_air_date'],
+            poster: posterUrl + c['poster_path'],
+            charater: c['character'],
+            nameOther: c['popularity'],
+        }))
+
+        return modifiedData;
+    } catch (error) { }
+}
+
 // Phim đóng góp:
 export const fetchTV = async (id) => {
     try {
@@ -30,9 +56,12 @@ export const fetchTV = async (id) => {
             backPoster: posterUrl + c['backdrop_path'],
             popularity: c['popularith'],
             title: c['title'],
+            date: c['release_date'],
             poster: posterUrl + c['poster_path'],
             overview: c['overview'],
             rating: c['vote_average'],
+            character: c['character'],
+            nameOther: c['popularity'],
         }))
 
         return modifiedData;

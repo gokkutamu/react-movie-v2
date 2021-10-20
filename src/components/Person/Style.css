@@ -1,0 +1,12 @@
+
+
+.table-tv {
+    padding-top: 150px;
+}
+.name-link a {
+    color: white;
+}
+.name-link a:hover {
+    text-decoration: none;
+    color: tomato;
+}
