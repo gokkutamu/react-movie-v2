@@ -2,7 +2,7 @@
 Call API Movie project chuyên đề web 1
 
 ## First 
-### `npm start`
+### `npm install`
 
 ## Available Scripts
 
