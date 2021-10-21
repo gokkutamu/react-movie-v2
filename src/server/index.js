@@ -22,8 +22,9 @@ export const listUser = async () => {
     return repo.data;
 }
 
-export const addUser = async () => {
-    const repo  = await axios.post(db,)
+export const addUser = async (fromData) => {
+
+    const repo  = await axios.post(db,fromData)
     return repo.data;
 }
 
