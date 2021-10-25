@@ -237,7 +237,6 @@ export function MovieDetail({ match }) {
         </div>
       </div>
       {/* Danh sách tác giả */}
-
       <div className="person-list">
         <div className="container">
           <div className="row">
@@ -257,7 +256,26 @@ export function MovieDetail({ match }) {
           </div>
         </div>
       </div>
+      {/* Danh sách phim tương tự */}
+      <div className="person-list">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="person">
+                <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Các phim liên quan</p>
+                <div className="knowwn">
+                  <div className="row">
+                    <div className="list-similar list-sroll">
+                      {similarMovieList}
+                    </div>
+                  </div>
+                </div>
+              </div>
 
+            </div>
+          </div>
+        </div>
+      </div>
       {/* Footer */}
       <div className="footer">
         <hr className="mt-5" style={{ borderTop: "5px solid #5a606b" }}></hr>
