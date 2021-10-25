@@ -34,7 +34,6 @@ export function Home() {
     setMovieByGenre(await fetchMovieByGenre(genre_ids));
   };
 
-
   const movies = nowPlaying.slice(0, 20).map((item, index) => {
     const youtubeUrl = "https://www.youtube.com/watch?v=";
     return (
@@ -159,6 +158,7 @@ export function Home() {
                         <a href="#">Register</a>
                        </div>
                   </li>
+                 
                 </ul>
 
               </nav>
