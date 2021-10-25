@@ -4,14 +4,16 @@ import Button from "react-bootstrap/Button";
 import "./Login/Login.css";
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 import {
     addUser
 
 } from "../../server";
-import { Redirect } from "react-router";
+
 const db = 'http://localhost/Api_react_movie/public/api/list-user';
 export function Register() {
+
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
@@ -41,15 +43,28 @@ export function Register() {
         //     console.log(repo.data);
         // }
         if (password == confirmPassword) {
-            axios.post('http://localhost/Api_react_movie/public/api/list-user', { name, email, password })
+            axios.post(db, { name, email, password })
                 .then(res => {
                     history.push('login');
                 })
                 .catch(error => {
-                    console.log(error.response.status);
+                    if (error.response.status == "500") {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Email already exists ',
+                            icon: 'error',
+                            confirmButtonText: 'Try Again'
+                        })
+                    }
+                    // console.log(error.response.status);
                 });
         } else {
-            console.log('errror');
+            Swal.fire({
+                title: 'Error!',
+                text: 'Please Password !',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            })
         }
 
     }

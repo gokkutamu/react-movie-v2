@@ -180,6 +180,11 @@ export function Home() {
                       <a href="/register">Register</a>
                     </div>
                   </li>
+                  <li className="nav-hover">
+                    <div className="login-templeta">
+                      <a href="/login">Dashbroad</a>
+                    </div>
+                  </li>
                 </ul>
 
               </nav>
