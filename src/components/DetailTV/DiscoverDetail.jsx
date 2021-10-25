@@ -320,60 +320,6 @@ export function DiscoverDetail({ match }) {
                                 </div>
                             </div>
                         </div>
-                        <div className="details-reply">
-                            <h2>Bình luận</h2>
-                            <form action="#">
-                                <div className="row">
-                                    <div className="col-lg-4">
-                                        <div className="select-container">
-                                            <input type="text" placeholder="Tên đăng nhập" />
-                                            <i className="icofont icofont-ui-user" />
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4">
-                                        <div className="select-container">
-                                            <input type="text" placeholder="Email" />
-                                            <i className="icofont icofont-envelope" />
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4">
-                                        <div className="select-container">
-                                            <input type="text" placeholder="Số điện thoại" />
-                                            <i className="icofont icofont-phone" />
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-12">
-                                        <div className="textarea-container">
-                                            <textarea placeholder="Nhập bình luận" defaultValue={""} />
-                                            <button><i className="icofont icofont-send-mail" /></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div className="details-comment">
-                            <a className="theme-btn theme-btn2" href="#">Đăng bình luận</a>
-                        </div>
-                        <div className="details-thumb">
-                            <div className="details-thumb-prev">
-                                <div className="thumb-icon">
-                                    <i className="icofont icofont-simple-left" />
-                                </div>
-                                <div className="thumb-text">
-                                    <h4>Previous Post</h4>
-                                    <p>Standard Post With Gallery</p>
-                                </div>
-                            </div>
-                            <div className="details-thumb-next">
-                                <div className="thumb-text">
-                                    <h4>Next Post</h4>
-                                    <p>Standard Post With Preview Image</p>
-                                </div>
-                                <div className="thumb-icon">
-                                    <i className="icofont icofont-simple-right" />
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -412,7 +358,26 @@ export function DiscoverDetail({ match }) {
                     </div>
                 </div>
             </div>
+            {/* Danh sách phim tương tự */}
+            <div className="person-list">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="person">
+                                <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Các phim liên quan</p>
+                                <div className="knowwn">
+                                    <div className="row">
+                                        <div className="list-similar list-sroll">
+                                            {listSimilar}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
             {/* Footer */}
             <div className="footer">
                 <hr className="mt-5" style={{ borderTop: "5px solid #5a606b" }}></hr>
