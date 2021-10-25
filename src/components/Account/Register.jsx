@@ -43,12 +43,12 @@ export function Register() {
         //     console.log(repo.data);
         // }
         if (password == confirmPassword) {
-            axios.post(db, { name, email, password })
+            axios.post("http://localhost/Api_react_movie/public/api/list-user", { name, email, password })
                 .then(res => {
                     history.push('login');
                 })
                 .catch(error => {
-                    if (error.response.status == "500") {
+                    if (error.response.status == "400") {
                         Swal.fire({
                             title: 'Error!',
                             text: 'Email already exists ',
@@ -56,7 +56,6 @@ export function Register() {
                             confirmButtonText: 'Try Again'
                         })
                     }
-                    // console.log(error.response.status);
                 });
         } else {
             Swal.fire({
