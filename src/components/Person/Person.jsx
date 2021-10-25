@@ -31,33 +31,33 @@ export function Person({ match }) {
     //Nhận tín dụng truyền hình: 
     const listhistoryTV = KnonwnPersonTv.slice(0, 8).map((item, input) => {
         return (
-            <div key={input}>
-                <tr>
-                    <td>{item.date}</td>
-                    <td className="name-link">
-                        <Link to={`/tv/${item.id}`}>
-                            {item.name} as {item.charater}
-                        </Link>
-                    </td>
-                    <td>{item.nameOther}</td>
-                </tr>
-            </div >
+
+            <tr key={input}>
+                <td>{item.date}</td>
+                <td className="name-link">
+                    <Link to={`/tv/${item.id}`}>
+                        {item.name} as {item.charater}
+                    </Link>
+                </td>
+                <td>{item.nameOther}</td>
+            </tr>
+
         );
     });
-      //Nhận tín dụng phim: 
-      const listhistoryMovie = KnonwnPerson.slice(0, 8).map((item, input) => {
+    //Nhận tín dụng phim: 
+    const listhistoryMovie = KnonwnPerson.slice(0, 8).map((item, input) => {
         return (
-            <div key={input}>
-                <tr>
-                    <td>{item.date}</td>
-                    <td className="name-link">
-                        <Link to={`/movie/${item.id}`}>
-                            {item.title} as {item.charater}
-                        </Link>
-                    </td>
-                    <td>{item.nameOther}</td>
-                </tr>
-            </div >
+
+            <tr key={input}>
+                <td>{item.date}</td>
+                <td className="name-link">
+                    <Link to={`/movie/${item.id}`}>
+                        {item.title} as {item.charater}
+                    </Link>
+                </td>
+                <td>{item.nameOther}</td>
+            </tr>
+
         );
     });
     //Những người nỗi tiếng trong TMDB
@@ -169,7 +169,7 @@ export function Person({ match }) {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">
-                                <table class="table table-dark">
+                                <table className="table table-dark">
                                     <thead>
                                         <tr>
                                             <th scope="col">History TV</th>
@@ -188,7 +188,7 @@ export function Person({ match }) {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">
-                                <table class="table table-dark">
+                                <table className="table table-dark">
                                     <thead>
                                         <tr>
                                             <th scope="col">History Movie</th>
