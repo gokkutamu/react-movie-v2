@@ -4,6 +4,8 @@ import {
   fetchMovieVideos,
   fetchMovieCredits,
   fetchSimilarMovie,
+  fetchMovieKeyword,
+
 } from "../../server";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Modal } from "react-bootstrap";
@@ -23,14 +25,14 @@ export function MovieDetail({ match }) {
   const [video, setVideo] = useState([]);
   const [casts, setCasts] = useState([]);
   const [similarMovie, setSimilarMovie] = useState([]);
-
+  const [keyword, setKeyword] = useState([]);
   useEffect(() => {
     const fetchAPI = async () => {
       setDetail(await fetchMovieDetail(params.id));
       setVideo(await fetchMovieVideos(params.id));
       setCasts(await fetchMovieCredits(params.id));
       setSimilarMovie(await fetchSimilarMovie(params.id));
-
+      setKeyword(await fetchMovieKeyword(params.id))
     };
 
     fetchAPI();
@@ -81,7 +83,13 @@ export function MovieDetail({ match }) {
     });
   }
 
-
+  const keywrrord = keyword.slice(0, 10).map((c, i) => {
+    return (
+      <li className="keywword" key={i}>
+        <a href={``}>{c.name}</a>
+      </li>
+    );
+  });
   const listCredits = casts.slice(0, 20).map((c, i) => {
     return (
       <div className="col-md-2 text-center" key={i}>
@@ -225,7 +233,14 @@ export function MovieDetail({ match }) {
                           <h2>Chi tiết phim</h2>
                           <p>{detail.overview}</p>
                         </div>
-
+                        <div className="div-keyword">
+                          <div className="transformers-left">
+                            Keywords
+                          </div>
+                          <ul>
+                            {keywrrord}
+                          </ul>
+                        </div>
                       </div>
                     </li>
                   </ul>

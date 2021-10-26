@@ -250,3 +250,25 @@ button {
 .details-thumb-next {
     text-align: right;
 }
+.div-keyword ul {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.div-keyword ul .keywword {
+    margin-right: 5px;
+    margin-bottom: 10px;
+    line-height: 24px;
+    font-size: 0.9em;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+.div-keyword ul .keywword a {
+    background-color: rgba(0,0,0,0.1);
+    border: 1px solid rgb(13, 148, 197);
+    color: rgb(13, 148, 197);
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+}

@@ -16,13 +16,15 @@ const moviesUrl = `${url}/discover/movie`;
 const personUrl = `${url}/trending/person/week`;
 // Detail movie
 const movieUrl = `${url}/movie`;
+// Genders movie 
+
 // Page home : 
 export const fetchMovies = async () => {
     try {
         const { data } = await axios.get(nowPlayingUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                language: 'vi-VN',
                 page: 1
             }
         })
@@ -46,7 +48,7 @@ export const fetchGenre = async () => {
         const { data } = await axios.get(genreUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                language: 'vi-VN',
                 page: 1
             }
         })
@@ -62,7 +64,7 @@ export const fetchMovieByGenre = async (genre_ids) => {
         const { data } = await axios.get(moviesUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                language: 'vi-VN',
                 page: 1,
                 with_genres: genre_ids
             }
@@ -103,7 +105,7 @@ export const fetchTopratedMovie = async () => {
         const { data } = await axios.get(topratedUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                language: 'vi-VN',
                 page: 1
             }
         })
@@ -130,7 +132,7 @@ export const fetchMovieDetail = async (id) => {
         const { data } = await axios.get(`${movieUrl}/${id}`, {
             params: {
                 api_key: apiKey,
-                language: 'en_US'
+                language: 'vi-VN'
             }
         });
         return data;
@@ -168,7 +170,7 @@ export const fetchSimilarMovie = async (id) => {
         const { data } = await axios.get(`${movieUrl}/${id}/similar`, {
             params: {
                 api_key: apiKey,
-                language: 'en_US'
+                language: 'vi-VN'
             }
         });
         const posterUrl = 'https://image.tmdb.org/t/p/original/';
@@ -182,6 +184,45 @@ export const fetchSimilarMovie = async (id) => {
             rating: m['vote_average'],
         }))
 
+        return modifiedData;
+    } catch (error) { }
+}
+//Danh sách theo danh mục 
+export const fetchGendersMovie = async () => {
+    try {
+        const { data } = await axios.get(nowPlayingUrl, {
+            params: {
+                api_key: apiKey,
+                language: 'vi-VN',
+                page: 1
+            }
+        })
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
+        const modifiedData = data['results'].map((m) => ({
+            id: m['id'],
+            backPoster: posterUrl + m['backdrop_path'],
+            popularity: m['popularith'],
+            title: m['title'],
+            poster: posterUrl + m['poster_path'],
+            overview: m['overview'],
+            rating: m['vote_average'],
+        }))
+
+        return modifiedData;
+    } catch (error) { }
+}
+// Keyword :
+export const fetchMovieKeyword = async (id) => {
+    try {
+        const { data } = await axios.get(`${movieUrl}/${id}/keywords`, {
+            params: {
+                api_key: apiKey,
+            }
+        });
+        const modifiedData = data['keywords'].map((m) => ({
+            id: m['id'],
+            name: m['name'],
+        }))
         return modifiedData;
     } catch (error) { }
 }
