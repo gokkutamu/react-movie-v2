@@ -208,3 +208,22 @@ export const fetchTopratedMovie = async () => {
 
     }
 }
+// Profile detail preson : 
+export const fetchProfile = async (id) => {
+    try {
+        const { data } = await axios.get(`${personsUrl}/${id}/images`, {
+            params: {
+                api_key: apiKey
+            }
+        })
+        const modifiedData = data['profiles'].map((p) => ({
+            aspect_ratio: p['aspect_ratio'],
+            file_path: p['file_path'],
+            height: p['height'],
+            vote_average: p['vote_average'],
+            vote_count: p['vote_count'],
+            width: p['width'],
+        }))
+        return modifiedData;
+    } catch (error) { }
+}

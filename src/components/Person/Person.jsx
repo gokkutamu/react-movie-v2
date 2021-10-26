@@ -127,7 +127,9 @@ export function Person({ match }) {
                                 </div>
                                 <div className="face back"></div>
                             </div>
-
+                            <div className="button-images">
+                                <a href={`/persons/${detail.id}/images/profiles`} className="profile-button">Profiles</a>
+                            </div>
                         </div>
                         <div className="col-md-8">
                             <div className="profile-name">
