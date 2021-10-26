@@ -5,6 +5,7 @@ import {
   fetchMovieCredits,
   fetchSimilarMovie,
   fetchMovieKeyword,
+  fetchKeyDetail,
 
 } from "../../server";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
@@ -26,6 +27,7 @@ export function MovieDetail({ match }) {
   const [casts, setCasts] = useState([]);
   const [similarMovie, setSimilarMovie] = useState([]);
   const [keyword, setKeyword] = useState([]);
+  const [detailKey, setKeyDetail] = useState([]);
   useEffect(() => {
     const fetchAPI = async () => {
       setDetail(await fetchMovieDetail(params.id));
@@ -33,6 +35,7 @@ export function MovieDetail({ match }) {
       setCasts(await fetchMovieCredits(params.id));
       setSimilarMovie(await fetchSimilarMovie(params.id));
       setKeyword(await fetchMovieKeyword(params.id))
+      setKeyDetail(await fetchKeyDetail(params.keyword_id));
     };
 
     fetchAPI();
@@ -86,7 +89,7 @@ export function MovieDetail({ match }) {
   const keywrrord = keyword.slice(0, 10).map((c, i) => {
     return (
       <li className="keywword" key={i}>
-        <a href={``}>{c.name}</a>
+        <a href={`/keyword/${c.id}/movie`}>{c.name}</a>
       </li>
     );
   });
@@ -130,7 +133,12 @@ export function MovieDetail({ match }) {
       </div>
     );
   });
-
+  let myInlineStyle = {
+    backgroundImage: `url(http://image.tmdb.org/t/p/original/${detail.backdrop_path})`,
+    backgroundPosition: "right 2px top",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  }
   return (
     <div className="main-container">
       <div className="hearder">
@@ -149,11 +157,12 @@ export function MovieDetail({ match }) {
         </div>
       </div>
       {/* New detail movie */}
-      <div className="detail-movie">
+
+      <div className="detail-movie" style={myInlineStyle}>
         <div className="container">
           <div className="transformers-box">
             <div className="row desc-film">
-              <div className="col-lg-5">
+              <div className="col-lg-6">
                 <div className="transformers-content">
                   <MoviePalyerModal
                     show={isOpen}
@@ -233,19 +242,20 @@ export function MovieDetail({ match }) {
                           <h2>Chi tiết phim</h2>
                           <p>{detail.overview}</p>
                         </div>
-                        <div className="div-keyword">
-                          <div className="transformers-left">
-                            Keywords
-                          </div>
-                          <ul>
-                            {keywrrord}
-                          </ul>
-                        </div>
+
                       </div>
                     </li>
                   </ul>
 
                 </div>
+              </div>
+              <div className="div-keyword">
+                <div className="transformers-left-top">
+                  Keywords
+                </div>
+                <ul>
+                  {keywrrord}
+                </ul>
               </div>
             </div>
           </div>

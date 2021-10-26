@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import { Home } from "./components/Home/Home";
 import { Login } from "./components/Account/Login";
 import {MovieDetail} from "./components/DetailMovie/MovieDetail";
-
+import { Keyword } from "./components/DetailMovie/Keyword";
 export function App() {
   return (
     
@@ -13,7 +13,7 @@ export function App() {
         <Route path="/" component={Home} exact />
         <Route path="/login" component={Login} exact />
         <Route path="/movie/:id" component={MovieDetail} />
-
+        <Route path="/keyword/:keyword_id/movie" component={Keyword} />
       </Switch>
     </main>
   );

@@ -17,7 +17,7 @@ const personUrl = `${url}/trending/person/week`;
 // Detail movie
 const movieUrl = `${url}/movie`;
 // Genders movie 
-
+const keyUrl = `${url}/keyword`;
 // Page home : 
 export const fetchMovies = async () => {
     try {
@@ -212,9 +212,9 @@ export const fetchGendersMovie = async () => {
     } catch (error) { }
 }
 // Keyword :
-export const fetchMovieKeyword = async (id) => {
+export const fetchMovieKeyword = async (keyword_id) => {
     try {
-        const { data } = await axios.get(`${movieUrl}/${id}/keywords`, {
+        const { data } = await axios.get(`${movieUrl}/${keyword_id}/keywords`, {
             params: {
                 api_key: apiKey,
             }
@@ -225,4 +225,38 @@ export const fetchMovieKeyword = async (id) => {
         }))
         return modifiedData;
     } catch (error) { }
+}
+export const fetchKeyDetail = async (keyword_id) => {
+    try {
+        const { data } = await axios.get(`${keyUrl}/${keyword_id}`, {
+            params: {
+                api_key: apiKey,
+            }
+        });
+        return data;
+    } catch (error) { 
+        
+    }
+}
+
+export const fetchMovieByKeyword = async (keyword_id) => {
+    try {
+        const { data } = await axios.get(`${keyUrl}/${keyword_id}/movies`, {
+            params: {
+                api_key: apiKey,
+                language: 'vi-VN',
+            }
+        });
+        const modifiedData = data['results'].map((m) => ({
+            id: m['id'],
+            title: m['title'],
+            poster_path: m['poster_path'],
+            overview: m['overview'],
+            release_date: m['release_date'],
+            original_title: m['original_title'],
+            backdrop_path: m['backdrop_path'],
+            popularity: m['popularity'],
+        }))
+        return modifiedData;
+    } catch (error) {}
 }
