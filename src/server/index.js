@@ -159,29 +159,6 @@ export const fetchTVCredits = async (id) => {
             name: c['name'],
             img: 'https://image.tmdb.org/t/p/w200' + c['profile_path'],
         }))
-
-        return modifiedData;
-    } catch (error) { }
-}
-export const fetchSessionTV = async (id) => {
-    try {
-        const { data } = await axios.get(`${tvUrl}/${id}`, {
-            params: {
-                api_key: apiKey,
-                language: 'en_US'
-            }
-        });
-        const modifiedData = data['seasons'].map((c) => ({
-            id: c['id'],
-            name: c['name'],
-            img: 'https://image.tmdb.org/t/p/w200' + c['poster_path'],
-            img2: 'https://image.tmdb.org/t/p/w200' + c['poster_path'],
-            overview: c['overview'],
-            episode_count: c['episode_count'],
-            date: c['air_date'],
-            number_count: c['season_number'],
-        }))
-
         return modifiedData;
     } catch (error) { }
 }
@@ -224,6 +201,72 @@ export const fetchSimilarTV = async (id) => {
             poster: posterUrl + m['poster_path'],
             overview: m['overview'],
             rating: m['vote_average'],
+        }))
+
+        return modifiedData;
+    } catch (error) { }
+}
+// Session
+export const fetchSessionTV = async (number_count) => {
+    try {
+        const { data } = await axios.get(`${tvUrl}/${number_count}`, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US'
+            }
+        });
+        const modifiedData = data['seasons'].map((c) => ({
+            id: c['id'],
+            name: c['name'],
+            img: 'https://image.tmdb.org/t/p/w200' + c['poster_path'],
+            img2: 'https://image.tmdb.org/t/p/w200' + c['poster_path'],
+            overview: c['overview'],
+            episode_count: c['episode_count'],
+            date: c['air_date'],
+            number_count: c['season_number'],
+        }))
+
+        return modifiedData;
+    } catch (error) { }
+}
+// Session_episode
+export const fetchSession_episode = async (id , season_number) => {
+    try {
+        const { data } = await axios.get(`${tvUrl}/${id}/season/${season_number}`, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US'
+            }
+        });
+        const modifiedData = data['episodes'].map((c) => ({
+            id: c['id'],
+            name: c['name'],
+            overview: c['overview'],
+            poster_path: c['still_path'],
+            air_date: c['air_date'],
+            season_number: c['season_number'],
+            episode_number: c['episode_number'],
+        }))
+
+        return modifiedData;
+    } catch (error) { }
+}
+// episode
+export const fetchepisode = async (id , season_number,episode_number ) => {
+    try {
+        const { data } = await axios.get(`${tvUrl}/${id}/season/${season_number}/episode/${episode_number}`, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US'
+            }
+        });
+        const modifiedData = data['guest_stars'].map((c) => ({
+            id: c['id'],
+            name: c['name'],
+            character: c['character'],
+            poster_path: c['profile_path'],
+            season_number: c['season_number'],
+            credit_id: c['credit_id'],
         }))
 
         return modifiedData;

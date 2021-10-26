@@ -132,7 +132,7 @@ export function DiscoverDetail({ match }) {
                         <p>
                             {c.name} của {detail.name} được công chiếu ngày {dateFormat(c.date)}
                         </p>
-                        <a href={`/session/${detail.id}/seasons`} className="animated-button">
+                        <a href={`/tv/${detail.id}/sesson`} className="animated-button">
                             <span></span>
                             <span></span>
                             <span></span>
