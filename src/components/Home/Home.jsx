@@ -5,12 +5,12 @@ import {
   fetchMovieByGenre,
   fetchPersons,
   fetchTopratedMovie,
-
 } from "../../server";
 import RBCarousel from "react-bootstrap-carousel";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import '../Home/Aminition/Home.css';
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 export function Home() {
   const [nowPlaying, setNowPlaying] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -33,6 +33,7 @@ export function Home() {
   const handleGenreClick = async (genre_ids) => {
     setMovieByGenre(await fetchMovieByGenre(genre_ids));
   };
+
 
   const movies = nowPlaying.slice(0, 20).map((item, index) => {
     const youtubeUrl = "https://www.youtube.com/watch?v=";
@@ -137,7 +138,13 @@ export function Home() {
       <img src={i.poster} alt={i.title} className="pic" />
     );
   });
-
+  const a = null;
+ 
+  let history = useHistory();
+  if (localStorage.getItem("myData") == "200") {
+    var logout = document.getElementById('logout');
+    logout.innerHTML = '<div class="login-templeta"><a href="/">Logout</a></div>'
+  }
   return (
 
     <div className="main-container">
@@ -146,19 +153,21 @@ export function Home() {
           <div className="row">
             <div className="col-md-12">
               <nav>
-                <ul className="menu">
+                <ul className="menu" >
                   <li className="nav-hover"><a href="/">Home</a></li>
                   <li className="nav-hover">
-                     <div className="login-templeta">
-                        <a href="/login">Login</a>
-                       </div>
+                    <div className="login-templeta">
+                      <a href="/login">Login</a>
+                    </div>
                   </li>
                   <li className="nav-hover">
-                     <div className="login-templeta">
-                        <a href="#">Register</a>
-                       </div>
+                    <div className="login-templeta">
+                      <a href="#">Register</a>
+                    </div>
                   </li>
-                 
+                  <li className="nav-hover" id="logout">
+
+                  </li>
                 </ul>
 
               </nav>
@@ -345,3 +354,4 @@ export function Home() {
     </div>
   );
 }
+localStorage.setItem('myData', '20000')

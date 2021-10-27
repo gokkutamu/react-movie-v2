@@ -17,6 +17,10 @@ const personUrl = `${url}/trending/person/week`;
 //DB 
 const db = 'http://react-movie-api.rf.gd/api/list-user';
 
+//check login 
+export const checkLogin = async() =>{
+    return localStorage.getItem('myData');
+}
 export const listUser = async () => {
     const repo  = await axios.get(db)
     return repo.data;
