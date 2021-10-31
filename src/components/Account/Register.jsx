@@ -17,7 +17,7 @@ export function Register() {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [password_confirmation, setConfirmPassword] = useState("");
     const [addUserMovie, setUser] = useState([]);
 
     useEffect(() => {
@@ -42,8 +42,8 @@ export function Register() {
         //     let repo = await axios.post('http://localhost/Api_react_movie/public/api/list-user', form);
         //     console.log(repo.data);
         // }
-        if (password == confirmPassword) {
-            axios.post("http://localhost/Api_react_movie/public/api/list-user", { name, email, password })
+        if (password == password_confirmation) {
+            axios.post("http://localhost/Passport/public/api/auth/signup", { name, email, password,password_confirmation })
                 .then(res => {
                     history.push('login');
                 })
@@ -102,7 +102,7 @@ export function Register() {
                     <RegisterForm id="name" lable="Name" type="text" value={name} change={(event) => setName(event.target.value)} />
                     <RegisterForm id="email" lable="Email" type="email" value={email} change={(event) => setEmail(event.target.value)} />
                     <RegisterForm id="password" lable="Password" type="password" value={password} change={(event) => setPassword(event.target.value)} />
-                    <RegisterForm id="confirmpassword" lable="Confirm Password" type="password" value={confirmPassword} change={(event) => setConfirmPassword(event.target.value)} />
+                    <RegisterForm id="password_confirmation" lable="Confirm Password" type="password" value={password_confirmation} change={(event) => setConfirmPassword(event.target.value)} />
                     <Button block size="lg" type="submit" disabled={!validateForm()}>
                         Register
                     </Button>
