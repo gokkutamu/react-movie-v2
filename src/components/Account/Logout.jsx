@@ -9,11 +9,15 @@ export function Logout() {
     let history = useHistory();
     function handleSubmit(event) {
         event.preventDefault();
-
-        axios.post('http://localhost/react-lavarel-movie/public/api/logout')
+        axios.get('http://localhost/Passport/public/api/auth/logout',{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization' : 'Bearer ' + localStorage.getItem('myData')
+            }
+        })
             .then(res => {
                 if (res.status == 200) {
-                    history.push('/login');
+                    history.push('/');
                 }
             })
             .catch(error => {

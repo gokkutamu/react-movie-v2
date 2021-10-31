@@ -11,6 +11,7 @@ import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import '../Home/Aminition/Home.css';
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import axios from 'axios';
 export function Home() {
   const [nowPlaying, setNowPlaying] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -139,12 +140,34 @@ export function Home() {
     );
   });
   const a = null;
- 
+
+  // let history = useHistory();
+  // if (localStorage.getItem("myData") == "200") {
+  //   var logout = document.getElementById('logout');
+  //   logout.innerHTML = '<div class="login-templeta"><a href="/">Logout</a></div>'
+  // }
   let history = useHistory();
-  if (localStorage.getItem("myData") == "200") {
-    var logout = document.getElementById('logout');
-    logout.innerHTML = '<div class="login-templeta"><a href="/">Logout</a></div>'
+  function logout123(event) {
+    event.preventDefault();
+
+    axios.get('http://localhost/Passport/public/api/auth/logout', {
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': "Bearer " + localStorage.getItem('myData')
+      }
+    })
+      .then(res => {
+        if (res.status == 200) {
+          // history.push('/');
+          console.log('oki em tâm đen');
+        }
+      })
+      .catch(error => {
+        console.log(error.status);
+      });
   }
+
   return (
 
     <div className="main-container">
@@ -165,8 +188,8 @@ export function Home() {
                       <a href="#">Register</a>
                     </div>
                   </li>
-                  <li className="nav-hover" id="logout">
-
+                  <li className="nav-hover" id="logout" onClick={logout123}>
+                    <a href="" >Logout</a>
                   </li>
                 </ul>
 
@@ -354,4 +377,3 @@ export function Home() {
     </div>
   );
 }
-localStorage.setItem('myData', '20000')
