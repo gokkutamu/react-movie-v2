@@ -147,6 +147,13 @@ export function Home() {
   //   logout.innerHTML = '<div class="login-templeta"><a href="/">Logout</a></div>'
   // }
   let history = useHistory();
+  if (localStorage.getItem('myData') === '') {
+    var list = document.getElementById("logout-user");
+    console.log(list);
+    if (list != null) {
+      list.innerHTML = "";
+    }
+  }
   function logout123(event) {
     event.preventDefault();
 
@@ -159,8 +166,15 @@ export function Home() {
     })
       .then(res => {
         if (res.status == 200) {
-          // history.push('/');
-          console.log('oki em tâm đen');
+          history.push('/');
+          localStorage.setItem('myData', '');
+          if (localStorage.getItem('myData') === '') {
+            var list = document.getElementById("logout-user");
+            console.log(list);
+            if (list != null) {
+              list.innerHTML = "";
+            }
+          }
         }
       })
       .catch(error => {
@@ -176,7 +190,7 @@ export function Home() {
           <div className="row">
             <div className="col-md-12">
               <nav>
-                <ul className="menu" >
+                <ul className="menu" id="menu-list" >
                   <li className="nav-hover"><a href="/">Home</a></li>
                   <li className="nav-hover">
                     <div className="login-templeta">
@@ -188,9 +202,14 @@ export function Home() {
                       <a href="#">Register</a>
                     </div>
                   </li>
-                  <li className="nav-hover" id="logout" onClick={logout123}>
-                    <a href="" >Logout</a>
-                  </li>
+                  <div className="logout" id="logout-user">
+                    <li className="nav-hover" onClick={logout123}>
+                      <div className="login-templeta">
+                        <a href="#">Logout</a>
+                      </div>
+                    </li>
+                  </div>
+
                 </ul>
 
               </nav>
@@ -377,3 +396,4 @@ export function Home() {
     </div>
   );
 }
+localStorage.setItem('myData', '100');

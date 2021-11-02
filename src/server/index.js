@@ -16,7 +16,6 @@ const moviesUrl = `${url}/discover/movie`;
 const personUrl = `${url}/trending/person/week`;
 //DB 
 const db = 'http://react-movie-api.rf.gd/api/list-user';
-
 //check login 
 export const checkLogin = async() =>{
     return localStorage.getItem('myData');
