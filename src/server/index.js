@@ -699,13 +699,14 @@ export const fetchTredding = async () => {
 }
 
 // Lay ra danh sach users
-
 export const listUser = async () => {
     const repo  = await axios.get('http://localhost:82/Passport/public/api/auth/getUsers', {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiYjA5ZGQyMGY4ZmU2YTA3ODJhMTkzOWExYTYyM2JhNTI5MWVhNWNjNDMzMmNjODQ0MDE1ZTVkNDg1ZDczMDAxM2IzYzIwMTU3NGIyYzE0ZGUiLCJpYXQiOjE2MzU4MjQ4MDAuMTU5OTE0LCJuYmYiOjE2MzU4MjQ4MDAuMTU5OTIsImV4cCI6MTY2NzM2MDgwMC4xNTEyMiwic3ViIjoiMTYiLCJzY29wZXMiOltdfQ.dZ8Pk58NnD33Jo-RmiuibRD_H7PvFQuOfU2CH9BgHd2U8LfiE4v2EcH7Oc48BEdS8fkNV1zzS5Kmq1uBzoivnpPtJyA0irTGSLAN5q3afNTLaCxjf9UD-Zhaa1PfcfIHCzpj05XLYCaO_ewb-pk7aUYCqsHvxqSAzV6ZW6x6kY5wX-1--jusGSb5gmKI4Igy28vhw5NxgVu0Ko_-Osdo97yU88lckXWL5EGZn99I8O-cbqtRoNqMHqclPlDvd0iLASBIr8f9ytZTXJNNvkp_l0sJwqKkc848sUvkG1V2JxJhb942NS7DCfWc7AQ1TSbG9H4cID-n8nR9Yb8g1FpkN9qPT6hjLYOhknw5I0hE4-ROiwKLtb71vXxS4lLfZhqBituEFsxG-tTEhLBUGT55Hd_alO9Sz_bGnSroKN5RlVvAaAuX0gwOnscrWod5y-FHw_2JOA7E6gUae1FWDUZXkxI60VS9mks5HI52nQXuKtW99Z4_TvkrbADJ9mmYHTZmiBMgnh9B6p4SD7jonvrhFovgqX3D0Lx8Ajt3vXrNpfd8NjH0q4UlOBe4jGyy6qWLyw4xulwT3uxt_1ufBdu7-j8CaQdwNBZmsaA84bOOxzvPoQYI52mX6nKH-ScmBvxQYodrJfhVw7hQ5eLf69FWLN6RedjdbfgMqITXzw1To14"
+                "X-Requested-With" : "XMLHttpRequest",
+                "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzNhODQ5NGM3NTBhMjY2MDBmODYzZDdlZjZjMjMxZTFkZjg4ZTc3ZjE4Njk4ZDgzZGZhOWRjNmZjYmQyNmNiOWYzMWJjYjU1Zjg3ODgzY2UiLCJpYXQiOjE2MzU4NTI5NjYuMTUwOTg5LCJuYmYiOjE2MzU4NTI5NjYuMTUwOTk2LCJleHAiOjE2NjczODg5NjYuMTQxMjY4LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.oQTl4ZCNpUTCGyefyyzj3s6pigYkENfdRr0Jvu3fxosBtgba_H1T95NL9oWvnDScEN03E_YZQvGjJ-Iig23uTvT_0d88l0WQYN4n8Ls8vJCvqbSjMdHRyaUt21nWKZmy7ObWjJIh2FkAFlvvf1JtVEmUsKa6bVTDdaYelg1-uAzvBc9dkch-boC51AN6KepNmLJ_u96EPna8S59P0q-I_eN0PUoap28TW0tHuC2ooWtJ66IJrJzfkShFGW9MWguP3EU9Vqo8VVwsEBDIvXgt5c7F-6JhFXHfQyDllRKe8NLmRsbyUuBNC9kLQXj5i11N1-3OYh6YNGGN-Cz8gsPlYJoPJ2FqJqyjlkLJizJKY_paZqXWO3FoKl9Aq_yKx-gYdTDuIUowGngBZ0OWPpZ8nY-suq06VjUCW6ZoRaP6suQ5A0YA56q5edo6LZmSGZuzSqauxrCPVC1h6-qOgFdhHiSL9dLo7AV-DuxRjN03PpYnaTaILnDYRAcwO4mhWIEDy3clarlRFNbp3gUum8w-gWA79Occ2pDO1n55XQV_Xb-b9QbFsBOtlbYp70VunNw71mACIanN0Zb1zrbAnji2KETscJ2OvpH2n3sAw6OJz6xu58iHDXHHktzUHAQDPEPI-UN5LTvxVBo4gBYsSHjYZCijfJqkhbBPhBndqkLn5_M"
             }
         })
     return repo.data;
 }
+

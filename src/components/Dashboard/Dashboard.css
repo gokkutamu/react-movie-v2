@@ -16,6 +16,16 @@ h2 {
   text-align: center;
 }
 
+h2.user-title {
+  padding: 10px 20px;
+  border: 2px solid #fda;
+  color: #fda;
+  font-family: 'Dancing Script', serif;
+  font-size: 35px;
+  margin: 8px auto 33px;
+  max-width: 300px;
+}
+
 h2 small {
   font-size: 0.5em;
 }
@@ -93,7 +103,7 @@ h2 small {
 
 .dashboard-content {
   /* background-color: orange; */
-  background-color: #1c1e21;
+  /* background-color: #1c1e21; */
 }
 
 .custom-group-icon {
@@ -107,4 +117,11 @@ h2 small {
 
 .custom-group-icon a i {
   font-size: 12px;
+}
+
+.btnDel {
+  border: none;
+  font-size: 12px;
+  padding: 0;
+  color: #333;
 }
