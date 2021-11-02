@@ -147,13 +147,6 @@ export function Home() {
   //   logout.innerHTML = '<div class="login-templeta"><a href="/">Logout</a></div>'
   // }
   let history = useHistory();
-  if (localStorage.getItem('myData') === '') {
-    var list = document.getElementById("logout-user");
-    console.log(list);
-    if (list != null) {
-      list.innerHTML = "";
-    }
-  }
   function logout123(event) {
     event.preventDefault();
 
@@ -166,7 +159,8 @@ export function Home() {
     })
       .then(res => {
         if (res.status == 200) {
-          history.push('/');
+          // history.push('/');
+          console.log('oki em tâm đen');
           localStorage.setItem('myData', '');
           if (localStorage.getItem('myData') === '') {
             var list = document.getElementById("logout-user");
@@ -190,8 +184,12 @@ export function Home() {
           <div className="row">
             <div className="col-md-12">
               <nav>
-                <ul className="menu" id="menu-list" >
-                  <li className="nav-hover"><a href="/">Home</a></li>
+                <ul className="menu" >
+                  <li className="nav-hover">
+                    <div className="login-templeta">
+                      <a href="/">Home</a>
+                    </div>
+                  </li>
                   <li className="nav-hover">
                     <div className="login-templeta">
                       <a href="/login">Login</a>
@@ -202,14 +200,16 @@ export function Home() {
                       <a href="#">Register</a>
                     </div>
                   </li>
-                  <div className="logout" id="logout-user">
-                    <li className="nav-hover" onClick={logout123}>
-                      <div className="login-templeta">
-                        <a href="#">Logout</a>
-                      </div>
-                    </li>
-                  </div>
-
+                  <li className="nav-hover" id="logout" onClick={logout123}>
+                    <div className="login-templeta">
+                      <a href="" >Logout</a>
+                    </div>
+                  </li>
+                  <li className="nav-hover">
+                    <div className="login-templeta">
+                      <a href="/profile" >Profile</a>
+                    </div>
+                  </li>
                 </ul>
 
               </nav>
@@ -396,4 +396,3 @@ export function Home() {
     </div>
   );
 }
-localStorage.setItem('myData', '100');
