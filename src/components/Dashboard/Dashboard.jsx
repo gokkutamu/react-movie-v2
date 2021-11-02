@@ -18,21 +18,21 @@ export function Dashboard() {
     // console.log(users);
     const getListUser = users.map((c) => {
         return (
-            <li class="table-row" key={c.id}>
-                <div class="col col-1" data-label="Job Id">{c.id}</div>
-                <div class="col col-1" data-label="Customer Name">{c.name}</div>
-                <div class="col col-2" data-label="Amount">{c.email}</div>
-                <div class="col col-2" data-label="Payment Status">{dateFormat(c.created_at,"dd/mm/yyyy")}</div>
-                <div class="col col-2" data-label="Payment Status">{dateFormat(c.updated_at,"dd/mm/yyyy")}</div>
-                <div class="col col-1 custom-group-icon" data-label="Payment Status">
+            <li className="table-row" key={c.id}>
+                <div className="col col-1" data-label="Job Id">{c.id}</div>
+                <div className="col col-1" data-label="Customer Name">{c.name}</div>
+                <div className="col col-2" data-label="Amount">{c.email}</div>
+                <div className="col col-2" data-label="Payment Status">{dateFormat(c.created_at,"dd/mm/yyyy")}</div>
+                <div className="col col-2" data-label="Payment Status">{dateFormat(c.updated_at,"dd/mm/yyyy")}</div>
+                <div className="col col-1 custom-group-icon" data-label="Payment Status">
+                    <Link to={`/edit/${users.id}`}>
+                    <i className="fa fa-pencil-square-o" aria-hidden="true" title="Update"></i>
+                    </Link>
                     <a href="">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true" title="Update"></i>
+                    <i className="fa fa-eye" aria-hidden="true" title="View"></i>
                     </a>
                     <a href="">
-                    <i class="fa fa-eye" aria-hidden="true" title="View"></i>
-                    </a>
-                    <a href="">
-                    <i class="fa fa-eraser" aria-hidden="true" title="Delete"></i>
+                    <i className="fa fa-eraser" aria-hidden="true" title="Delete"></i>
                     </a>
                 </div>
             </li>
@@ -59,25 +59,23 @@ export function Dashboard() {
                                         </div>
                                     </li>
                                 </ul>
-
                             </nav>
                         </div>
                     </div>
                 </div>
-
             </div>
             <div className="dashboard-block">
-                <div class="container">
+                <div className="container">
 
                     <h2>List Users</h2>
-                    <ul class="responsive-table">
-                        <li class="table-header">
-                            <div class="col col-1">ID</div>
-                            <div class="col col-1">Name</div>
-                            <div class="col col-2">Email</div>
-                            <div class="col col-2">Created date</div>
-                            <div class="col col-2">Updated date</div>
-                            <div class="col col-1">Action</div>
+                    <ul className="responsive-table">
+                        <li className="table-header">
+                            <div className="col col-1">ID</div>
+                            <div className="col col-1">Name</div>
+                            <div className="col col-2">Email</div>
+                            <div className="col col-2">Created date</div>
+                            <div className="col col-2">Updated date</div>
+                            <div className="col col-1">Action</div>
                         </li>
                         {getListUser}
                     </ul>
