@@ -80,7 +80,7 @@ export function Home() {
           <Link to={`/movie/${value.id}`}>
             <img className="img-fluids" src={value.poster} alt={value.title}></img>
           </Link>
-          <a class="info" href={`/movie/${value.id}`}>Xem</a>
+          <a className="info" href={`/movie/${value.id}`}>Xem</a>
         </div>
         <div className="title-movie">
           {value.title}
@@ -157,7 +157,7 @@ export function Home() {
   function logout123(event) {
     event.preventDefault();
 
-    axios.get('http://localhost/Passport/public/api/auth/logout', {
+    axios.get('http://localhost/Passport/Passport/public/api/auth/logout', {
       headers: {
         'Content-Type': 'application/json',
         'X-Requested-With': 'XMLHttpRequest',

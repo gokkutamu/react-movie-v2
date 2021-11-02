@@ -9,15 +9,11 @@ export function Logout() {
     let history = useHistory();
     function handleSubmit(event) {
         event.preventDefault();
-        axios.get('http://localhost/Passport/public/api/auth/logout',{
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization' : 'Bearer ' + localStorage.getItem('myData')
-            }
-        })
+
+        axios.post('http://localhost/Passport/Passport/public/api/auth/logout')
             .then(res => {
                 if (res.status == 200) {
-                    history.push('/');
+                    history.push('/login');
                 }
             })
             .catch(error => {

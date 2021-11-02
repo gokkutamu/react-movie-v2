@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import { Home } from "./components/Home/Home";
 import { Login }  from "./components/Account/Login";
 import { Logout }  from "./components/Account/Logout";
+import { Profile } from "./components/Profile/Profile";
 
 export function App() {
   return (
@@ -13,6 +14,7 @@ export function App() {
         <Route path="/" component={Home} exact />
         <Route path="/login" component={Login} exact />
         <Route path="/logout" component={Logout} exact />
+        <Route path="/profile" component={Profile} exact />
       </Switch>
     </main>
   );

@@ -27,7 +27,7 @@ export function Login() {
         data.append("email", email);
         data.append("password", password);
         
-        axios.post('http://localhost/Passport/public/api/auth/login', { email, password })
+        axios.post('http://localhost/Passport/Passport/public/api/auth/login', { email, password })
             .then(res => {
                 if (res.status == 200) {
                     history.push('/');
