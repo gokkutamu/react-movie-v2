@@ -24,6 +24,7 @@ export const fetchCreditsTV = async (id) => {
         const { data } = await axios.get(`${personsUrl}/${id}/tv_credits`, {
             params: {
                 api_key: apiKey,
+                language: 'vi-VN'
             }
         });
         const posterUrl = 'https://image.tmdb.org/t/p/original/';
@@ -48,6 +49,7 @@ export const fetchTV = async (id) => {
         const { data } = await axios.get(`${personsUrl}/${id}/movie_credits`, {
             params: {
                 api_key: apiKey,
+                language: 'vi-VN'
             }
         });
         const posterUrl = 'https://image.tmdb.org/t/p/original/';
@@ -84,7 +86,7 @@ export const fetchPeople = async () => {
         const { data } = await axios.get(peopleUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                language: 'vi-VN',
                 page: 1
             }
         })
@@ -107,7 +109,7 @@ export const fetchMovies = async () => {
         const { data } = await axios.get(nowPlayingUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                language: 'vi-VN',
                 page: 1
             }
         })
@@ -131,7 +133,7 @@ export const fetchGenre = async () => {
         const { data } = await axios.get(genreUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                language: 'vi-VN',
                 page: 1
             }
         })
@@ -147,7 +149,7 @@ export const fetchMovieByGenre = async (genre_ids) => {
         const { data } = await axios.get(moviesUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                language: 'vi-VN',
                 page: 1,
                 with_genres: genre_ids
             }
@@ -188,7 +190,7 @@ export const fetchTopratedMovie = async () => {
         const { data } = await axios.get(topratedUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                language: 'vi-VN',
                 page: 1
             }
         })

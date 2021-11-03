@@ -26,7 +26,7 @@ export function Profile({ match }) {
     const listProfile = profile.slice(0, 10).map((item, input) => {
         return (
 
-            <div className="col-md-2 col-sm-6 padding-profile" key={input}>
+            <div className="col-md-3 col-sm-6 padding-profile" key={input}>
                 <div className="border-profile">
                     <div className="top-profile">
                         <img src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${item.file_path}`} />
@@ -73,15 +73,18 @@ export function Profile({ match }) {
 
             </div>
             <div className="main-profile">
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className="top-profile">
-                            <div className="row">
-                                {listProfile}
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="top-profile">
+                                <div className="row">
+                                    {listProfile}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
