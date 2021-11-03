@@ -22,6 +22,9 @@ import { Episode } from "./components/Episodes/Episode";
 
 import { Profile } from "./components/Person/Proflie";
 import { Register } from "./components/Account/Register"
+import { Login }  from "./components/Account/Login";
+import { Logout }  from "./components/Account/Logout";
+import { Profile } from "./components/Profile/Profile";
 
 export function App() {
   return (
@@ -47,6 +50,8 @@ export function App() {
         <Route path="/persons/:id/images/profiles" component={Profile} />
 
         <Route path="/register" component={Register} exact />
+        <Route path="/logout" component={Logout} exact />
+        <Route path="/profile" component={Profile} exact />
       </Switch>
     </main>
   );

@@ -39,6 +39,12 @@ const db = 'http://localhost:82/react-lavarel-movie/react-lavarel-movie/public/a
 //DB 
 const db = 'http://localhost/Api_react_movie/public/api/list-user';
 
+//DB 
+const db = 'http://react-movie-api.rf.gd/api/list-user';
+//check login 
+export const checkLogin = async() =>{
+    return localStorage.getItem('myData');
+}
 export const listUser = async () => {
     const repo  = await axios.get(db)
     return repo.data;
