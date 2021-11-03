@@ -21,6 +21,7 @@ import { Sessions_Episode } from "./components/Session-episode/sesions-episode";
 import { Episode } from "./components/Episodes/Episode";
 
 import { Profile } from "./components/Person/Proflie";
+import { Register } from "./components/Account/Register"
 
 export function App() {
   return (
@@ -45,6 +46,7 @@ export function App() {
         <Route path="/person/:id" component={Person} />
         <Route path="/persons/:id/images/profiles" component={Profile} />
 
+        <Route path="/register" component={Register} exact />
       </Switch>
     </main>
   );

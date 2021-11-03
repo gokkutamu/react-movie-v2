@@ -36,6 +36,19 @@ const treddingUrl = `${url}/trending/all/day`;
 const db = 'http://localhost:82/react-lavarel-movie/react-lavarel-movie/public/api/list-user';
 
 
+//DB 
+const db = 'http://localhost/Api_react_movie/public/api/list-user';
+
+export const listUser = async () => {
+    const repo  = await axios.get(db)
+    return repo.data;
+}
+
+export const addUser = async (fromData) => {
+
+    const repo  = await axios.post(db,fromData)
+    return repo.data;
+}
 
 
 // Page home : 

@@ -24,7 +24,9 @@
     "react-rating-stars-component": "^1.0.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-swal": "^3.0.0",
     "reactjs-bottom-navigation": "^1.0.4",
+    "sweetalert2": "^11.1.9",
     "typescript": "^3.9.3"
   },
   "scripts": {
