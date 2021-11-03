@@ -13,6 +13,7 @@ import {MovieDetail} from "./components/DetailMovie/MovieDetail";
 // import Search from "./components/Search/Search";
 import { Treding } from "./components/Treding/Treding";
 import { Dashboard } from "./components/Dashboard/Dashboard";
+import { EditUser } from "./components/Dashboard/EditUser";
 
 export function App() {
   return (
@@ -26,6 +27,7 @@ export function App() {
         {/* <Route path="/search" component={Search} exact /> */}
         <Route path="/session/:id/seasons" component={Seasons} exact/>
         <Route path="/dashboard" component={Dashboard} exact/>
+        <Route path="/edit/:id" component={EditUser} exact/>
       </Switch>
     </main>
   );

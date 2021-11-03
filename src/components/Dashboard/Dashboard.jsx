@@ -45,10 +45,10 @@ export function Dashboard() {
                 <div className="col col-2" data-label="Payment Status">{dateFormat(c.created_at, "dd/mm/yyyy")}</div>
                 <div className="col col-2" data-label="Payment Status">{dateFormat(c.updated_at, "dd/mm/yyyy")}</div>
                 <div className="col col-1 custom-group-icon" data-label="Payment Status">
-                    <Link to={`/edit/${users.id}`}>
+                    <Link to={`/edit/${c.id}`}>
                         <i className="fa fa-pencil-square-o" aria-hidden="true" title="Update"></i>
                     </Link>
-                    <Link to={`/profile/${users.id}`}>
+                    <Link to={`/profile/${c.id}`}>
                         <i className="fa fa-eye" aria-hidden="true" title="View"></i>
                     </Link>
                     <button className="btnDel" onClick={e => { deleteUser(c.id) }}>
