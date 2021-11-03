@@ -44,8 +44,7 @@ export const fetchMovies = async () => {
         const { data } = await axios.get(nowPlayingUrl, {
             params: {
                 api_key: apiKey,
-                language: 'vi-VN',
-                page: 1
+                language: 'vi-VN'
             }
         })
 
@@ -329,6 +328,7 @@ export const fetchCreditsTV = async (id) => {
         const { data } = await axios.get(`${personsUrl}/${id}/tv_credits`, {
             params: {
                 api_key: apiKey,
+                language: 'vi-VN'
             }
         });
         const posterUrl = 'https://image.tmdb.org/t/p/original/';
@@ -363,7 +363,7 @@ export const fetchPeople = async () => {
         const { data } = await axios.get(peopleUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                language: 'vi-VN',
                 page: 1
             }
         })
@@ -514,8 +514,8 @@ export const fetchTVAriting = async () => {
         const { data } = await axios.get(discoverUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
-                page: 1,
+                language: 'vi-VN',
+                page: 1
             }
         })
         const posterUrl = 'https://image.tmdb.org/t/p/original/';
@@ -589,7 +589,7 @@ export const fetchTVGenre = async () => {
         const { data } = await axios.get(genereTVUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                language: 'vi-VN',
                 page: 1
             }
         })
@@ -605,8 +605,9 @@ export const fetchTVPopular = async () => {
         const { data } = await axios.get(tvPopular, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
-                page: 1
+                language: 'vi-VN',
+                page: 1,
+                with_genres: genre_ids
             }
         })
         const posterUrl = 'https://image.tmdb.org/t/p/original/';
@@ -697,24 +698,21 @@ export const fetchTredding = async () => {
 
     }
 }
-
-// Lay ra danh sach users
-
-export const listUser = async () => {
-    const repo  = await axios.get(db)
-    return repo.data;
-}
-// Keyword :
-export const fetchMovieKeyword = async (keyword_id) => {
+// Profile detail preson : 
+export const fetchProfile = async (id) => {
     try {
-        const { data } = await axios.get(`${movieUrl}/${keyword_id}/keywords`, {
+        const { data } = await axios.get(`${personsUrl}/${id}/images`, {
             params: {
-                api_key: apiKey,
+                api_key: apiKey
             }
-        });
-        const modifiedData = data['keywords'].map((m) => ({
-            id: m['id'],
-            name: m['name'],
+        })
+        const modifiedData = data['profiles'].map((p) => ({
+            aspect_ratio: p['aspect_ratio'],
+            file_path: p['file_path'],
+            height: p['height'],
+            vote_average: p['vote_average'],
+            vote_count: p['vote_count'],
+            width: p['width'],
         }))
         return modifiedData;
     } catch (error) { }
@@ -752,4 +750,30 @@ export const fetchMovieByKeyword = async (keyword_id) => {
         }))
         return modifiedData;
     } catch (error) {}
+}
+// TV
+export const fetchDiscover = async (genre_ids) => {
+    try {
+        const { data } = await axios.get(tvsUrl, {
+            params: {
+                api_key: apiKey,
+                language: 'en_US',
+                page: 1,
+                with_genres: genre_ids
+            }
+        })
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
+        const modifiedData = data['results'].map((m) => ({
+            id: m['id'],
+            backPoster: posterUrl + m['backdrop_path'],
+            popularity: m['popularith'],
+            title: m['name'],
+            poster: posterUrl + m['poster_path'],
+            overview: m['overview'],
+            rating: m['vote_average'],
+        }))
+        return modifiedData;
+    } catch (error) {
+
+    }
 }
