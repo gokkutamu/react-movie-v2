@@ -4,6 +4,9 @@ import {
   fetchMovieVideos,
   fetchMovieCredits,
   fetchSimilarMovie,
+  fetchMovieKeyword,
+  fetchKeyDetail,
+
 } from "../../server";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Modal } from "react-bootstrap";
@@ -23,14 +26,16 @@ export function MovieDetail({ match }) {
   const [video, setVideo] = useState([]);
   const [casts, setCasts] = useState([]);
   const [similarMovie, setSimilarMovie] = useState([]);
-
+  const [keyword, setKeyword] = useState([]);
+  const [detailKey, setKeyDetail] = useState([]);
   useEffect(() => {
     const fetchAPI = async () => {
       setDetail(await fetchMovieDetail(params.id));
       setVideo(await fetchMovieVideos(params.id));
       setCasts(await fetchMovieCredits(params.id));
       setSimilarMovie(await fetchSimilarMovie(params.id));
-
+      setKeyword(await fetchMovieKeyword(params.id))
+      setKeyDetail(await fetchKeyDetail(params.keyword_id));
     };
 
     fetchAPI();
@@ -81,7 +86,13 @@ export function MovieDetail({ match }) {
     });
   }
 
-
+  const keywrrord = keyword.slice(0, 10).map((c, i) => {
+    return (
+      <li className="keywword" key={i}>
+        <a href={`/keyword/${c.id}/movie`}>{c.name}</a>
+      </li>
+    );
+  });
   const listCredits = casts.slice(0, 20).map((c, i) => {
     return (
       <div className="col-md-2 text-center" key={i}>
@@ -122,7 +133,12 @@ export function MovieDetail({ match }) {
       </div>
     );
   });
-
+  let myInlineStyle = {
+    backgroundImage: `url(http://image.tmdb.org/t/p/original/${detail.backdrop_path})`,
+    backgroundPosition: "right 2px top",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  }
   return (
     <div className="main-container">
       <div className="hearder">
@@ -141,11 +157,12 @@ export function MovieDetail({ match }) {
         </div>
       </div>
       {/* New detail movie */}
-      <div className="detail-movie">
+
+      <div className="detail-movie" style={myInlineStyle}>
         <div className="container">
           <div className="transformers-box">
             <div className="row desc-film">
-              <div className="col-lg-5">
+              <div className="col-lg-6">
                 <div className="transformers-content">
                   <MoviePalyerModal
                     show={isOpen}
@@ -232,12 +249,19 @@ export function MovieDetail({ match }) {
 
                 </div>
               </div>
+              <div className="div-keyword">
+                <div className="transformers-left-top">
+                  Keywords
+                </div>
+                <ul>
+                  {keywrrord}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
       {/* Danh sách tác giả */}
-
       <div className="person-list">
         <div className="container">
           <div className="row">
@@ -257,7 +281,26 @@ export function MovieDetail({ match }) {
           </div>
         </div>
       </div>
+      {/* Danh sách phim tương tự */}
+      <div className="person-list">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="person">
+                <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Các phim liên quan</p>
+                <div className="knowwn">
+                  <div className="row">
+                    <div className="list-similar list-sroll">
+                      {similarMovieList}
+                    </div>
+                  </div>
+                </div>
+              </div>
 
+            </div>
+          </div>
+        </div>
+      </div>
       {/* Footer */}
       <div className="footer">
         <hr className="mt-5" style={{ borderTop: "5px solid #5a606b" }}></hr>

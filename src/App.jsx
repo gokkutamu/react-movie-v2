@@ -12,6 +12,7 @@ import {MovieDetail} from "./components/DetailMovie/MovieDetail";
 import Search from "./components/Search/Search";
 import { Treding } from "./components/Treding/Treding";
 
+import { Keyword } from "./components/DetailMovie/Keyword";
 export function App() {
   return (
     
@@ -23,6 +24,8 @@ export function App() {
         <Route path="/tredding" component={Treding} exact />
         <Route path="/search" component={Search} exact />
         <Route path="/session/:id/seasons" component={Seasons} exact/>
+        <Route path="/movie/:id" component={MovieDetail} />
+        <Route path="/keyword/:keyword_id/movie" component={Keyword} />
       </Switch>
     </main>
   );
