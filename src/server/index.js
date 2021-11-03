@@ -305,7 +305,7 @@ export const fetchTVDetail = async (id) => {
         const { data } = await axios.get(`${tvUrl}/${id}`, {
             params: {
                 api_key: apiKey,
-                language: 'en_US'
+                language: 'vi-VN'
             }
         });
         return data;
@@ -402,6 +402,7 @@ export const fetchTVRecommendations = async (id) => {
         const { data } = await axios.get(`${tvUrl}/${id}/recommendations`, {
             params: {
                 api_key: apiKey,
+                language: 'vi-VN',
             }
         });
         const modifiedData = data['results'].map((c) => ({
@@ -423,7 +424,7 @@ export const fetchSimilarTV = async (id) => {
         const { data } = await axios.get(`${tvUrl}/${id}/similar`, {
             params: {
                 api_key: apiKey,
-                language: 'en_US'
+                language: 'vi-VN'
             }
         });
         const posterUrl = 'https://image.tmdb.org/t/p/original/';
@@ -447,7 +448,7 @@ export const fetchSessionTV = async (number_count) => {
         const { data } = await axios.get(`${tvUrl}/${number_count}`, {
             params: {
                 api_key: apiKey,
-                language: 'en_US'
+                language: 'vi-VN'
             }
         });
         const modifiedData = data['seasons'].map((c) => ({
@@ -470,7 +471,7 @@ export const fetchSession_episode = async (id , season_number) => {
         const { data } = await axios.get(`${tvUrl}/${id}/season/${season_number}`, {
             params: {
                 api_key: apiKey,
-                language: 'en_US'
+                language: 'vi-VN'
             }
         });
         const modifiedData = data['episodes'].map((c) => ({
@@ -492,7 +493,7 @@ export const fetchepisode = async (id , season_number,episode_number ) => {
         const { data } = await axios.get(`${tvUrl}/${id}/season/${season_number}/episode/${episode_number}`, {
             params: {
                 api_key: apiKey,
-                language: 'en_US'
+                language: 'vi-VN'
             }
         });
         const modifiedData = data['guest_stars'].map((c) => ({
@@ -678,7 +679,7 @@ export const fetchTredding = async () => {
         const { data } = await axios.get(treddingUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                language: 'vi-VN',
                 page: 1
             }
         })
