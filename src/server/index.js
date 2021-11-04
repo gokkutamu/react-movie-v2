@@ -324,7 +324,7 @@ export const fetchTVDetail = async (id) => {
         const { data } = await axios.get(`${tvUrl}/${id}`, {
             params: {
                 api_key: apiKey,
-                language: 'en_US'
+                language: 'vi-VN'
             }
         });
         return data;

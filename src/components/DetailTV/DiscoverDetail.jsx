@@ -6,7 +6,7 @@ import {
     fetchSessionTV,
     fetchTVRecommendations,
     fetchSimilarTV,
-
+    fetchMovieByGenre
 } from "../../server";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Modal } from "react-bootstrap";
@@ -27,7 +27,7 @@ export function DiscoverDetail({ match }) {
     const [sessionTV, setSession] = useState([]);
     const [Recommendations, setRecommendations] = useState([]);
     const [SimilarTV, setSimilar] = useState([]);
-
+    const [movieByGenre, setMovieByGenre] = useState([]);
     useEffect(() => {
         const fetchAPI = async () => {
             setDetail(await fetchTVDetail(params.id));
@@ -36,6 +36,7 @@ export function DiscoverDetail({ match }) {
             setSession(await fetchSessionTV(params.id));
             setRecommendations(await fetchTVRecommendations(params.id));
             setSimilar(await fetchSimilarTV(params.id));
+            setMovieByGenre(await fetchMovieByGenre(28));
         };
         fetchAPI();
     }, [params.id]);
@@ -154,7 +155,7 @@ export function DiscoverDetail({ match }) {
         return (
             <div className="col-md-2 pogss" key={index}>
 
-                <Link to={`/tv/${c.id}`}>
+                <Link to={`/tv/${c.id}`} style={{ display: "block", fontSize: 40 }}>
                     <img
                         className="img-Recommendations"
                         src={c.backdrop}
@@ -164,25 +165,9 @@ export function DiscoverDetail({ match }) {
                 </Link>
                 <div className="name">
                     <p>{c.name}</p>
-                    <p>
+                    {/* <p>
                         {c.vote_average} %
-                    </p>
-                </div>
-                <div className="overlay-Recommendations">
-                    <div className="name2">
-                        {c.first_air_date}
-                    </div>
-                    <div className="icon">
-                        <span>
-                            <i className="fa fa-star" aria-hidden="true"></i>
-                        </span>
-                        <span>
-                            <i className="fa fa-heart" aria-hidden="true"></i>
-                        </span>
-                        <span>
-                            <i className="fa fa-share-alt" aria-hidden="true"></i>
-                        </span>
-                    </div>
+                    </p> */}
                 </div>
             </div>
         );
@@ -206,6 +191,12 @@ export function DiscoverDetail({ match }) {
 
                 </p>
             </div>
+        );
+    });
+    // Lấy các tấm hình:
+    const images = movieByGenre.slice(0, 12).map((i) => {
+        return (
+            <img src={i.poster} alt={i.title} className="pic" />
         );
     });
     return (
@@ -232,7 +223,7 @@ export function DiscoverDetail({ match }) {
                 <div className="container">
                     <div className="transformers-box">
                         <div className="row desc-film">
-                            <div className="col-lg-5">
+                            <div className="col-lg-6">
                                 <div className="transformers-content">
                                     <MoviePalyerModal
                                         show={isOpen}
@@ -254,19 +245,19 @@ export function DiscoverDetail({ match }) {
                                                 style={{ fontSize: 95, color: "#f4c10f", cursor: "pointer" }}
                                             ></i>
                                         </div>
-                                        <div
-                                            className="carousel-caption"
-                                            style={{ textAlign: "center", fontSize: 40 }}
-                                        >
-                                            {detail.name}
-                                        </div>
+                                        {/* <div
+                      className="carousel-caption"
+                      style={{ textAlign: "center", fontSize: 40 }}
+                    >
+                      {detail.name}
+                    </div> */}
                                     </div>
                                 </div>
 
                             </div>
                             <div className="col-lg-6">
                                 <div className="transformers-content">
-                                    <h2>{detail.original_title}</h2>
+                                    <h2>{detail.name}</h2>
                                     <ul className="list-inline">{genresList}</ul>
                                     <ul>
                                         <li>
@@ -329,7 +320,8 @@ export function DiscoverDetail({ match }) {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="person">
-                                <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Phần hiện tại</p>
+                                {/* <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Phần hiện tại</p> */}
+                                <p className="block--title">Phần hiện tại</p>
                             </div>
                             <div className="person-session">
                                 {listSession}
@@ -344,7 +336,8 @@ export function DiscoverDetail({ match }) {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="recommendations">
-                                <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Danh sách khuyến nghị</p>
+                                <p className="block--title">Danh sách khuyến nghị</p>
+                                {/* <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Danh sách khuyến nghị</p> */}
                                 <div className="knowwn">
                                     <div className="row">
                                         <div className="list-recommendations list-sroll hover-recommend">
@@ -364,7 +357,8 @@ export function DiscoverDetail({ match }) {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="person">
-                                <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Các phim liên quan</p>
+                                <p className="block--title">Các phim liên quan</p>
+                                {/* <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Các phim liên quan</p> */}
                                 <div className="knowwn">
                                     <div className="row">
                                         <div className="list-similar list-sroll">
@@ -381,84 +375,68 @@ export function DiscoverDetail({ match }) {
             {/* Footer */}
             <div className="footer">
                 <hr className="mt-5" style={{ borderTop: "5px solid #5a606b" }}></hr>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-8 col-sm-6">
-                            <h3>ABOUT ME</h3>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-                                error earum perspiciatis praesentium sint ipsum provident blanditiis
-                                pariatur necessitatibus voluptas, cum, atque iste eligendi autem,
-                                culpa cupiditate placeat facilis repellat.
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
-                                perspiciatis? Numquam, enim illo voluptatum neque facere aut sed ut
-                                dolore nihil? Nulla sit, recusandae ea tenetur rerum deserunt sequi
-                                earum?
-                            </p>
-                            <div className="button">
-                                <div className="icon">
-                                    <i className="fab fa-facebook"></i>
+                <div className="footer-container">
+                    <div className="container">
+                        <div className="row">
+                            <div className="bg"></div>
+                            <div className="bg bg2"></div>
+                            <div className="bg bg3"></div>
+                            <div className="col-md-5 col-sm-6" style={{ color: "#5a606b" }}>
+                                <h3>THÔNG TIN</h3>
+
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
+                                    perspiciatis? Numquam, enim illo voluptatum neque facere aut sed ut
+                                    dolore nihil? Nulla sit, recusandae ea tenetur rerum deserunt sequi
+                                    earum?
+                                </p>
+                                <div className="button">
+                                    <div className="icon">
+                                        <i className="fab fa-facebook"></i>
+                                    </div>
+                                    <span>Facebook</span>
                                 </div>
-                                <span>Facebook</span>
+                                <div className="button">
+                                    <div className="icon">
+                                        <i className="fab fa-instagram"></i>
+                                    </div>
+                                    <span>Instagram</span>
+                                </div>
+                                <div className="button">
+                                    <div className="icon">
+
+                                        <i className="fab fa-twitter"></i>
+                                    </div>
+                                    <span>Twitter</span>
+                                </div>
+
+                                <div className="button">
+                                    <div className="icon">
+                                        <i className="fab fa-youtube"></i>
+                                    </div>
+                                    <span>Youtube</span>
+                                </div>
                             </div>
-                            <div className="button">
-                                <div className="icon">
-
-                                    <i className="fab fa-instagram"></i>
-
+                            <div className="col-md-7 col-sm-6" style={{ color: "#5a606b" }}>
+                                <div className="main-top">
+                                    <div className="container">
+                                        <div className="row">
+                                            <div className="col-md-12">
+                                                <div className="bg-blog">
+                                                    <div className="pic-ctn bore">
+                                                        {images}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <span>Instagram</span>
-                            </div>
-                            <div className="button">
-                                <div className="icon">
-
-                                    <i className="fab fa-twitter"></i>
-                                </div>
-                                <span>Twitter</span>
-                            </div>
-
-                            <div className="button">
-                                <div className="icon">
-                                    <i className="fab fa-youtube"></i>
-                                </div>
-                                <span>Youtube</span>
                             </div>
                         </div>
-                        <div className="col-md-4 col-sm-6">
-                            <h3>KEEP IN TOUCH</h3>
-                            <ul className="list-unstyled">
-                                <li>
-                                    <p>
-                                        <strong>
-                                            <i className="fas fa-map-marker-alt"></i> Address:
-                                        </strong>{" "}
-                                        HoChiMinh , city
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <strong>
-                                            <i className="fas fa-map-marker-alt"></i> Phone:
-                                        </strong>{" "}
-                                        +8439461842
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <strong>
-                                            <i className="fas fa-envelope"></i> Email:
-                                        </strong>{" "}
-                                        ngoctam2303001@gmail.com
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
+
                     </div>
                 </div>
             </div>
-
         </div>
     );
 }
