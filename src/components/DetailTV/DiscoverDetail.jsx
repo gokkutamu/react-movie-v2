@@ -155,16 +155,15 @@ export function DiscoverDetail({ match }) {
         return (
             <div className="col-md-2 pogss" key={index}>
 
-                <Link to={`/tv/${c.id}`} style={{ display: "block", fontSize: 40 }}>
+                <Link to={`/tv/${c.id}`} style={{ display: "block"}}>
                     <img
-                        className="img-Recommendations"
+                        className="img-Recommendations"  style={{width: "100%", height: "165px", borderRadius: "18px"}}
                         src={c.backdrop}
                         alt={c.name}
-
                     />
                 </Link>
                 <div className="name">
-                    <p>{c.name}</p>
+                    <p style={{ fontWeight: "600", textAlign: "center", fontSize: "14px"}}>{c.name}</p>
                     {/* <p>
                         {c.vote_average} %
                     </p> */}
@@ -335,12 +334,12 @@ export function DiscoverDetail({ match }) {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <div className="recommendations">
+                            <div className="recommendations" style={{overflow: "hidden"}}>
                                 <p className="block--title">Danh sách khuyến nghị</p>
                                 {/* <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Danh sách khuyến nghị</p> */}
                                 <div className="knowwn">
                                     <div className="row">
-                                        <div className="list-recommendations list-sroll hover-recommend">
+                                        <div className="list-recommendations list-sroll hover-recommend" style={{gap:0}}>
                                             {listRecommendations}
                                         </div>
                                     </div>
