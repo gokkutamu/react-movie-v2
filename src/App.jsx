@@ -9,7 +9,6 @@ import { DiscoverDetail } from "./components/DetailTV/DiscoverDetail";
 
 //TV
 import { Discover } from "./components/TV/Discover";
-import { Seasons } from "./components/TV/Session/Seasons";
 import {MovieDetail} from "./components/DetailMovie/MovieDetail";
 
 import Search from "./components/Search/Search";
@@ -22,11 +21,9 @@ import { Seasons } from "./components/Session/Seasons";
 import { Sessions_Episode } from "./components/Session-episode/sesions-episode";
 import { Episode } from "./components/Episodes/Episode";
 
-import { Profile } from "./components/Person/Proflie";
 import { Register } from "./components/Account/Register"
-import { Login }  from "./components/Account/Login";
 import { Logout }  from "./components/Account/Logout";
-import { Profile } from "./components/Profile/Profile";
+import { Profile } from "./components/Profile/Profiles";
 import { EditUser } from "./components/Dashboard/EditUser";
 
 export function App() {

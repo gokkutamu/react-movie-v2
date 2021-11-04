@@ -21,18 +21,18 @@ export function Login() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        
+
         const data = new FormData();
 
         data.append("email", email);
         data.append("password", password);
-        
+
         axios.post('http://localhost/Passport/Passport/public/api/auth/login', { email, password })
             .then(res => {
                 if (res.status == 200) {
                     history.push('/');
                     localStorage.setItem('myData', res.data.access_token);
-                }else{
+                } else {
                     localStorage.setItem('myData', 400);
                 }
                 console.log(res);
@@ -58,9 +58,31 @@ export function Login() {
                         <div className="col-md-12">
                             <nav>
                                 <ul className="menu">
-                                    <li className="nav-hover"><a href="/">Home</a></li>
-                                    <li className="nav-hover"><a href="/tredding">Treding Movie</a></li>
-                                    <li className="nav-hover"><a href="/search">Search</a></li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/">Home</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/discover/tv">TV</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/treding">Treding</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/search">Search</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/profile">Profile</a>
+                                        </div>
+                                    </li>
                                     <li className="nav-hover">
                                         <div className="login-templeta">
                                             <a href="/login">Login</a>
@@ -68,10 +90,19 @@ export function Login() {
                                     </li>
                                     <li className="nav-hover">
                                         <div className="login-templeta">
-                                            <a href="#">Register</a>
+                                            <a href="/logout">Logout</a>
                                         </div>
                                     </li>
-                                    
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/dashboard">Dashboard</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/register">Register</a>
+                                        </div>
+                                    </li>
                                 </ul>
 
                             </nav>

@@ -41,7 +41,22 @@ export function Profile() {
                                     </li>
                                     <li className="nav-hover">
                                         <div className="login-templeta">
+                                            <a href="/discover/tv">TV</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/treding">Treding</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
                                             <a href="/search">Search</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/profile">Profile</a>
                                         </div>
                                     </li>
                                     <li className="nav-hover">
@@ -51,12 +66,17 @@ export function Profile() {
                                     </li>
                                     <li className="nav-hover">
                                         <div className="login-templeta">
-                                            <a href="#">Register</a>
+                                            <a href="/logout">Logout</a>
                                         </div>
                                     </li>
                                     <li className="nav-hover">
                                         <div className="login-templeta">
-                                            <a href="#" >Profile</a>
+                                            <a href="/dashboard">Dashboard</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/register">Register</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -98,6 +118,5 @@ export function Profile() {
                 </div>
             </div>
         </div>
-
     );
 }

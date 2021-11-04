@@ -43,7 +43,7 @@ export function Register() {
         //     console.log(repo.data);
         // }
         if (password == password_confirmation) {
-            axios.post("http://localhost/Passport/public/api/auth/signup", { name, email, password,password_confirmation })
+            axios.post("http://localhost/Passport/public/api/auth/signup", { name, email, password, password_confirmation })
                 .then(res => {
                     history.push('login');
                 })
@@ -77,7 +77,31 @@ export function Register() {
                         <div className="col-md-12">
                             <nav>
                                 <ul className="menu">
-                                    <li className="nav-hover"><a href="/">Home</a></li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/">Home</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/discover/tv">TV</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/treding">Treding</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/search">Search</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/profile">Profile</a>
+                                        </div>
+                                    </li>
                                     <li className="nav-hover">
                                         <div className="login-templeta">
                                             <a href="/login">Login</a>
@@ -85,7 +109,17 @@ export function Register() {
                                     </li>
                                     <li className="nav-hover">
                                         <div className="login-templeta">
-                                            <a href="#">Register</a>
+                                            <a href="/logout">Logout</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/dashboard">Dashboard</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/register">Register</a>
                                         </div>
                                     </li>
                                 </ul>

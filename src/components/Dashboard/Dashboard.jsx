@@ -66,8 +66,31 @@ export function Dashboard() {
                         <div className="col-md-12">
                             <nav>
                                 <ul className="menu">
-                                    <li className="nav-hover"><a href="/">Home</a></li>
-                                    <li className="nav-hover"><Link to="/dashboard">Dashboard</Link></li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/">Home</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/discover/tv">TV</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/treding">Treding</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/search">Search</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/profile">Profile</a>
+                                        </div>
+                                    </li>
                                     <li className="nav-hover">
                                         <div className="login-templeta">
                                             <a href="/login">Login</a>
@@ -75,7 +98,17 @@ export function Dashboard() {
                                     </li>
                                     <li className="nav-hover">
                                         <div className="login-templeta">
-                                            <a href="#">Register</a>
+                                            <a href="/logout">Logout</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/dashboard">Dashboard</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/register">Register</a>
                                         </div>
                                     </li>
                                 </ul>

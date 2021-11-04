@@ -44,7 +44,7 @@ export function Seasons({ match }) {
                             <h5>{c.name}</h5>
                             Năm {c.date} | Tập {c.episode_count}
                             <p>
-                                {c.name} của {detail.name} được công chiếu ngày {dateFormat(c.date,"dddd mmmm d yyyy")}
+                                {c.name} của {detail.name} được công chiếu ngày {dateFormat(c.date, "dddd mmmm d yyyy")}
                             </p>
                         </div>
                     </div>
@@ -60,8 +60,31 @@ export function Seasons({ match }) {
                     <div className="col-md-12">
                         <nav>
                             <ul className="menu">
-                                <li className="nav-hover"><a href="/">Home</a></li>
-                                <li className="nav-hover"><a href="/discover/tv">TV</a></li>
+                                <li className="nav-hover">
+                                    <div className="login-templeta">
+                                        <a href="/">Home</a>
+                                    </div>
+                                </li>
+                                <li className="nav-hover">
+                                    <div className="login-templeta">
+                                        <a href="/discover/tv">TV</a>
+                                    </div>
+                                </li>
+                                <li className="nav-hover">
+                                    <div className="login-templeta">
+                                        <a href="/treding">Treding</a>
+                                    </div>
+                                </li>
+                                <li className="nav-hover">
+                                    <div className="login-templeta">
+                                        <a href="/search">Search</a>
+                                    </div>
+                                </li>
+                                <li className="nav-hover">
+                                    <div className="login-templeta">
+                                        <a href="/profile">Profile</a>
+                                    </div>
+                                </li>
                                 <li className="nav-hover">
                                     <div className="login-templeta">
                                         <a href="/login">Login</a>
@@ -69,7 +92,17 @@ export function Seasons({ match }) {
                                 </li>
                                 <li className="nav-hover">
                                     <div className="login-templeta">
-                                        <a href="#">Register</a>
+                                        <a href="/logout">Logout</a>
+                                    </div>
+                                </li>
+                                <li className="nav-hover">
+                                    <div className="login-templeta">
+                                        <a href="/dashboard">Dashboard</a>
+                                    </div>
+                                </li>
+                                <li className="nav-hover">
+                                    <div className="login-templeta">
+                                        <a href="/register">Register</a>
                                     </div>
                                 </li>
                             </ul>
