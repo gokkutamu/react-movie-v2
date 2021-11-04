@@ -51,6 +51,7 @@ button {
     padding: 35px;
     box-shadow: 0 0 20px #000000;
     position: relative;
+    background-image: linear-gradient(to right, rgb(22 13 13) 150px, rgb(104 101 101 / 84%) 100%);
 }
 
 .flexbox-center {
@@ -71,7 +72,7 @@ button {
     margin: 0px 15px;
 } */
 .transformers-box .desc-film{
-    padding-bottom: 45px;
+    /* padding-bottom: 45px; */
 }
 .transformers-box .transformers-content img {
     display: block;
@@ -96,6 +97,9 @@ button {
 .transformers-left {
     color: #eb315a;
     min-width: 145px;
+}
+.transformers-left-top {
+    padding-bottom: 10px;
 }
 .transformers-box > .theme-btn {
     position: absolute;
@@ -249,4 +253,49 @@ button {
 }
 .details-thumb-next {
     text-align: right;
+}
+.div-keyword ul {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.div-keyword ul .keywword {
+    margin-right: 5px;
+    margin-bottom: 10px;
+    line-height: 24px;
+    font-size: 0.9em;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+.div-keyword ul .keywword a {
+    background-color: rgba(0,0,0,0.1);
+    border: 1px solid rgb(13, 148, 197);
+    color: rgb(13, 148, 197);
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.pading-top-name-key {
+    box-shadow: 0 0 5px 0 white;
+    height: 80px;
+    background-image: linear-gradient(to right, rgb(137 207 241) 150px, rgb(171 68 68) 100%);
+}
+.pading-top-name-key h4 {
+    text-align: center;
+    position: relative;
+    top: 20px;
+    text-transform: capitalize;
+    font-size: 40px;
+}
+.ul-keyword-com ul .keywword {
+    box-shadow: 0 0 5px 0 white;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+.img-proter-key img {
+    width: 120px;
+}
+.name-key h4 {
+    margin-top: 25px;
 }
