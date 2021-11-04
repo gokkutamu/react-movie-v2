@@ -24,7 +24,7 @@ export function Dashboard() {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' +
-                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzNhODQ5NGM3NTBhMjY2MDBmODYzZDdlZjZjMjMxZTFkZjg4ZTc3ZjE4Njk4ZDgzZGZhOWRjNmZjYmQyNmNiOWYzMWJjYjU1Zjg3ODgzY2UiLCJpYXQiOjE2MzU4NTI5NjYuMTUwOTg5LCJuYmYiOjE2MzU4NTI5NjYuMTUwOTk2LCJleHAiOjE2NjczODg5NjYuMTQxMjY4LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.oQTl4ZCNpUTCGyefyyzj3s6pigYkENfdRr0Jvu3fxosBtgba_H1T95NL9oWvnDScEN03E_YZQvGjJ-Iig23uTvT_0d88l0WQYN4n8Ls8vJCvqbSjMdHRyaUt21nWKZmy7ObWjJIh2FkAFlvvf1JtVEmUsKa6bVTDdaYelg1-uAzvBc9dkch-boC51AN6KepNmLJ_u96EPna8S59P0q-I_eN0PUoap28TW0tHuC2ooWtJ66IJrJzfkShFGW9MWguP3EU9Vqo8VVwsEBDIvXgt5c7F-6JhFXHfQyDllRKe8NLmRsbyUuBNC9kLQXj5i11N1-3OYh6YNGGN-Cz8gsPlYJoPJ2FqJqyjlkLJizJKY_paZqXWO3FoKl9Aq_yKx-gYdTDuIUowGngBZ0OWPpZ8nY-suq06VjUCW6ZoRaP6suQ5A0YA56q5edo6LZmSGZuzSqauxrCPVC1h6-qOgFdhHiSL9dLo7AV-DuxRjN03PpYnaTaILnDYRAcwO4mhWIEDy3clarlRFNbp3gUum8w-gWA79Occ2pDO1n55XQV_Xb-b9QbFsBOtlbYp70VunNw71mACIanN0Zb1zrbAnji2KETscJ2OvpH2n3sAw6OJz6xu58iHDXHHktzUHAQDPEPI-UN5LTvxVBo4gBYsSHjYZCijfJqkhbBPhBndqkLn5_M"
+                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDI3ZDQ3ZDY2YWNhNjc1ZDU3YzJjMWY4ZDNmMTdjOGVhYzFlNDU4ZjA5NTFlNjg3YzAzMjY3Yjk0MzgxNDgyYmIzM2QyMDdkZjdiMTcyYzkiLCJpYXQiOjE2MzYwMDg2MjAuODc0OTQ3LCJuYmYiOjE2MzYwMDg2MjAuODc0OTYsImV4cCI6MTY2NzU0NDYyMC44NjQ1MSwic3ViIjoiMTUiLCJzY29wZXMiOltdfQ.QaXYQucG2sutn_asck3pYhInt7Ha_a003i-abbRb7LBeT8NHI_izKMZwXfKnn9c7cv2F8e_lm2MzIY0GxAh0JhK25HpHkiY0uGYRgW6LF9H2HJh3l8yPT5A40uypQlDgPMtRtsVkLKwi9YzSDqOab7VFlcFZUHyT9TaIZ9CuejHayHtb4mXD8iMoOZhVc2VmGERa7ciA0ohiSevLm7w-wqsPhm7P8Kv6OQ26O7FfMdjwLpgHpS7VKwZ1iV_dYElnkgn_pNZ_OeH6U0E52m5J7_4F-3jCvuevY6MFgro3-8S3yGT7wiPWR5EqL4vSIbJgxchH3n6JAh8J42j1QY8IzX0OCEqzfxXB8nPKvl_VUq6ySwrMLCbpUZLUDR_KB8N9OPrpuQbuswB_Pac2BQ5RUEEMw1tkQdlU_-pBMnKQ0SL6__p4ukJoe2y5ghe6pzBFwLNsV_YyfPnyUa7e9A-3awDD2ZHXvM39DVtNO_G3m6_HaoYbdEbp7poKPF7yYsz7RbiPwGUdklppWMvbCdczTVIPCPaaYpDKo4-c9c0jLm5cHjU_EWWCS5xEW1jLzACIKYdICU3abF-hBApEk2NlNj4Zm6mi6XVUkgkvXhY7AFfnwb47LaK2UPqAmQNfYghWSpub7afU7asCHvDihXz8M8fq0Q_P_UOZax_c4lCeZYA"
                 },
                 body: JSON.stringify({ id: id })
             })
@@ -45,10 +45,10 @@ export function Dashboard() {
                 <div className="col col-2" data-label="Payment Status">{dateFormat(c.created_at, "dd/mm/yyyy")}</div>
                 <div className="col col-2" data-label="Payment Status">{dateFormat(c.updated_at, "dd/mm/yyyy")}</div>
                 <div className="col col-1 custom-group-icon" data-label="Payment Status">
-                    <Link to={`/edit/${users.id}`}>
+                    <Link to={`/edit/${c.id}`}>
                         <i className="fa fa-pencil-square-o" aria-hidden="true" title="Update"></i>
                     </Link>
-                    <Link to={`/profile/${users.id}`}>
+                    <Link to={`/profile/${c.id}`}>
                         <i className="fa fa-eye" aria-hidden="true" title="View"></i>
                     </Link>
                     <button className="btnDel" onClick={e => { deleteUser(c.id) }}>
