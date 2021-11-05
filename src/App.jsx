@@ -7,10 +7,10 @@ import { Person } from "./components/Person/Person";
 import { DiscoverDetail } from "./components/DetailTV/DiscoverDetail";
 //TV
 import { Discover } from "./components/TV/Discover";
-import { Seasons } from "./components/TV/Session/Seasons";
+// import { Seasons } from "./components/TV/Session/Seasons";
 import {MovieDetail} from "./components/DetailMovie/MovieDetail";
 
-import Search from "./components/Search/Search";
+// import Search from "./components/Search/Search";
 import { Treding } from "./components/Treding/Treding";
 import { Dashboard } from "./components/Dashboard/Dashboard";
 import { EditUser } from "./components/Dashboard/EditUser";
@@ -23,10 +23,10 @@ import { Episode } from "./components/Episodes/Episode";
 
 import { Profile } from "./components/Person/Proflie";
 import { Register } from "./components/Account/Register"
-import { Login }  from "./components/Account/Login";
+// import { Login }  from "./components/Account/Login";
 import { Logout }  from "./components/Account/Logout";
-import { Profile } from "./components/Profile/Profile";
-import { EditUser } from "./components/Dashboard/EditUser";
+// import { Profile } from "./components/Profile/Profile";
+// import { EditUser } from "./components/Dashboard/EditUser";
 
 export function App() {
   return (
@@ -37,7 +37,7 @@ export function App() {
         <Route path="/discover/tv" component={Discover} />
         <Route path="/login" component={Login} exact />
         <Route path="/tredding" component={Treding} exact />
-        <Route path="/search" component={Search} exact />
+        {/* <Route path="/search" component={Search} exact /> */}
         <Route path="/session/:id/seasons" component={Seasons} exact/>
         <Route path="/movie/:id" component={MovieDetail} />
         <Route path="/keyword/:keyword_id/movie" component={Keyword} />

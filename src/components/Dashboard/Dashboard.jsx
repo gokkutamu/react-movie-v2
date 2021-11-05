@@ -9,6 +9,13 @@ import "../Home/Aminition/Home.css";
 import dateFormat from 'dateformat';
 import Axios from "axios";
 export function Dashboard() {
+    const split =  (params) => {
+        var test1 = params.slice(11,13);
+        return test1; 
+    }
+    const itemId = (id) => {
+        return getRamdomString(6)+getRamdom(10000, 99999)+id+getRamdomString(8)+getRamdom(100, 999)
+    }
     const [users, setUsers] = useState([]);
     useEffect(() => {
         const fetchAPI = async () => {
@@ -19,22 +26,36 @@ export function Dashboard() {
 
     const deleteUser = (id) => {
         async function fetchDeleteUser(id) {
-            const repo = await Axios.get(`http://localhost:82/Passport/public/api/auth/destroy/${id}`, {
+            
+            const repo = await Axios.get(`http://localhost/Passport/public/api/auth/destroy/${id}`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' +
-                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzNhODQ5NGM3NTBhMjY2MDBmODYzZDdlZjZjMjMxZTFkZjg4ZTc3ZjE4Njk4ZDgzZGZhOWRjNmZjYmQyNmNiOWYzMWJjYjU1Zjg3ODgzY2UiLCJpYXQiOjE2MzU4NTI5NjYuMTUwOTg5LCJuYmYiOjE2MzU4NTI5NjYuMTUwOTk2LCJleHAiOjE2NjczODg5NjYuMTQxMjY4LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.oQTl4ZCNpUTCGyefyyzj3s6pigYkENfdRr0Jvu3fxosBtgba_H1T95NL9oWvnDScEN03E_YZQvGjJ-Iig23uTvT_0d88l0WQYN4n8Ls8vJCvqbSjMdHRyaUt21nWKZmy7ObWjJIh2FkAFlvvf1JtVEmUsKa6bVTDdaYelg1-uAzvBc9dkch-boC51AN6KepNmLJ_u96EPna8S59P0q-I_eN0PUoap28TW0tHuC2ooWtJ66IJrJzfkShFGW9MWguP3EU9Vqo8VVwsEBDIvXgt5c7F-6JhFXHfQyDllRKe8NLmRsbyUuBNC9kLQXj5i11N1-3OYh6YNGGN-Cz8gsPlYJoPJ2FqJqyjlkLJizJKY_paZqXWO3FoKl9Aq_yKx-gYdTDuIUowGngBZ0OWPpZ8nY-suq06VjUCW6ZoRaP6suQ5A0YA56q5edo6LZmSGZuzSqauxrCPVC1h6-qOgFdhHiSL9dLo7AV-DuxRjN03PpYnaTaILnDYRAcwO4mhWIEDy3clarlRFNbp3gUum8w-gWA79Occ2pDO1n55XQV_Xb-b9QbFsBOtlbYp70VunNw71mACIanN0Zb1zrbAnji2KETscJ2OvpH2n3sAw6OJz6xu58iHDXHHktzUHAQDPEPI-UN5LTvxVBo4gBYsSHjYZCijfJqkhbBPhBndqkLn5_M"
+                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGVjNWQzYWM2ZDNhZDBiNTA0OTM2OWU3YjAwNDNkNjBkYWRkNmI2ODA1ODdkMTNmNTIzMDgwMzI5YmJiOTY1ZjhmNWY0NjRmNThmNTg5NzMiLCJpYXQiOjE2MzYwOTU5OTUsIm5iZiI6MTYzNjA5NTk5NSwiZXhwIjoxNjY3NjMxOTk1LCJzdWIiOiIzMyIsInNjb3BlcyI6W119.UaaFuLvDNb3iUFRAitzUKKpEZK2utjpl5Nf1337lQHWvSS9c8WLitkVntNcRppZIyT_VnGvJQ7pTDgUIDTVg6jel20_XRKfDd8_Kmencx6UtJ1-Uh0OTsKkTM0vIiYsxij2XaNctIPsbn_bLjjCTEuByJQbSFsa6p7b5Y7d81IoEWDMOK6t8Hw-mGStJGZ5WsMPePwhJ46EYznkhzAGsodueyL8ip6jA6I6C75Wh5Z6m22A63fkrl-OyNpEWhVyI3E1Vfg7o88QVgbpHi4z3GAD7bBR16MTjWPzg-k8KxPinxU2GvCjDMzXF3-hSNLkx2NGkBlHhN32dComalMhIQD-ln1zXAEVtAp4ngqFkqx2X_A4uNxcUgiB9im_VjTLjFvixQ0L5NyyBXOLNwPbbEL1_TqY5ApwNbKBaiE7-YLFM5_Pvso70e4C4jJpmf8_gcjtBGsiHBu6WsVP6z1XCcHzzTiZXrV_idcPqOnPlPFipnUWJKtAU7oQF3pleQZX0ZD0UHN2XE4h6oSqHnu9wefOgk6u6qderJcDRSQ1azWtNW063HVBwJQfH11MZ6YeJM-0L4ZLN3843kgTvQpvfvAf0voULYHxcbNsS9qur01nV53Drh00dxC6v3R_DB-vhmtKOrKuizyWvHc7kP8yuae4SXS7PMi8NGKBP3ie-KtY"
                 },
                 body: JSON.stringify({ id: id })
             })
             return repo.data;
         }
-        fetchDeleteUser(id)
+        fetchDeleteUser(id)          
             .then(result => {
-                const filterData = users.filter(item => item.id !== id)
+                var idOld = split(id);
+                const filterData = users.filter(item => item.id != idOld);
                 setUsers(filterData)
             })
+    }
+    const getRamdom = (min, max) => {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+    const getRamdomString = (length) => {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for (var i = 0; i < length; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
     }
     const getListUser = users.map((c) => {
         return (
@@ -45,13 +66,13 @@ export function Dashboard() {
                 <div className="col col-2" data-label="Payment Status">{dateFormat(c.created_at, "dd/mm/yyyy")}</div>
                 <div className="col col-2" data-label="Payment Status">{dateFormat(c.updated_at, "dd/mm/yyyy")}</div>
                 <div className="col col-1 custom-group-icon" data-label="Payment Status">
-                    <Link to={`/edit/${c.id}`}>
+                    <Link to={`/edit/${getRamdomString(6)}${getRamdom(10000, 99999)}${c.id}${getRamdomString(8)}${getRamdom(100, 999)}`}>
                         <i className="fa fa-pencil-square-o" aria-hidden="true" title="Update"></i>
                     </Link>
                     <Link to={`/profile/${c.id}`}>
                         <i className="fa fa-eye" aria-hidden="true" title="View"></i>
                     </Link>
-                    <button className="btnDel" onClick={e => { deleteUser(c.id) }}>
+                    <button className="btnDel" onClick={e => { deleteUser(getRamdomString(6)+getRamdom(10000, 99999)+c.id+getRamdomString(8)+getRamdom(100, 999)) }}>
                         <i className="fa fa-eraser" aria-hidden="true" title="Delete"></i>
                     </button>
                 </div>

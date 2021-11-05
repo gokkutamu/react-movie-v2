@@ -149,7 +149,6 @@ export function Home() {
                 <ul className="menu">
                   <li className="nav-hover"><a href="/">Home</a></li>
                   <li className="nav-hover"><a href="/discover/tv">TV</a></li>
-                  <li className="nav-hover"><Link to={`/dashboard`}>Dashboard</Link></li>
                   <li className="nav-hover">
                      <div className="login-templeta">
                         <a href="/login">Login</a>

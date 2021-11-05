@@ -33,22 +33,22 @@ const discoverUrl = `${url}/tv/airing_today`;
 const treddingUrl = `${url}/trending/all/day`;
 
 //DB 
-const db = 'http://localhost:82/react-lavarel-movie/react-lavarel-movie/public/api/list-user';
+// const db = 'http://localhost:82/react-lavarel-movie/react-lavarel-movie/public/api/list-user';
 
 
 //DB 
 const db = 'http://localhost/Api_react_movie/public/api/list-user';
 
 //DB 
-const db = 'http://react-movie-api.rf.gd/api/list-user';
+// const db = 'http://react-movie-api.rf.gd/api/list-user';
 //check login 
 export const checkLogin = async() =>{
     return localStorage.getItem('myData');
 }
-export const listUser = async () => {
-    const repo  = await axios.get(db)
-    return repo.data;
-}
+// export const listUser = async () => {
+//     const repo  = await axios.get(db)
+//     return repo.data;
+// }
 
 export const addUser = async (fromData) => {
 
@@ -122,42 +122,8 @@ export const fetchMovieByGenre = async (genre_ids) => {
         return modifiedData;
     } catch (error) { }
 }
-export const fetchPersons = async () => {
-    try {
-        const { data } = await axios.get(personUrl, {
-            params: {
-                api_key: apiKey
-            }
-        })
-        const modifiedData = data['results'].map((p) => ({
-            id: p['id'],
-            popularity: p['popularity'],
-            name: p['name'],
-            profileImg: 'https://image.tmdb.org/t/p/w200' + p['profile_path'],
-            known: p['known_for_department']
-        }))
-        return modifiedData;
-    } catch (error) { }
-}
-// Profile detail preson : 
-export const fetchProfile = async (id) => {
-    try {
-        const { data } = await axios.get(`${personsUrl}/${id}/images`, {
-            params: {
-                api_key: apiKey
-            }
-        })
-        const modifiedData = data['profiles'].map((p) => ({
-            aspect_ratio: p['aspect_ratio'],
-            file_path: p['file_path'],
-            height: p['height'],
-            vote_average: p['vote_average'],
-            vote_count: p['vote_count'],
-            width: p['width'],
-        }))
-        return modifiedData;
-    } catch (error) { }
-}
+
+
 export const fetchTopratedMovie = async () => {
     try {
         const { data } = await axios.get(topratedUrl, {
@@ -217,31 +183,7 @@ export const fetchProfile = async (id) => {
         return modifiedData;
     } catch (error) { }
 }
-export const fetchTopratedMovie = async () => {
-    try {
-        const { data } = await axios.get(topratedUrl, {
-            params: {
-                api_key: apiKey,
-                language: 'vi-VN',
-                page: 1
-            }
-        })
-        const posterUrl = 'https://image.tmdb.org/t/p/original/';
-        const modifiedData = data['results'].map((m) => ({
-            id: m['id'],
-            backPoster: posterUrl + m['backdrop_path'],
-            popularity: m['popularith'],
-            title: m['title'],
-            poster: posterUrl + m['poster_path'],
-            overview: m['overview'],
-            rating: m['vote_average'],
-        }))
 
-        return modifiedData;
-    } catch (error) {
-
-    }
-}
 
 // Chi tiet phim
 export const fetchMovieDetail = async (id) => {
@@ -389,17 +331,6 @@ export const fetchTVDetail = async (id) => {
         return data;
     } catch (error) { }
 }
-export const fetchTVVideos = async (id) => {
-    try {
-        const { data } = await axios.get(`${tvUrl}/${id}/videos`, {
-            params: {
-                api_key: apiKey,
-                language: 'en_US',
-            }
-        });
-        return data['results'][0];
-    } catch (error) { }
-}
 
 // Danh sách phim đã đóng có mặt diễn viên trong đó (phim):
 export const fetchCreditsTV = async (id) => {
@@ -426,29 +357,7 @@ export const fetchTVVideos = async (id) => {
 }
 
 // Danh sách phim đã đóng có mặt diễn viên trong đó (phim):
-export const fetchCreditsTV = async (id) => {
-    try {
-        const { data } = await axios.get(`${personsUrl}/${id}/tv_credits`, {
-            params: {
-                api_key: apiKey,
-                language: 'vi-VN'
-            }
-        });
-        const posterUrl = 'https://image.tmdb.org/t/p/original/';
-        const modifiedData = data['cast'].map((c) => ({
-            id: c['id'],
-            backPoster: posterUrl + c['backdrop_path'],
-            popularity: c['popularith'],
-            name: c['name'],
-            date: c['first_air_date'],
-            poster: posterUrl + c['poster_path'],
-            charater: c['character'],
-            nameOther: c['popularity'],
-        }))
 
-        return modifiedData;
-    } catch (error) { }
-}
 // Diễn viên chi tiết
 export const fetchPersonDetail = async (id) => {
     try {
@@ -710,22 +619,6 @@ export const fetchTVGenre = async () => {
 
     }
 }
-export const fetchTVGenre = async () => {
-    try {
-        const { data } = await axios.get(genereTVUrl, {
-            params: {
-                api_key: apiKey,
-                language: 'vi-VN',
-                page: 1
-            }
-        })
-        const modifiedData = data['genres'].map((g) => ({
-            id: g['id'],
-            name: g['name']
-        }))
-        return modifiedData;
-    } catch (error) { }
-}
 export const fetchTVPopular = async (genre_ids) => {
     try {
         const { data } = await axios.get(tvPopular, {
@@ -751,30 +644,7 @@ export const fetchTVPopular = async (genre_ids) => {
 
     }
 }
-export const fetchTVTopRate = async () => {
-    try {
-        const { data } = await axios.get(tvTopRate, {
-            params: {
-                api_key: apiKey,
-                language: 'en_US',
-                page: 1
-            }
-        })
-        const posterUrl = 'https://image.tmdb.org/t/p/original/';
-        const modifiedData = data['results'].map((m) => ({
-            id: m['id'],
-            backPoster: posterUrl + m['backdrop_path'],
-            popularity: m['popularity'],
-            title: m['name'],
-            poster: posterUrl + m['poster_path'],
-            overview: m['overview'],
-            rating: m['vote_average'],
-        }))
-        return modifiedData;
-    } catch (error) {
 
-    }
-}
 // Phim đóng góp:
 export const fetchTV = async (id) => {
     try {
@@ -827,68 +697,11 @@ export const fetchTVTopRate = async () => {
     }
 }
 // Phim đóng góp:
-export const fetchTV = async (id) => {
-    try {
-        const { data } = await axios.get(`${personsUrl}/${id}/movie_credits`, {
-            params: {
-                api_key: apiKey,
-            }
-        });
-        const posterUrl = 'https://image.tmdb.org/t/p/original/';
-        const modifiedData = data['cast'].map((c) => ({
-            id: c['id'],
-            backPoster: posterUrl + c['backdrop_path'],
-            popularity: c['popularith'],
-            title: c['title'],
-            date: c['release_date'],
-            poster: posterUrl + c['poster_path'],
-            overview: c['overview'],
-            rating: c['vote_average'],
-            character: c['character'],
-            nameOther: c['popularity'],
-        }))
 
-        return modifiedData;
-    } catch (error) { }
-}
-export const fetchKeyDetail = async (keyword_id) => {
-    try {
-        const { data } = await axios.get(`${keyUrl}/${keyword_id}`, {
-            params: {
-                api_key: apiKey,
-            }
-        });
-        return data;
-    } catch (error) { 
-        
-    }
-}
-
-export const fetchMovieByKeyword = async (keyword_id) => {
-    try {
-        const { data } = await axios.get(`${keyUrl}/${keyword_id}/movies`, {
-            params: {
-                api_key: apiKey,
-                language: 'vi-VN',
-            }
-        });
-        const modifiedData = data['results'].map((m) => ({
-            id: m['id'],
-            title: m['title'],
-            poster_path: m['poster_path'],
-            overview: m['overview'],
-            release_date: m['release_date'],
-            original_title: m['original_title'],
-            backdrop_path: m['backdrop_path'],
-            popularity: m['popularity'],
-        }))
-        return modifiedData;
-    } catch (error) {}
-}
 // TV
 
 // Các xu hướng phim : 
-export const fetchTredding = async () => {
+export const fetchTredding = async (genre_ids) => {
     try {
         const { data } = await axios.get(treddingUrl, {
             params: {
@@ -913,7 +726,6 @@ export const fetchTredding = async () => {
 
     }
 }
-}
 
 // Lay ra danh sach users
 export const listUser = async () => {
@@ -921,7 +733,7 @@ export const listUser = async () => {
         headers: {
             'Content-Type': 'application/json',
             "X-Requested-With": "XMLHttpRequest",
-            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTAxM2Y5YmEzYmI3MTViMWJlNmMzNzUwNjA3NTc0M2E1MmI3OTVhN2FjNWQwYmI3NjcwZDUxNTAxY2FjZDc0ZGY4ZDZmODc5MzJmYmUyY2EiLCJpYXQiOjE2MzU5NDc3NzUsIm5iZiI6MTYzNTk0Nzc3NSwiZXhwIjoxNjY3NDgzNzc1LCJzdWIiOiIxMyIsInNjb3BlcyI6W119.TCruQ-wO7DUvfykNYzo1rhG4xqFtEyGtPTbN4EIfNr2kknsvTjmWHZRW1GvzrCytG5u3EoBcgt5aAYoKAJfnV0Sfft43qAejpKdt_2L3zecECOtogVcoN8GffgoT_OMP3jLV5qUnf9GqnMxTAhCiVuhIc0AGcH4zvPrJALTYn9d-FEs5jLF4DaB76sQvPAidGJfJ5AR9i_W_2OoA8kAzWBSUBZkd9C1MclMM-gAHWsKRkAJtEuieNvDv8hKwPAv9VtaaSpWDd543hhzbF1gkTS5605wzYTq-gfIMwHhHr8tVjlPqFhVrR0F_rAiGfMOSxPfa-Lr9UKnJPBEg3JpSruNG9p_-o5SQfJgj24lgugx-tS030k0iRAlybisfVbuihYKJPvkfGOqi4e6CX3PmIIaeeodeoU2Q0U3yhJoObhXWzyIFY2GEdPQMNLlbqQx6XLlwDQiXLNve-sDaAwLnGoDkLDwdEU4pA65GJRw5QSB7bBRs4Ng9JpixWzFJ4ZLL5dObY0G4HwO_nHGlHhqEmNOFzf-B4H8i9ROOL_e7PfwkT2A_5MOQdY8UIVBt8N024pHKP_FY_sPGXCkmV9QQBTo2ICcIKNUHh0cVOmxOH8lp_pPw6CEW3jUL0elvSHKlq6LjKFlpae_1viFUa33DdNU4c-oRWL1t_Qpp05YmpR4"
+            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGVjNWQzYWM2ZDNhZDBiNTA0OTM2OWU3YjAwNDNkNjBkYWRkNmI2ODA1ODdkMTNmNTIzMDgwMzI5YmJiOTY1ZjhmNWY0NjRmNThmNTg5NzMiLCJpYXQiOjE2MzYwOTU5OTUsIm5iZiI6MTYzNjA5NTk5NSwiZXhwIjoxNjY3NjMxOTk1LCJzdWIiOiIzMyIsInNjb3BlcyI6W119.UaaFuLvDNb3iUFRAitzUKKpEZK2utjpl5Nf1337lQHWvSS9c8WLitkVntNcRppZIyT_VnGvJQ7pTDgUIDTVg6jel20_XRKfDd8_Kmencx6UtJ1-Uh0OTsKkTM0vIiYsxij2XaNctIPsbn_bLjjCTEuByJQbSFsa6p7b5Y7d81IoEWDMOK6t8Hw-mGStJGZ5WsMPePwhJ46EYznkhzAGsodueyL8ip6jA6I6C75Wh5Z6m22A63fkrl-OyNpEWhVyI3E1Vfg7o88QVgbpHi4z3GAD7bBR16MTjWPzg-k8KxPinxU2GvCjDMzXF3-hSNLkx2NGkBlHhN32dComalMhIQD-ln1zXAEVtAp4ngqFkqx2X_A4uNxcUgiB9im_VjTLjFvixQ0L5NyyBXOLNwPbbEL1_TqY5ApwNbKBaiE7-YLFM5_Pvso70e4C4jJpmf8_gcjtBGsiHBu6WsVP6z1XCcHzzTiZXrV_idcPqOnPlPFipnUWJKtAU7oQF3pleQZX0ZD0UHN2XE4h6oSqHnu9wefOgk6u6qderJcDRSQ1azWtNW063HVBwJQfH11MZ6YeJM-0L4ZLN3843kgTvQpvfvAf0voULYHxcbNsS9qur01nV53Drh00dxC6v3R_DB-vhmtKOrKuizyWvHc7kP8yuae4SXS7PMi8NGKBP3ie-KtY"
         }
     })
     return repo.data;
@@ -933,9 +745,8 @@ export const userById = async (id) => {
         headers: {
             'Content-Type': 'application/json',
             "X-Requested-With": "XMLHttpRequest",
-            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTAxM2Y5YmEzYmI3MTViMWJlNmMzNzUwNjA3NTc0M2E1MmI3OTVhN2FjNWQwYmI3NjcwZDUxNTAxY2FjZDc0ZGY4ZDZmODc5MzJmYmUyY2EiLCJpYXQiOjE2MzU5NDc3NzUsIm5iZiI6MTYzNTk0Nzc3NSwiZXhwIjoxNjY3NDgzNzc1LCJzdWIiOiIxMyIsInNjb3BlcyI6W119.TCruQ-wO7DUvfykNYzo1rhG4xqFtEyGtPTbN4EIfNr2kknsvTjmWHZRW1GvzrCytG5u3EoBcgt5aAYoKAJfnV0Sfft43qAejpKdt_2L3zecECOtogVcoN8GffgoT_OMP3jLV5qUnf9GqnMxTAhCiVuhIc0AGcH4zvPrJALTYn9d-FEs5jLF4DaB76sQvPAidGJfJ5AR9i_W_2OoA8kAzWBSUBZkd9C1MclMM-gAHWsKRkAJtEuieNvDv8hKwPAv9VtaaSpWDd543hhzbF1gkTS5605wzYTq-gfIMwHhHr8tVjlPqFhVrR0F_rAiGfMOSxPfa-Lr9UKnJPBEg3JpSruNG9p_-o5SQfJgj24lgugx-tS030k0iRAlybisfVbuihYKJPvkfGOqi4e6CX3PmIIaeeodeoU2Q0U3yhJoObhXWzyIFY2GEdPQMNLlbqQx6XLlwDQiXLNve-sDaAwLnGoDkLDwdEU4pA65GJRw5QSB7bBRs4Ng9JpixWzFJ4ZLL5dObY0G4HwO_nHGlHhqEmNOFzf-B4H8i9ROOL_e7PfwkT2A_5MOQdY8UIVBt8N024pHKP_FY_sPGXCkmV9QQBTo2ICcIKNUHh0cVOmxOH8lp_pPw6CEW3jUL0elvSHKlq6LjKFlpae_1viFUa33DdNU4c-oRWL1t_Qpp05YmpR4"
+            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGVjNWQzYWM2ZDNhZDBiNTA0OTM2OWU3YjAwNDNkNjBkYWRkNmI2ODA1ODdkMTNmNTIzMDgwMzI5YmJiOTY1ZjhmNWY0NjRmNThmNTg5NzMiLCJpYXQiOjE2MzYwOTU5OTUsIm5iZiI6MTYzNjA5NTk5NSwiZXhwIjoxNjY3NjMxOTk1LCJzdWIiOiIzMyIsInNjb3BlcyI6W119.UaaFuLvDNb3iUFRAitzUKKpEZK2utjpl5Nf1337lQHWvSS9c8WLitkVntNcRppZIyT_VnGvJQ7pTDgUIDTVg6jel20_XRKfDd8_Kmencx6UtJ1-Uh0OTsKkTM0vIiYsxij2XaNctIPsbn_bLjjCTEuByJQbSFsa6p7b5Y7d81IoEWDMOK6t8Hw-mGStJGZ5WsMPePwhJ46EYznkhzAGsodueyL8ip6jA6I6C75Wh5Z6m22A63fkrl-OyNpEWhVyI3E1Vfg7o88QVgbpHi4z3GAD7bBR16MTjWPzg-k8KxPinxU2GvCjDMzXF3-hSNLkx2NGkBlHhN32dComalMhIQD-ln1zXAEVtAp4ngqFkqx2X_A4uNxcUgiB9im_VjTLjFvixQ0L5NyyBXOLNwPbbEL1_TqY5ApwNbKBaiE7-YLFM5_Pvso70e4C4jJpmf8_gcjtBGsiHBu6WsVP6z1XCcHzzTiZXrV_idcPqOnPlPFipnUWJKtAU7oQF3pleQZX0ZD0UHN2XE4h6oSqHnu9wefOgk6u6qderJcDRSQ1azWtNW063HVBwJQfH11MZ6YeJM-0L4ZLN3843kgTvQpvfvAf0voULYHxcbNsS9qur01nV53Drh00dxC6v3R_DB-vhmtKOrKuizyWvHc7kP8yuae4SXS7PMi8NGKBP3ie-KtY"
         }
     })
     return repo.data;
 }
-const temp;

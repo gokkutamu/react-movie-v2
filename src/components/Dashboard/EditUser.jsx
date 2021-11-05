@@ -12,6 +12,10 @@ import {
 
 export function EditUser({ match }) {
     let params = match.params;
+    const split =  (params) => {
+        var test1 = params.slice(11,13);
+        return test1; 
+    }
     const [arrayUserByID, setUserById] = useState([]);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -19,7 +23,7 @@ export function EditUser({ match }) {
 
     useEffect(() => {
         const fetchAPI = async () => {
-            setUserById(await userById(params.id));
+            setUserById(await userById(split(params.id)));
         };
         fetchAPI();
     }, []);
@@ -29,12 +33,12 @@ export function EditUser({ match }) {
     function handleSubmit(event) {
         event.preventDefault();
         console.log(name,email,password);
-        axios.post(`http://localhost/Passport/public/api/auth/updateUser/${params.id}`, { name, email, password },
+        axios.post(`http://localhost/Passport/public/api/auth/updateUser/${split(params.id)}`, { name, email, password },
             {
                 headers: {
                     'Content-Type': 'application/json',
                     "X-Requested-With": "XMLHttpRequest",
-                    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTAxM2Y5YmEzYmI3MTViMWJlNmMzNzUwNjA3NTc0M2E1MmI3OTVhN2FjNWQwYmI3NjcwZDUxNTAxY2FjZDc0ZGY4ZDZmODc5MzJmYmUyY2EiLCJpYXQiOjE2MzU5NDc3NzUsIm5iZiI6MTYzNTk0Nzc3NSwiZXhwIjoxNjY3NDgzNzc1LCJzdWIiOiIxMyIsInNjb3BlcyI6W119.TCruQ-wO7DUvfykNYzo1rhG4xqFtEyGtPTbN4EIfNr2kknsvTjmWHZRW1GvzrCytG5u3EoBcgt5aAYoKAJfnV0Sfft43qAejpKdt_2L3zecECOtogVcoN8GffgoT_OMP3jLV5qUnf9GqnMxTAhCiVuhIc0AGcH4zvPrJALTYn9d-FEs5jLF4DaB76sQvPAidGJfJ5AR9i_W_2OoA8kAzWBSUBZkd9C1MclMM-gAHWsKRkAJtEuieNvDv8hKwPAv9VtaaSpWDd543hhzbF1gkTS5605wzYTq-gfIMwHhHr8tVjlPqFhVrR0F_rAiGfMOSxPfa-Lr9UKnJPBEg3JpSruNG9p_-o5SQfJgj24lgugx-tS030k0iRAlybisfVbuihYKJPvkfGOqi4e6CX3PmIIaeeodeoU2Q0U3yhJoObhXWzyIFY2GEdPQMNLlbqQx6XLlwDQiXLNve-sDaAwLnGoDkLDwdEU4pA65GJRw5QSB7bBRs4Ng9JpixWzFJ4ZLL5dObY0G4HwO_nHGlHhqEmNOFzf-B4H8i9ROOL_e7PfwkT2A_5MOQdY8UIVBt8N024pHKP_FY_sPGXCkmV9QQBTo2ICcIKNUHh0cVOmxOH8lp_pPw6CEW3jUL0elvSHKlq6LjKFlpae_1viFUa33DdNU4c-oRWL1t_Qpp05YmpR4"
+                    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGVjNWQzYWM2ZDNhZDBiNTA0OTM2OWU3YjAwNDNkNjBkYWRkNmI2ODA1ODdkMTNmNTIzMDgwMzI5YmJiOTY1ZjhmNWY0NjRmNThmNTg5NzMiLCJpYXQiOjE2MzYwOTU5OTUsIm5iZiI6MTYzNjA5NTk5NSwiZXhwIjoxNjY3NjMxOTk1LCJzdWIiOiIzMyIsInNjb3BlcyI6W119.UaaFuLvDNb3iUFRAitzUKKpEZK2utjpl5Nf1337lQHWvSS9c8WLitkVntNcRppZIyT_VnGvJQ7pTDgUIDTVg6jel20_XRKfDd8_Kmencx6UtJ1-Uh0OTsKkTM0vIiYsxij2XaNctIPsbn_bLjjCTEuByJQbSFsa6p7b5Y7d81IoEWDMOK6t8Hw-mGStJGZ5WsMPePwhJ46EYznkhzAGsodueyL8ip6jA6I6C75Wh5Z6m22A63fkrl-OyNpEWhVyI3E1Vfg7o88QVgbpHi4z3GAD7bBR16MTjWPzg-k8KxPinxU2GvCjDMzXF3-hSNLkx2NGkBlHhN32dComalMhIQD-ln1zXAEVtAp4ngqFkqx2X_A4uNxcUgiB9im_VjTLjFvixQ0L5NyyBXOLNwPbbEL1_TqY5ApwNbKBaiE7-YLFM5_Pvso70e4C4jJpmf8_gcjtBGsiHBu6WsVP6z1XCcHzzTiZXrV_idcPqOnPlPFipnUWJKtAU7oQF3pleQZX0ZD0UHN2XE4h6oSqHnu9wefOgk6u6qderJcDRSQ1azWtNW063HVBwJQfH11MZ6YeJM-0L4ZLN3843kgTvQpvfvAf0voULYHxcbNsS9qur01nV53Drh00dxC6v3R_DB-vhmtKOrKuizyWvHc7kP8yuae4SXS7PMi8NGKBP3ie-KtY"
                 }
             })
             .then(res => {
