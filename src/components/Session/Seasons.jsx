@@ -5,10 +5,9 @@ import {
 } from "../../server";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Link } from "react-router-dom";
-// import "../Style.css";
 import dateFormat from 'dateformat';
 import "./Seasons.css";
-// import { Session } from "inspector";
+import { Footer } from "../Footer/Footer";
 export function Seasons({ match }) {
 
     let params = match.params;
@@ -135,6 +134,7 @@ export function Seasons({ match }) {
                     {listSession}
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 }

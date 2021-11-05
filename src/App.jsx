@@ -37,7 +37,6 @@ export function App() {
 
         <Route path="/tredding" component={Treding} exact />
         <Route path="/search" component={Search} exact />
-        <Route path="/session/:id/seasons" component={Seasons} exact/>
         <Route path="/movie/:id" component={MovieDetail} />
         <Route path="/keyword/:keyword_id/movie" component={Keyword} />
 

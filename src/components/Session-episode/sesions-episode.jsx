@@ -6,7 +6,8 @@ import {
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Link } from "react-router-dom";
 import dateFormat from 'dateformat';
-import "./sesions-episode.css"
+import "./sesions-episode.css";
+import { Footer } from "../Footer/Footer";
 export function Sessions_Episode({ match }) {
 
     let params = match.params;
@@ -149,6 +150,7 @@ export function Sessions_Episode({ match }) {
 
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 }

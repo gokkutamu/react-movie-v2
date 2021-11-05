@@ -10,7 +10,7 @@ import {
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Link } from "react-router-dom";
 import "./Style.css";
-
+import { Footer } from "../Footer/Footer";
 
 export function Discover() {
     const [discover, setDiscover] = useState([]);
@@ -367,7 +367,7 @@ export function Discover() {
 
                 </div>
             </div>
-
+            <Footer></Footer>
 
         </div>
     );

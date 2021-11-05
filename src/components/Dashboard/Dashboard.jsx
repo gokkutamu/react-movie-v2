@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import "../Home/Aminition/Home.css";
 import dateFormat from 'dateformat';
 import Axios from "axios";
+import { Footer } from "../Footer/Footer";
 export function Dashboard() {
     const [users, setUsers] = useState([]);
     useEffect(() => {
@@ -134,6 +135,7 @@ export function Dashboard() {
                     </ul>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
 
     )

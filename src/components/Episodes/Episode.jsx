@@ -8,6 +8,7 @@ import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Link } from "react-router-dom";
 import dateFormat from 'dateformat';
 import "./Episode.css";
+import { Footer } from "../Footer/Footer";
 export function Episode({ match }) {
 
     let params = match.params;
@@ -22,7 +23,7 @@ export function Episode({ match }) {
         };
         fetchAPI();
     }, []);
-    //  Danh sách các tập phim
+    //  Danh sách các diễn viên của tập phim
     const listEpisode = Episodes.slice(0, 50).map((c, i) => {
         return (
             <div className="col-md-4 start-profile" key={i}>
@@ -141,6 +142,7 @@ export function Episode({ match }) {
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 }

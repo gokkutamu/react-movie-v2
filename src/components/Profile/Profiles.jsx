@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import "./Profile.css";
+import { Footer } from "../Footer/Footer";
 export function Profile() {
     const logo = require('./img/caheo.png');
     const [profile, setProfile] = useState([]);
@@ -117,6 +118,7 @@ export function Profile() {
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 }
