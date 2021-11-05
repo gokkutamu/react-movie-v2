@@ -11,11 +11,6 @@ import RBCarousel from "react-bootstrap-carousel";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import '../Home/Aminition/Home.css';
 import { Link } from "react-router-dom";
-import "../Footer/Footer";
-import { Footer } from "../Footer/Footer";
-import "../Header/Header";
-import { Header } from "../Header/Header";
-
 export function Home() {
   const [nowPlaying, setNowPlaying] = useState([]);
   const [genres, setGenres] = useState([]);
