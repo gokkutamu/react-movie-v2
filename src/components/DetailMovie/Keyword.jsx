@@ -5,7 +5,9 @@ import {
 } from "../../server";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import "../Style/MovieDetail.css";
-import dateFormat from "dateformat";
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
+
 
 export function Keyword({ match }) {
     let params = match.params;
@@ -54,19 +56,7 @@ export function Keyword({ match }) {
     return (
         <div className="main-container">
             <div className="hearder">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <nav>
-                                <ul className="menu">
-                                    <li className="nav-hover"><a href="/">Home</a></li>
-                                    <li className="nav-hover"><a href="/discover/tv">TV Shows</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-
-                    </div>
-                </div>
+                <Header/>
             </div>
             <div className="pading-top-name-key">
                 <h4>
@@ -82,6 +72,7 @@ export function Keyword({ match }) {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 }

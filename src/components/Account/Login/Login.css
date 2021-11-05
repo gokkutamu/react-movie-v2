@@ -23,14 +23,7 @@ button {
     right: 0;
     box-shadow: 0 0 5px -5px white;
 }
-.menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 720px;
-  margin: 20px auto;
-  list-style: none;
-}
+
 .name-login {
   color: white;
   text-align: center;

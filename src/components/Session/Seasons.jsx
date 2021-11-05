@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 // import "../Style.css";
 import dateFormat from 'dateformat';
 import "./Seasons.css";
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
 // import { Session } from "inspector";
 export function Seasons({ match }) {
 
@@ -56,26 +58,7 @@ export function Seasons({ match }) {
         <div className="container">
             {/* Hearder */}
             <div className="main-container">
-                <div className="row">
-                    <div className="col-md-12">
-                        <nav>
-                            <ul className="menu">
-                                <li className="nav-hover"><a href="/">Home</a></li>
-                                <li className="nav-hover"><a href="/discover/tv">TV</a></li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/login">Login</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="#">Register</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
+                <Header/>
             </div>
             <div className="baner-seasons">
                 <div className="row">
@@ -85,11 +68,11 @@ export function Seasons({ match }) {
                         </div>
                     </div>
                     <div className="col-md-6">
-                        <div className="title-name-tv">
+                        <div className="title-season">
                             <h3 >{detail.name}</h3>
                         </div>
                         <div className="back-icon">
-                            <a href={`/tv/${detail.id}/`} style={{ color: "black", fontSize: 15 }}>
+                            <a href={`/tv/${detail.id}/`} style={{ color: "white", fontSize: 15 }}>
                                 <i className="fa fa-backward" aria-hidden="true" style={{ fontSize: 10 }}></i>
                                 <span style={{ margin: 10 }}>Quay lại</span>
                             </a>
@@ -97,11 +80,12 @@ export function Seasons({ match }) {
                     </div>
                 </div>
             </div>
-            <div className="seasons-list">
+            <div className="seasons-version-list">
                 <div className="container">
                     {listSession}
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 }

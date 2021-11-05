@@ -21,6 +21,8 @@ import { Register } from "./components/Account/Register"
 import { Login }  from "./components/Account/Login";
 import { Logout }  from "./components/Account/Logout";
 import { Profile } from "./components/Profile/Profile";
+import { Profiles } from "./components/Person/Proflie";
+
 export function App() {
   return (
     
@@ -42,7 +44,7 @@ export function App() {
         <Route path="/tv/:id/season/:season_number/episode/:episode_number" component={Episode} exact />
 
         <Route path="/person/:id" component={Person} />
-        <Route path="/persons/:id/images/profiles" component={Profile} />
+        <Route path="/persons/:id/images/profiles" component={Profiles} />
 
         <Route path="/register" component={Register} exact />
         <Route path="/logout" component={Logout} exact />

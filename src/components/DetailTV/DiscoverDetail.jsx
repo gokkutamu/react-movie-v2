@@ -16,6 +16,8 @@ import { Link } from "react-router-dom";
 import "../Home/Aminition/Home.css";
 import "../Style/MovieDetail.css";
 import dateFormat from 'dateformat';
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
 
 export function DiscoverDetail({ match }) {
     let params = match.params;
@@ -198,27 +200,21 @@ export function DiscoverDetail({ match }) {
             <img src={i.poster} alt={i.title} className="pic" />
         );
     });
+    let myInlineStyle = {
+        backgroundImage: `url(http://image.tmdb.org/t/p/original/${detail.backdrop_path})`,
+        backgroundPosition: "right 2px top",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+    }
     return (
         <div className="main-container">
 
             <div className="hearder">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <nav>
-                                <ul className="menu">
-                                    <li className="nav-hover"><a href="/">Home</a></li>
-                                    <li className="nav-hover"><a href="/discover/tv">TV Shows</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-
-                    </div>
-                </div>
+               <Header/>
             </div>
 
             {/* Chi tiết phim */}
-            <div className="movie-trailer">
+            <div className="movie-trailer" style={myInlineStyle}>
                 <div className="container">
                     <div className="transformers-box">
                         <div className="row desc-film">
@@ -372,70 +368,7 @@ export function DiscoverDetail({ match }) {
                 </div>
             </div>
             {/* Footer */}
-            <div className="footer">
-                <hr className="mt-5" style={{ borderTop: "5px solid #5a606b" }}></hr>
-                <div className="footer-container">
-                    <div className="container">
-                        <div className="row">
-                            <div className="bg"></div>
-                            <div className="bg bg2"></div>
-                            <div className="bg bg3"></div>
-                            <div className="col-md-5 col-sm-6" style={{ color: "#5a606b" }}>
-                                <h3>THÔNG TIN</h3>
-
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
-                                    perspiciatis? Numquam, enim illo voluptatum neque facere aut sed ut
-                                    dolore nihil? Nulla sit, recusandae ea tenetur rerum deserunt sequi
-                                    earum?
-                                </p>
-                                <div className="button">
-                                    <div className="icon">
-                                        <i className="fab fa-facebook"></i>
-                                    </div>
-                                    <span>Facebook</span>
-                                </div>
-                                <div className="button">
-                                    <div className="icon">
-                                        <i className="fab fa-instagram"></i>
-                                    </div>
-                                    <span>Instagram</span>
-                                </div>
-                                <div className="button">
-                                    <div className="icon">
-
-                                        <i className="fab fa-twitter"></i>
-                                    </div>
-                                    <span>Twitter</span>
-                                </div>
-
-                                <div className="button">
-                                    <div className="icon">
-                                        <i className="fab fa-youtube"></i>
-                                    </div>
-                                    <span>Youtube</span>
-                                </div>
-                            </div>
-                            <div className="col-md-7 col-sm-6" style={{ color: "#5a606b" }}>
-                                <div className="main-top">
-                                    <div className="container">
-                                        <div className="row">
-                                            <div className="col-md-12">
-                                                <div className="bg-blog">
-                                                    <div className="pic-ctn bore">
-                                                        {images}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            <Footer/>
         </div>
     );
 }

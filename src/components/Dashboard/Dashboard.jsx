@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import "../Home/Aminition/Home.css";
 import dateFormat from 'dateformat';
 import Axios from "axios";
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
 export function Dashboard() {
     const [users, setUsers] = useState([]);
     useEffect(() => {
@@ -61,28 +63,7 @@ export function Dashboard() {
     return (
         <div className="dashboard-content">
             <div className="header">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <nav>
-                                <ul className="menu">
-                                    <li className="nav-hover"><a href="/">Home</a></li>
-                                    <li className="nav-hover"><Link to="/dashboard">Dashboard</Link></li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/login">Login</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="#">Register</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
+               <Header/>
             </div>
             <div className="dashboard-block">
                 <div className="container">
@@ -101,6 +82,7 @@ export function Dashboard() {
                     </ul>
                 </div>
             </div>
+            <Footer/>
         </div>
 
     )
