@@ -1,5 +1,14 @@
 
-
+.title-popularPersonTMDB {
+    padding-top: 25px;
+}
+.title-popularPersonTMDB h4 {
+    font-family: 'Titan One',cursive;
+    font-size: 30px;
+    font-weight: 700;
+    color: orange;
+    margin-bottom: 25px;
+}
 .table-tv {
     padding-top: 150px;
 }
@@ -42,7 +51,14 @@
     width: 308px;
     background: linear-gradient( red , blue );
 }
-.button-images .profile-button {
+.profile {
+    margin-top: 15px;
+    padding: 4px 10px;
+    color: #fff;
+    border-color: rgb(240 246 252 / 8%);
+    border-radius: 6px;
+}
+.button-images .profile {
     text-align: center;
     display: flow-root;
     color: white;

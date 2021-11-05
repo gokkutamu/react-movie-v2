@@ -8,9 +8,11 @@ import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Link } from "react-router-dom";
 import "../Home/Aminition/Home.css";
 import '../Person/Style.css';
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
 
 
-export function Profile({ match }) {
+export function Profiles({ match }) {
     let params = match.params;
     const [detail, setDetail] = useState([]);
     const [profile, setProfile] = useState([]);
@@ -48,30 +50,7 @@ export function Profile({ match }) {
     });
     return (
         <div className="top-header">
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-12">
-                        <nav>
-                            <ul className="menu">
-                                <li className="nav-hover"><a href="/">Home</a></li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/login">Login</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="#">Register</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-
-                </div>
-
-
-            </div>
+            <Header/>
             <div className="main-profile">
                 <div className="container">
                     <div className="row">
@@ -86,6 +65,7 @@ export function Profile({ match }) {
                 </div>
 
             </div>
+            <Footer/>
         </div>
 
     );

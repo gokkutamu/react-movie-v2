@@ -11,6 +11,8 @@ import RBCarousel from "react-bootstrap-carousel";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import '../Home/Aminition/Home.css';
 import { Link } from "react-router-dom";
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
 export function Home() {
   const [nowPlaying, setNowPlaying] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -72,7 +74,7 @@ export function Home() {
   });
 
 
-  const movieList = movieByGenre.slice(0, 30).map((value, i) => {
+  const movieList = movieByGenre.slice(0, 18).map((value, i) => {
     return (
       <div className="col-md-2 col-sm-6" key={i}>
         <div className="card-img">
@@ -142,29 +144,8 @@ export function Home() {
 
     <div className="main-container">
       <div className="header">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <nav>
-                <ul className="menu">
-                  <li className="nav-hover"><a href="/">Home</a></li>
-                  <li className="nav-hover"><a href="/discover/tv">TV</a></li>
-                  <li className="nav-hover">
-                     <div className="login-templeta">
-                        <a href="/login">Login</a>
-                       </div>
-                  </li>
-                  <li className="nav-hover">
-                     <div className="login-templeta">
-                        <a href="#">Register</a>
-                       </div>
-                  </li>
-                </ul>
-
-              </nav>
-            </div>
-          </div>
-        </div>
+        {/* Headers */}
+        <Header/>
 
         <div className="baner-header">
           <div className="container">
@@ -274,74 +255,9 @@ export function Home() {
         </div>
       </div>
 
-      <hr className="mt-5" style={{ border: "1px solid #5a606b" }}></hr>
-      <div className="footer-container">
-
-        <div className="container">
-
-
-          <div className="row">
-            <div className="bg"></div>
-            <div className="bg bg2"></div>
-            <div className="bg bg3"></div>
-            <div className="col-md-5 col-sm-6" style={{ color: "#5a606b" }}>
-              <h3>THÔNG TIN</h3>
-
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
-                perspiciatis? Numquam, enim illo voluptatum neque facere aut sed ut
-                dolore nihil? Nulla sit, recusandae ea tenetur rerum deserunt sequi
-                earum?
-              </p>
-              <div className="button">
-                <div className="icon">
-                  <i className="fab fa-facebook"></i>
-                </div>
-                <span>Facebook</span>
-              </div>
-              <div className="button">
-                <div className="icon">
-                  <i className="fab fa-instagram"></i>
-                </div>
-                <span>Instagram</span>
-              </div>
-              <div className="button">
-                <div className="icon">
-
-                  <i className="fab fa-twitter"></i>
-                </div>
-                <span>Twitter</span>
-              </div>
-
-              <div className="button">
-                <div className="icon">
-                  <i className="fab fa-youtube"></i>
-                </div>
-                <span>Youtube</span>
-              </div>
-            </div>
-            <div className="col-md-7 col-sm-6" style={{ color: "#5a606b" }}>
-              <div className="main-top">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-12">
-                      <div className="bg-blog">
-                        <div className="pic-ctn bore">
-                          {images}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-
-
+      {/* Footer */}
+      <Footer/>
+     
     </div>
   );
 }

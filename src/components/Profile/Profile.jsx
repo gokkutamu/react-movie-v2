@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import "./Profile.css";
+
+import { Footer } from "../Footer/Footer";
+import { Header } from "../Header/Header";
 export function Profile() {
     const logo = require('./img/caheo.png');
     const [profile, setProfile] = useState([]);
@@ -29,42 +32,8 @@ export function Profile() {
 
         <div className="container">
             <div className="header">
-                <div className="main-container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <nav>
-                                <ul className="menu">
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/">Home</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/search">Search</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/login">Login</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="#">Register</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="#" >Profile</a>
-                                        </div>
-                                    </li>
-                                </ul>
-
-                            </nav>
-                        </div>
-                    </div>
-                </div>
+              
+             <Header/>
 
             </div>
             <div className="profile">
@@ -97,6 +66,7 @@ export function Profile() {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
 
     );
