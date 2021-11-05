@@ -16,7 +16,7 @@ export function EditUser({ match }) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    let [version, setVersion] = useState("");
     useEffect(() => {
         const fetchAPI = async () => {
             setUserById(await userById(params.id));
@@ -29,12 +29,14 @@ export function EditUser({ match }) {
     function handleSubmit(event) {
         event.preventDefault();
         console.log(name, email, password);
-        axios.post(`http://localhost/Passport/public/api/auth/updateUser/${params.id}`, { name, email, password },
+        console.log(version);
+        version = arrayUserByID.version;
+        axios.post(`http://localhost/Passport/Passport/public/api/auth/updateUser/${params.id}`, { name, email, password, version },
             {
                 headers: {
                     'Content-Type': 'application/json',
                     "X-Requested-With": "XMLHttpRequest",
-                    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTAxM2Y5YmEzYmI3MTViMWJlNmMzNzUwNjA3NTc0M2E1MmI3OTVhN2FjNWQwYmI3NjcwZDUxNTAxY2FjZDc0ZGY4ZDZmODc5MzJmYmUyY2EiLCJpYXQiOjE2MzU5NDc3NzUsIm5iZiI6MTYzNTk0Nzc3NSwiZXhwIjoxNjY3NDgzNzc1LCJzdWIiOiIxMyIsInNjb3BlcyI6W119.TCruQ-wO7DUvfykNYzo1rhG4xqFtEyGtPTbN4EIfNr2kknsvTjmWHZRW1GvzrCytG5u3EoBcgt5aAYoKAJfnV0Sfft43qAejpKdt_2L3zecECOtogVcoN8GffgoT_OMP3jLV5qUnf9GqnMxTAhCiVuhIc0AGcH4zvPrJALTYn9d-FEs5jLF4DaB76sQvPAidGJfJ5AR9i_W_2OoA8kAzWBSUBZkd9C1MclMM-gAHWsKRkAJtEuieNvDv8hKwPAv9VtaaSpWDd543hhzbF1gkTS5605wzYTq-gfIMwHhHr8tVjlPqFhVrR0F_rAiGfMOSxPfa-Lr9UKnJPBEg3JpSruNG9p_-o5SQfJgj24lgugx-tS030k0iRAlybisfVbuihYKJPvkfGOqi4e6CX3PmIIaeeodeoU2Q0U3yhJoObhXWzyIFY2GEdPQMNLlbqQx6XLlwDQiXLNve-sDaAwLnGoDkLDwdEU4pA65GJRw5QSB7bBRs4Ng9JpixWzFJ4ZLL5dObY0G4HwO_nHGlHhqEmNOFzf-B4H8i9ROOL_e7PfwkT2A_5MOQdY8UIVBt8N024pHKP_FY_sPGXCkmV9QQBTo2ICcIKNUHh0cVOmxOH8lp_pPw6CEW3jUL0elvSHKlq6LjKFlpae_1viFUa33DdNU4c-oRWL1t_Qpp05YmpR4"
+                    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzY2NjBjYTM4NzUzYWFmNWM4Y2JkNDhhZjUwMTNlOWNhMjVlN2RhODExODQzZjgyMTIxZDRkNjZhOGU1ZTU3OTQ4ODJkYzYyMmUxYTI2NjciLCJpYXQiOjE2MzYxMDYxNDcsIm5iZiI6MTYzNjEwNjE0NywiZXhwIjoxNjY3NjQyMTQ3LCJzdWIiOiIxNCIsInNjb3BlcyI6W119.L5Na64AyU4mYEJQuYa2C3TL8UvqrWkZibn3I6eCae8lSLUitehdpEko9KVm7rDtfAQvafIl5EflVg4fwc3ExmK5HYkdreF-toy-RhitoIyCBkQKF59cX6Vm93EIGMrt1xGwy-3IDaMlPtdZFt_gEYPKF0Ea7kp119QyMYw5efv9HgokWJ5n6YmclsCn7EGF3v6x_cWClFCkx9p7jzHxxVK_WJiz7yuq4mA72v0AqFiZl7TM841iqSnt6RW9LcUfokg24sCD5Yksvyji-zME_Rf7ebdr9EEPJDuScgduMqKjtXy40ZoMKeZblk5uJ195wyUg_zxV9R-4YAt7IKeDYYtDjH0U_5lLdZ_q8UMPtwGBkZxvdvFpXCy5_f92_1ugvdal-ihEN9IM7neiI8c83FAFaQQoR6SSKgfzCZ4yMKBhWM5XjvMhw-5BtyGoOY17-GTyZK6omRunzKLAiIs9dG_d4TUZb9bYXUoP1RH_YzqfI2DyHMXV7AkGETCY6GyVfrquX9frkFM-JFTNhu6nRu7-hmv3RXbsl63GKf7jKITj6PY6XspPN3JP76iJ_brJPtDpviyqZjxDpBG9QaKT8zdTPmr-UUEj_FUWUxdv12UYW-RUSn0FHhtxsyenzm4H0abGfhW1IZUtBKN39IMF--fpHDcPSomln5-4-jjQv6GI"
                 }
             })
             .then(res => {
@@ -43,8 +45,17 @@ export function EditUser({ match }) {
                 }
             })
             .catch(error => {
-                alert("Email Already Exist");
+                if (error.response.status == '422') {
+                    alert("Error Update");
+                    window.location.reload();
+
+                }
+                else {
+                    console.log(error);
+                    alert("Email Already Exist");
+                }
             });
+
     }
     return (
 
@@ -110,7 +121,7 @@ export function EditUser({ match }) {
             </div>
             <div className="Login">
                 <h2 className="name-login">Edit User</h2>
-                <Form onSubmit={handleSubmit}>
+                <Form method="GET" onSubmit={handleSubmit}>
                     <Form.Group size="lg" controlId="email">
                         <Form.Label >Name: &nbsp;</Form.Label>
                         <Form.Label> &nbsp; {arrayUserByID.name}</Form.Label>
@@ -137,6 +148,14 @@ export function EditUser({ match }) {
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group size="lg" controlId="version">
+                        <Form.Control
+                            type="text"
+                            style={{ display: "none" }}
+                            value={version}
+                            onChange={(e) => setVersion(e.target.value)}
                         />
                     </Form.Group>
                     <Button block size="lg" type="submit" >
