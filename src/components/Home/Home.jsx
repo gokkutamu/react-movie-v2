@@ -10,6 +10,8 @@ import {
 import RBCarousel from "react-bootstrap-carousel";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import '../Home/Aminition/Home.css';
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 export function Home() {
   const [nowPlaying, setNowPlaying] = useState([]);
@@ -137,6 +139,42 @@ export function Home() {
       <img src={i.poster} alt={i.title} className="pic" />
     );
   });
+  if (localStorage.getItem('myData') == '100') {
+    var list = document.getElementById("logout-user");
+    console.log(list);
+    if (list != null) {
+      list.innerHTML = "";
+    }
+  }
+  let history = useHistory();
+  function logout123(event) {
+    event.preventDefault();
+
+    axios.get('http://localhost/Passport/Passport/public/api/auth/logout', {
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': "Bearer " + localStorage.getItem('myData')
+      }
+    })
+      .then(res => {
+        if (res.status == 200) {
+          // history.push('/');
+          console.log('oki em tâm đen');
+          localStorage.setItem('myData', '');
+          if (localStorage.getItem('myData') === '') {
+            var list = document.getElementById("logout-user");
+            console.log(list);
+            if (list != null) {
+              list.innerHTML = "";
+            }
+          }
+        }
+      })
+      .catch(error => {
+        console.log(error.status);
+      });
+  }
 
   return (
 
@@ -147,17 +185,52 @@ export function Home() {
             <div className="col-md-12">
               <nav>
                 <ul className="menu">
-                  <li className="nav-hover"><a href="/">Home</a></li>
-                  <li className="nav-hover"><a href="/discover/tv">TV</a></li>
                   <li className="nav-hover">
-                     <div className="login-templeta">
-                        <a href="/login">Login</a>
-                       </div>
+                    <div className="login-templeta">
+                      <a href="/">Home</a>
+                    </div>
                   </li>
                   <li className="nav-hover">
-                     <div className="login-templeta">
-                        <a href="#">Register</a>
-                       </div>
+                    <div className="login-templeta">
+                      <a href="/discover/tv">TV</a>
+                    </div>
+                  </li>
+                  <li className="nav-hover">
+                    <div className="login-templeta">
+                      <a href="/treding">Treding</a>
+                    </div>
+                  </li>
+                  <li className="nav-hover">
+                    <div className="login-templeta">
+                      <a href="/search">Search</a>
+                    </div>
+                  </li>
+                  <li className="nav-hover">
+                    <div className="login-templeta">
+                      <a href="/profile">Profile</a>
+                    </div>
+                  </li>
+                  <li className="nav-hover">
+                    <div className="login-templeta">
+                      <a href="/login">Login</a>
+                    </div>
+                  </li>
+                  <div className="logout" id="logout-user">
+                    <li className="nav-hover" onClick={logout123}>
+                      <div className="login-templeta">
+                        <a href="#">Logout</a>
+                      </div>
+                    </li>
+                  </div>
+                  <li className="nav-hover">
+                    <div className="login-templeta">
+                      <a href="/dashboard">Dashboard</a>
+                    </div>
+                  </li>
+                  <li className="nav-hover">
+                    <div className="login-templeta">
+                      <a href="/register">Register</a>
+                    </div>
                   </li>
                 </ul>
 
@@ -345,3 +418,4 @@ export function Home() {
     </div>
   );
 }
+localStorage.setItem('myData', '100');
