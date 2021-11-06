@@ -23,7 +23,6 @@ h2.user-title {
   font-family: 'Dancing Script', serif;
   font-size: 50px;
   margin: 8px auto 33px;
-  max-width: 300px;
 }
 
 h2 small {
@@ -49,7 +48,7 @@ h2 small {
 }
 
 .responsive-table .table-header {
-  text-align: center;
+  /* text-align: center; */
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -108,7 +107,7 @@ h2 small {
 
 .custom-group-icon {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .custom-group-icon a {

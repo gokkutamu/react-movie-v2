@@ -4,16 +4,14 @@ import { useHistory } from "react-router-dom";
 
 export function Header() {
     let history = useHistory();
-    if (sessionStorage.getItem('myData') === '') {
+    if (sessionStorage.getItem('myData') === null || sessionStorage.getItem('myData') === '') {
         var list = document.getElementById("logout-user");
-        console.log(list);
         if (list != null) {
             list.innerHTML = "";
         }
     }
     function logout123(event) {
         event.preventDefault();
-
         axios.get('http://localhost/Passport/public/api/auth/logout', {
             headers: {
                 'Content-Type': 'application/json',
@@ -24,7 +22,6 @@ export function Header() {
             .then(res => {
                 if (res.status == 200) {
                     // history.push('/');
-                    console.log('oki em tâm đen');
                     sessionStorage.setItem('myData', '');
                     if (sessionStorage.getItem('myData') === '') {
                         var list = document.getElementById("logout-user");
