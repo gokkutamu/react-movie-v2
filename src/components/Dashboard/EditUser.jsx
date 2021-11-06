@@ -154,7 +154,7 @@ export function EditUser({ match }) {
                         <Form.Control
                             type="text"
                             style={{ display: "none" }}
-                            value={version}
+                            value= {version}
                             onChange={(e) => setVersion(e.target.value)}
                         />
                     </Form.Group>
