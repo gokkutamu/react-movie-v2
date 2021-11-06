@@ -25,8 +25,7 @@ export function Dashboard() {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' +
-                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDI3ZDQ3ZDY2YWNhNjc1ZDU3YzJjMWY4ZDNmMTdjOGVhYzFlNDU4ZjA5NTFlNjg3YzAzMjY3Yjk0MzgxNDgyYmIzM2QyMDdkZjdiMTcyYzkiLCJpYXQiOjE2MzYwMDg2MjAuODc0OTQ3LCJuYmYiOjE2MzYwMDg2MjAuODc0OTYsImV4cCI6MTY2NzU0NDYyMC44NjQ1MSwic3ViIjoiMTUiLCJzY29wZXMiOltdfQ.QaXYQucG2sutn_asck3pYhInt7Ha_a003i-abbRb7LBeT8NHI_izKMZwXfKnn9c7cv2F8e_lm2MzIY0GxAh0JhK25HpHkiY0uGYRgW6LF9H2HJh3l8yPT5A40uypQlDgPMtRtsVkLKwi9YzSDqOab7VFlcFZUHyT9TaIZ9CuejHayHtb4mXD8iMoOZhVc2VmGERa7ciA0ohiSevLm7w-wqsPhm7P8Kv6OQ26O7FfMdjwLpgHpS7VKwZ1iV_dYElnkgn_pNZ_OeH6U0E52m5J7_4F-3jCvuevY6MFgro3-8S3yGT7wiPWR5EqL4vSIbJgxchH3n6JAh8J42j1QY8IzX0OCEqzfxXB8nPKvl_VUq6ySwrMLCbpUZLUDR_KB8N9OPrpuQbuswB_Pac2BQ5RUEEMw1tkQdlU_-pBMnKQ0SL6__p4ukJoe2y5ghe6pzBFwLNsV_YyfPnyUa7e9A-3awDD2ZHXvM39DVtNO_G3m6_HaoYbdEbp7poKPF7yYsz7RbiPwGUdklppWMvbCdczTVIPCPaaYpDKo4-c9c0jLm5cHjU_EWWCS5xEW1jLzACIKYdICU3abF-hBApEk2NlNj4Zm6mi6XVUkgkvXhY7AFfnwb47LaK2UPqAmQNfYghWSpub7afU7asCHvDihXz8M8fq0Q_P_UOZax_c4lCeZYA"
+                    'Authorization': 'Bearer ' + sessionStorage.getItem("myData")
                 },
                 body: JSON.stringify({ id: id })
             })

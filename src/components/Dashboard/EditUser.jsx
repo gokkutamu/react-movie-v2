@@ -38,7 +38,7 @@ export function EditUser({ match }) {
                 headers: {
                     'Content-Type': 'application/json',
                     "X-Requested-With": "XMLHttpRequest",
-                    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzY2NjBjYTM4NzUzYWFmNWM4Y2JkNDhhZjUwMTNlOWNhMjVlN2RhODExODQzZjgyMTIxZDRkNjZhOGU1ZTU3OTQ4ODJkYzYyMmUxYTI2NjciLCJpYXQiOjE2MzYxMDYxNDcsIm5iZiI6MTYzNjEwNjE0NywiZXhwIjoxNjY3NjQyMTQ3LCJzdWIiOiIxNCIsInNjb3BlcyI6W119.L5Na64AyU4mYEJQuYa2C3TL8UvqrWkZibn3I6eCae8lSLUitehdpEko9KVm7rDtfAQvafIl5EflVg4fwc3ExmK5HYkdreF-toy-RhitoIyCBkQKF59cX6Vm93EIGMrt1xGwy-3IDaMlPtdZFt_gEYPKF0Ea7kp119QyMYw5efv9HgokWJ5n6YmclsCn7EGF3v6x_cWClFCkx9p7jzHxxVK_WJiz7yuq4mA72v0AqFiZl7TM841iqSnt6RW9LcUfokg24sCD5Yksvyji-zME_Rf7ebdr9EEPJDuScgduMqKjtXy40ZoMKeZblk5uJ195wyUg_zxV9R-4YAt7IKeDYYtDjH0U_5lLdZ_q8UMPtwGBkZxvdvFpXCy5_f92_1ugvdal-ihEN9IM7neiI8c83FAFaQQoR6SSKgfzCZ4yMKBhWM5XjvMhw-5BtyGoOY17-GTyZK6omRunzKLAiIs9dG_d4TUZb9bYXUoP1RH_YzqfI2DyHMXV7AkGETCY6GyVfrquX9frkFM-JFTNhu6nRu7-hmv3RXbsl63GKf7jKITj6PY6XspPN3JP76iJ_brJPtDpviyqZjxDpBG9QaKT8zdTPmr-UUEj_FUWUxdv12UYW-RUSn0FHhtxsyenzm4H0abGfhW1IZUtBKN39IMF--fpHDcPSomln5-4-jjQv6GI"
+                    "Authorization": "Bearer " + sessionStorage.getItem("myData")
                 }
             })
             .then(res => {
