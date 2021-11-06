@@ -33,7 +33,7 @@ const discoverUrl = `${url}/tv/airing_today`;
 const treddingUrl = `${url}/trending/all/day`;
 
 //DB 
-const db = 'http://localhost/Passport/Passport/public/api/auth/list-user';
+const db = 'http://localhost/Passport/Passport/public/api/auth/getUsers';
 
 
 // //DB 

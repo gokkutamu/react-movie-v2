@@ -6,21 +6,17 @@ import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import Swal from 'sweetalert2'
 
-import {
-    addUser
 
-} from "../../server";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 
-const db = 'http://localhost/Api_react_movie/public/api/list-user';
 export function Register() {
 
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [password_confirmation, setConfirmPassword] = useState("");
-    const [addUserMovie, setUser] = useState([]);
+    
 
     useEffect(() => {
         const fetchAPI = async () => {
@@ -36,14 +32,12 @@ export function Register() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        // let register = async () => { 
+        
         const form = new FormData();
         form.append("name", name);
         form.append("email", email);
         form.append("password", password);
-        //     let repo = await axios.post('http://localhost/Api_react_movie/public/api/list-user', form);
-        //     console.log(repo.data);
-        // }
+      
         if (password == password_confirmation) {
             axios.post("http://localhost/Passport/public/api/auth/signup", { name, email, password, password_confirmation })
                 .then(res => {

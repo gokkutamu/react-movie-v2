@@ -10,6 +10,10 @@ import dateFormat from 'dateformat';
 import Axios from "axios";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
+// Thư viện Bên thứ 3
+import createDOMPurify from "dompurify";
+const DOMPurify = createDOMPurify(window);
+
 export function Dashboard() {
     const split = (params) => {
         var test1 = params.slice(11, 13);
@@ -61,8 +65,8 @@ export function Dashboard() {
         return (
             <li className="table-row" key={c.id}>
                 <div className="col col-1" data-label="Job Id">#</div>
-                <div className="col col-3" data-label="Customer Name">{c.name}</div>
-                <div className="col col-2" data-label="Amount">{c.email}</div>
+                <div className="col col-3" data-label="Customer Name">dangerouslySetInnerHTML={{_html:DOMPurify.sanitize(c.name)}}</div>
+                <div className="col col-2" data-label="Amount">dangerouslySetInnerHTML={{_html:DOMPurify.sanitize(c.email)}}</div>
                 <div className="col col-2" data-label="Payment Status">{dateFormat(c.created_at, "dd/mm/yyyy")}</div>
                 <div className="col col-2" data-label="Payment Status">{dateFormat(c.updated_at, "dd/mm/yyyy")}</div>
                 <div className="col col-2 custom-group-icon" data-label="Payment Status">
