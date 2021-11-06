@@ -19,7 +19,8 @@ import { Sessions_Episode } from "./components/Session-episode/sesions-episode";
 import { Episode } from "./components/Episodes/Episode";
 import { Register } from "./components/Account/Register"
 import { Logout }  from "./components/Account/Logout";
-import { Profile } from "./components/Profile/Profile";
+import { Login }  from "./components/Account/Login";
+import { Profile } from "./components/Profile/Profiles";
 import { Profiles } from "./components/Person/Proflie";
 
 export function App() {

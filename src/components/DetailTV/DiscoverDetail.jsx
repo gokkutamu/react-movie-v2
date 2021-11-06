@@ -15,7 +15,6 @@ import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
 import "../Home/Aminition/Home.css";
 import "../Style/MovieDetail.css";
-import { Footer } from "../Footer/Footer";
 import dateFormat from 'dateformat';
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
