@@ -6,6 +6,7 @@ import {
   fetchSimilarMovie,
   fetchMovieKeyword,
   fetchKeyDetail,
+  fetchMovieByGenre
 
 } from "../../server";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
@@ -16,6 +17,8 @@ import { Link } from "react-router-dom";
 import "../Home/Aminition/Home.css";
 import "../Style/MovieDetail.css";
 import dateFormat from 'dateformat';
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
 
 
 export function MovieDetail({ match }) {
@@ -28,6 +31,7 @@ export function MovieDetail({ match }) {
   const [similarMovie, setSimilarMovie] = useState([]);
   const [keyword, setKeyword] = useState([]);
   const [detailKey, setKeyDetail] = useState([]);
+  const [movieByGenre, setMovieByGenre] = useState([]);
   useEffect(() => {
     const fetchAPI = async () => {
       setDetail(await fetchMovieDetail(params.id));
@@ -36,6 +40,7 @@ export function MovieDetail({ match }) {
       setSimilarMovie(await fetchSimilarMovie(params.id));
       setKeyword(await fetchMovieKeyword(params.id))
       setKeyDetail(await fetchKeyDetail(params.keyword_id));
+      setMovieByGenre(await fetchMovieByGenre(28));
     };
 
     fetchAPI();
@@ -139,65 +144,16 @@ export function MovieDetail({ match }) {
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   }
+  // Lấy các tấm hình:
+  const images = movieByGenre.slice(0, 12).map((i) => {
+    return (
+      <img src={i.poster} alt={i.title} className="pic" />
+    );
+  });
   return (
     <div className="main-container">
       <div className="hearder">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <nav>
-                <ul className="menu">
-                  <li className="nav-hover">
-                    <div className="login-templeta">
-                      <a href="/">Home</a>
-                    </div>
-                  </li>
-                  <li className="nav-hover">
-                    <div className="login-templeta">
-                      <a href="/discover/tv">TV</a>
-                    </div>
-                  </li>
-                  <li className="nav-hover">
-                    <div className="login-templeta">
-                      <a href="/treding">Treding</a>
-                    </div>
-                  </li>
-                  <li className="nav-hover">
-                    <div className="login-templeta">
-                      <a href="/search">Search</a>
-                    </div>
-                  </li>
-                  <li className="nav-hover">
-                    <div className="login-templeta">
-                      <a href="/profile">Profile</a>
-                    </div>
-                  </li>
-                  <li className="nav-hover">
-                    <div className="login-templeta">
-                      <a href="/login">Login</a>
-                    </div>
-                  </li>
-                  <li className="nav-hover">
-                    <div className="login-templeta">
-                      <a href="/logout">Logout</a>
-                    </div>
-                  </li>
-                  <li className="nav-hover">
-                    <div className="login-templeta">
-                      <a href="/dashboard">Dashboard</a>
-                    </div>
-                  </li>
-                  <li className="nav-hover">
-                    <div className="login-templeta">
-                      <a href="/register">Register</a>
-                    </div>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-
-          </div>
-        </div>
+        <Header/>
       </div>
       {/* New detail movie */}
 
@@ -268,7 +224,7 @@ export function MovieDetail({ match }) {
                         Ngày phát hành:
                       </div>
                       <div className="transformers-right">
-                        {dateFormat(detail.release_date)}
+                        {dateFormat(detail.release_date, "dd/mm/yyyy")}
                       </div>
                     </li>
                     <li>
@@ -293,12 +249,16 @@ export function MovieDetail({ match }) {
                 </div>
               </div>
               <div className="div-keyword">
-                <div className="transformers-left-top">
-                  Keywords
+                <div className="row">
+                  <div className="col-md-12 col-sm-8">
+                    <div className="transformers-left-top block--title">
+                      Keywords
+                    </div>
+                    <ul>
+                      {keywrrord}
+                    </ul>
+                  </div>
                 </div>
-                <ul>
-                  {keywrrord}
-                </ul>
               </div>
             </div>
           </div>
@@ -310,7 +270,7 @@ export function MovieDetail({ match }) {
           <div className="row">
             <div className="col-md-12">
               <div className="person">
-                <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Diễn viên</p>
+                <p className="block--title">Diễn viên</p>
                 <div className="knowwn">
                   <div className="row">
                     <div className="list-person list-sroll">
@@ -325,15 +285,15 @@ export function MovieDetail({ match }) {
         </div>
       </div>
       {/* Danh sách phim tương tự */}
-      <div className="person-list">
+      <div className="similar-list--block">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="person">
-                <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Các phim liên quan</p>
+              <div>
+                <p className="similar-film--title block--title">Các phim liên quan</p>
                 <div className="knowwn">
                   <div className="row">
-                    <div className="list-similar list-sroll">
+                    <div className="list-similar list-similar--detail__film list-sroll">
                       {similarMovieList}
                     </div>
                   </div>
@@ -345,85 +305,7 @@ export function MovieDetail({ match }) {
         </div>
       </div>
       {/* Footer */}
-      <div className="footer">
-        <hr className="mt-5" style={{ borderTop: "5px solid #5a606b" }}></hr>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 col-sm-6">
-              <h3>ABOUT ME</h3>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-                error earum perspiciatis praesentium sint ipsum provident blanditiis
-                pariatur necessitatibus voluptas, cum, atque iste eligendi autem,
-                culpa cupiditate placeat facilis repellat.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
-                perspiciatis? Numquam, enim illo voluptatum neque facere aut sed ut
-                dolore nihil? Nulla sit, recusandae ea tenetur rerum deserunt sequi
-                earum?
-              </p>
-              <div className="button">
-                <div className="icon">
-                  <i className="fab fa-facebook"></i>
-                </div>
-                <span>Facebook</span>
-              </div>
-              <div className="button">
-                <div className="icon">
-
-                  <i className="fab fa-instagram"></i>
-
-                </div>
-                <span>Instagram</span>
-              </div>
-              <div className="button">
-                <div className="icon">
-
-                  <i className="fab fa-twitter"></i>
-                </div>
-                <span>Twitter</span>
-              </div>
-
-              <div className="button">
-                <div className="icon">
-                  <i className="fab fa-youtube"></i>
-                </div>
-                <span>Youtube</span>
-              </div>
-            </div>
-            <div className="col-md-4 col-sm-6">
-              <h3>KEEP IN TOUCH</h3>
-              <ul className="list-unstyled">
-                <li>
-                  <p>
-                    <strong>
-                      <i className="fas fa-map-marker-alt"></i> Address:
-                    </strong>{" "}
-                    city, state, country
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>
-                      <i className="fas fa-map-marker-alt"></i> Phone:
-                    </strong>{" "}
-                    +01 00 00 00
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <strong>
-                      <i className="fas fa-envelope"></i> Email:
-                    </strong>{" "}
-                    info@infomail.com
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+     <Footer/>
     </div>
   );
 }

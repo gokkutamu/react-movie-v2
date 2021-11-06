@@ -6,8 +6,8 @@ import {
 } from "../../server";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Link } from "react-router-dom";
-import dateFormat from 'dateformat';
 import "./Episode.css";
+import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 export function Episode({ match }) {
 
@@ -55,60 +55,7 @@ export function Episode({ match }) {
         <div className="container">
             {/* Hearder */}
             <div className="main-container">
-                <div className="row">
-                    <div className="col-md-12">
-                        <nav>
-                            <ul className="menu">
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/">Home</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/discover/tv">TV</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/treding">Treding</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/search">Search</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/profile">Profile</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/login">Login</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/logout">Logout</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/dashboard">Dashboard</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/register">Register</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-
-                </div>
+               <Header/>
             </div>
             <div className="baner-seasons">
                 <div className="row">
@@ -118,11 +65,11 @@ export function Episode({ match }) {
                         </div>
                     </div>
                     <div className="col-md-6">
-                        <div className="title-name-tv">
+                        <div className="title-episode-numbers">
                             <h3 >Seasons {detail.number_of_seasons}</h3>
                         </div>
                         <div className="back-icon">
-                            <a href={`/tv/${detail.id}`} style={{ color: "black", fontSize: 15 }}>
+                            <a href={`/tv/${detail.id}/season/${detail.season_number}`} style={{ color: "white ", fontSize: 15 }}>
                                 <i className="fa fa-backward" aria-hidden="true" style={{ fontSize: 10 }}></i>
                                 <span style={{ margin: 10 }}>Quay lại</span>
                             </a>
@@ -142,7 +89,7 @@ export function Episode({ match }) {
                     </div>
                 </div>
             </div>
-            <Footer></Footer>
+            <Footer/>
         </div>
     );
 }

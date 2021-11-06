@@ -324,7 +324,7 @@ export const fetchTVDetail = async (id) => {
         const { data } = await axios.get(`${tvUrl}/${id}`, {
             params: {
                 api_key: apiKey,
-                language: 'en_US'
+                language: 'vi-VN'
             }
         });
         return data;
@@ -493,13 +493,16 @@ export const fetchSession_episode = async (id , season_number) => {
         const { data } = await axios.get(`${tvUrl}/${id}/season/${season_number}`, {
             params: {
                 api_key: apiKey,
-                language: 'en_US'
+                language: 'en_US',
+
             }
         });
+        const image = 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/No_image_available_400_x_600.svg/682px-No_image_available_400_x_600.svg.png';
         const modifiedData = data['episodes'].map((c) => ({
             id: c['id'],
             name: c['name'],
             overview: c['overview'],
+            null: image,
             poster_path: c['still_path'],
             air_date: c['air_date'],
             season_number: c['season_number'],
@@ -507,7 +510,9 @@ export const fetchSession_episode = async (id , season_number) => {
         }))
 
         return modifiedData;
-    } catch (error) { }
+    } catch (error) {
+        console.log('ds')
+     }
 }
 // episode
 export const fetchepisode = async (id , season_number,episode_number ) => {
@@ -536,7 +541,7 @@ export const fetchTVAriting = async () => {
         const { data } = await axios.get(discoverUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                language: 'vi-VN',
                 page: 1,
             }
         })
@@ -562,7 +567,7 @@ export const fetchDiscover = async (genre_ids) => {
         const { data } = await axios.get(tvsUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                language: 'vi-VN',
                 page: 1,
                 with_genres: genre_ids
             }
@@ -587,7 +592,7 @@ export const fetchOnTV = async () => {
         const { data } = await axios.get(onTvUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                language: 'vi-VN',
                 page: 1
             }
         })
@@ -623,14 +628,13 @@ export const fetchTVGenre = async () => {
         return modifiedData;
     } catch (error) { }
 }
-export const fetchTVPopular = async (genre_ids) => {
+export const fetchTVPopular = async () => {
     try {
         const { data } = await axios.get(tvPopular, {
             params: {
                 api_key: apiKey,
                 language: 'vi-VN',
                 page: 1,
-                with_genres: genre_ids
             }
         })
         const posterUrl = 'https://image.tmdb.org/t/p/original/';
@@ -708,7 +712,7 @@ export const fetchTredding = async () => {
         const { data } = await axios.get(treddingUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                language: 'vi-VN',
                 page: 1,
               
             }
@@ -716,9 +720,11 @@ export const fetchTredding = async () => {
         const posterUrl = 'https://image.tmdb.org/t/p/original/';
         const modifiedData = data['results'].map((m) => ({
             id: m['id'],
+            tv_id: m['tv_id'],
             backPoster: posterUrl + m['backdrop_path'],
             popularity: m['popularith'],
-            title: m['name'],
+            title: m['title'],
+            name: m['name'],
             poster: posterUrl + m['poster_path'],
             overview: m['overview'],
             rating: m['vote_average'],

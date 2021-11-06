@@ -12,6 +12,8 @@ import "../Home/Aminition/Home.css";
 import '../Person/Style.css';
 
 import InfiniteCarousel from "react-leaf-carousel";
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
 
 export function Person({ match }) {
     let params = match.params;
@@ -99,57 +101,7 @@ export function Person({ match }) {
         <div className="top-header">
             <div className="container">
                 <div className="row">
-                    <div className="col-md-12">
-                        <nav>
-                            <ul className="menu">
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/">Home</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/discover/tv">TV</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/treding">Treding</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/search">Search</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/profile">Profile</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/login">Login</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/logout">Logout</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/dashboard">Dashboard</a>
-                                    </div>
-                                </li>
-                                <li className="nav-hover">
-                                    <div className="login-templeta">
-                                        <a href="/register">Register</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+                   <Header/>
 
                 </div>
                 <div className="detail-pofile">
@@ -162,7 +114,7 @@ export function Person({ match }) {
                                 <div className="face back"></div>
                             </div>
                             <div className="button-images">
-                                <a href={`/persons/${detail.id}/images/profiles`} className="profile-button">Profiles</a>
+                                <a href={`/persons/${detail.id}/images/profiles`} className="profile">Profile</a>
                             </div>
                         </div>
                         <div className="col-md-8">
@@ -246,7 +198,7 @@ export function Person({ match }) {
                     </div>
                 </div>
             </div>
-
+            <Footer/>
         </div>
 
     );

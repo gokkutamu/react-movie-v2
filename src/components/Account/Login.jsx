@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import axios from 'axios';
 import "./Login/Login.css";
 import { useHistory } from "react-router-dom";
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
 
 export function Login() {
     const [email, setEmail] = useState("");
@@ -53,62 +55,7 @@ export function Login() {
 
         <div className="main-container">
             <div className="header">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <nav>
-                                <ul className="menu">
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/">Home</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/discover/tv">TV</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/treding">Treding</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/search">Search</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/profile">Profile</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/login">Login</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/logout">Logout</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/dashboard">Dashboard</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/register">Register</a>
-                                        </div>
-                                    </li>
-                                </ul>
-
-                            </nav>
-                        </div>
-                    </div>
-                </div>
+              <Header/>
 
             </div>
             <div className="Login">
@@ -136,6 +83,7 @@ export function Login() {
                     </Button>
                 </Form>
             </div>
+            <Footer/>
         </div>
 
     );

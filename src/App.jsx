@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import { Home } from "./components/Home/Home";
-import { Login } from "./components/Account/Login";
 import { Person } from "./components/Person/Person";
 
 import { DiscoverDetail } from "./components/DetailTV/DiscoverDetail";
@@ -10,21 +9,18 @@ import { DiscoverDetail } from "./components/DetailTV/DiscoverDetail";
 //TV
 import { Discover } from "./components/TV/Discover";
 import {MovieDetail} from "./components/DetailMovie/MovieDetail";
-
 import Search from "./components/Search/Search";
 import { Treding } from "./components/Treding/Treding";
 import { Dashboard } from "./components/Dashboard/Dashboard";
-
+import { EditUser } from "./components/Dashboard/EditUser";
 import { Keyword } from "./components/DetailMovie/Keyword";
-
 import { Seasons } from "./components/Session/Seasons";
 import { Sessions_Episode } from "./components/Session-episode/sesions-episode";
 import { Episode } from "./components/Episodes/Episode";
-
 import { Register } from "./components/Account/Register"
 import { Logout }  from "./components/Account/Logout";
-import { Profile } from "./components/Profile/Profiles";
-import { EditUser } from "./components/Dashboard/EditUser";
+import { Profile } from "./components/Profile/Profile";
+import { Profiles } from "./components/Person/Proflie";
 
 export function App() {
   return (
@@ -46,7 +42,7 @@ export function App() {
         <Route path="/tv/:id/season/:season_number/episode/:episode_number" component={Episode} exact />
 
         <Route path="/person/:id" component={Person} />
-        <Route path="/persons/:id/images/profiles" component={Profile} />
+        <Route path="/persons/:id/images/profiles" component={Profiles} />
 
         <Route path="/register" component={Register} exact />
         <Route path="/logout" component={Logout} exact />

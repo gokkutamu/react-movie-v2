@@ -9,6 +9,8 @@ import {
     userById
 
 } from "../../server";
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
 
 export function EditUser({ match }) {
     let params = match.params;
@@ -61,62 +63,7 @@ export function EditUser({ match }) {
 
         <div className="main-container">
             <div className="header">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <nav>
-                                <ul className="menu">
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/">Home</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/discover/tv">TV</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/treding">Treding</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/search">Search</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/profile">Profile</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/login">Login</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/logout">Logout</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/dashboard">Dashboard</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/register">Register</a>
-                                        </div>
-                                    </li>
-                                </ul>
-
-                            </nav>
-                        </div>
-                    </div>
-                </div>
+               <Header/>
 
             </div>
             <div className="Login">
@@ -163,6 +110,7 @@ export function EditUser({ match }) {
                     </Button>
                 </Form>
             </div>
+            <Footer/>
         </div>
 
     );

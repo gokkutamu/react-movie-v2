@@ -6,7 +6,7 @@ import {
     fetchSessionTV,
     fetchTVRecommendations,
     fetchSimilarTV,
-
+    fetchMovieByGenre
 } from "../../server";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Modal } from "react-bootstrap";
@@ -17,6 +17,8 @@ import "../Home/Aminition/Home.css";
 import "../Style/MovieDetail.css";
 import { Footer } from "../Footer/Footer";
 import dateFormat from 'dateformat';
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
 
 export function DiscoverDetail({ match }) {
     let params = match.params;
@@ -28,7 +30,7 @@ export function DiscoverDetail({ match }) {
     const [sessionTV, setSession] = useState([]);
     const [Recommendations, setRecommendations] = useState([]);
     const [SimilarTV, setSimilar] = useState([]);
-
+    const [movieByGenre, setMovieByGenre] = useState([]);
     useEffect(() => {
         const fetchAPI = async () => {
             setDetail(await fetchTVDetail(params.id));
@@ -37,6 +39,7 @@ export function DiscoverDetail({ match }) {
             setSession(await fetchSessionTV(params.id));
             setRecommendations(await fetchTVRecommendations(params.id));
             setSimilar(await fetchSimilarTV(params.id));
+            setMovieByGenre(await fetchMovieByGenre(28));
         };
         fetchAPI();
     }, [params.id]);
@@ -155,35 +158,18 @@ export function DiscoverDetail({ match }) {
         return (
             <div className="col-md-2 pogss" key={index}>
 
-                <Link to={`/tv/${c.id}`}>
+                <Link to={`/tv/${c.id}`} style={{ display: "block"}}>
                     <img
-                        className="img-Recommendations"
+                        className="img-Recommendations"  style={{width: "100%", height: "165px", borderRadius: "18px"}}
                         src={c.backdrop}
                         alt={c.name}
-
                     />
                 </Link>
                 <div className="name">
-                    <p>{c.name}</p>
-                    <p>
+                    <p style={{ fontWeight: "600", textAlign: "center", fontSize: "14px"}}>{c.name}</p>
+                    {/* <p>
                         {c.vote_average} %
-                    </p>
-                </div>
-                <div className="overlay-Recommendations">
-                    <div className="name2">
-                        {c.first_air_date}
-                    </div>
-                    <div className="icon">
-                        <span>
-                            <i className="fa fa-star" aria-hidden="true"></i>
-                        </span>
-                        <span>
-                            <i className="fa fa-heart" aria-hidden="true"></i>
-                        </span>
-                        <span>
-                            <i className="fa fa-share-alt" aria-hidden="true"></i>
-                        </span>
-                    </div>
+                    </p> */}
                 </div>
             </div>
         );
@@ -209,74 +195,31 @@ export function DiscoverDetail({ match }) {
             </div>
         );
     });
+    // Lấy các tấm hình:
+    const images = movieByGenre.slice(0, 12).map((i) => {
+        return (
+            <img src={i.poster} alt={i.title} className="pic" />
+        );
+    });
+    let myInlineStyle = {
+        backgroundImage: `url(http://image.tmdb.org/t/p/original/${detail.backdrop_path})`,
+        backgroundPosition: "right 2px top",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+    }
     return (
         <div className="main-container">
 
             <div className="hearder">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <nav>
-                                <ul className="menu">
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/">Home</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/discover/tv">TV</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/treding">Treding</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/search">Search</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/profile">Profile</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/login">Login</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/logout">Logout</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/dashboard">Dashboard</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/register">Register</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-
-                    </div>
-                </div>
+               <Header/>
             </div>
 
             {/* Chi tiết phim */}
-            <div className="movie-trailer">
+            <div className="movie-trailer" style={myInlineStyle}>
                 <div className="container">
                     <div className="transformers-box">
                         <div className="row desc-film">
-                            <div className="col-lg-5">
+                            <div className="col-lg-6">
                                 <div className="transformers-content">
                                     <MoviePalyerModal
                                         show={isOpen}
@@ -298,19 +241,19 @@ export function DiscoverDetail({ match }) {
                                                 style={{ fontSize: 95, color: "#f4c10f", cursor: "pointer" }}
                                             ></i>
                                         </div>
-                                        <div
-                                            className="carousel-caption"
-                                            style={{ textAlign: "center", fontSize: 40 }}
-                                        >
-                                            {detail.name}
-                                        </div>
+                                        {/* <div
+                      className="carousel-caption"
+                      style={{ textAlign: "center", fontSize: 40 }}
+                    >
+                      {detail.name}
+                    </div> */}
                                     </div>
                                 </div>
 
                             </div>
                             <div className="col-lg-6">
                                 <div className="transformers-content">
-                                    <h2>{detail.original_title}</h2>
+                                    <h2>{detail.name}</h2>
                                     <ul className="list-inline">{genresList}</ul>
                                     <ul>
                                         <li>
@@ -373,7 +316,8 @@ export function DiscoverDetail({ match }) {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="person">
-                                <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Phần hiện tại</p>
+                                {/* <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Phần hiện tại</p> */}
+                                <p className="block--title">Phần hiện tại</p>
                             </div>
                             <div className="person-session">
                                 {listSession}
@@ -387,11 +331,12 @@ export function DiscoverDetail({ match }) {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <div className="recommendations">
-                                <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Danh sách khuyến nghị</p>
+                            <div className="recommendations" style={{overflow: "hidden"}}>
+                                <p className="block--title">Danh sách khuyến nghị</p>
+                                {/* <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Danh sách khuyến nghị</p> */}
                                 <div className="knowwn">
                                     <div className="row">
-                                        <div className="list-recommendations list-sroll hover-recommend">
+                                        <div className="list-recommendations list-sroll hover-recommend" style={{gap:0}}>
                                             {listRecommendations}
                                         </div>
                                     </div>
@@ -408,7 +353,8 @@ export function DiscoverDetail({ match }) {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="person">
-                                <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Các phim liên quan</p>
+                                <p className="block--title">Các phim liên quan</p>
+                                {/* <p style={{ color: "white", fontWeight: "bolder", margin: "20px auto" }}>Các phim liên quan</p> */}
                                 <div className="knowwn">
                                     <div className="row">
                                         <div className="list-similar list-sroll">
@@ -423,8 +369,7 @@ export function DiscoverDetail({ match }) {
                 </div>
             </div>
             {/* Footer */}
-            <Footer></Footer>
-
+            <Footer/>
         </div>
     );
 }
