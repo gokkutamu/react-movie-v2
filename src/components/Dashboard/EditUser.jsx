@@ -9,6 +9,7 @@ import {
     userById
 
 } from "../../server";
+import { Header } from "../Header/Header";
 
 export function EditUser({ match }) {
     let params = match.params;
@@ -53,33 +54,7 @@ export function EditUser({ match }) {
     return (
 
         <div className="main-container">
-            <div className="header">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <nav>
-                                <ul className="menu">
-                                    <li className="nav-hover"><a href="/">Home</a></li>
-                                    <li className="nav-hover"><a href="/tredding">Treding Movie</a></li>
-                                    <li className="nav-hover"><a href="/search">Search</a></li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="/login">Login</a>
-                                        </div>
-                                    </li>
-                                    <li className="nav-hover">
-                                        <div className="login-templeta">
-                                            <a href="#">Register</a>
-                                        </div>
-                                    </li>
-                                </ul>
-
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            <Header/>
             <div className="Login">
                 <h2 className="name-login">Edit User</h2>
                 <Form onSubmit={handleSubmit}>
