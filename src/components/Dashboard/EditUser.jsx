@@ -9,6 +9,7 @@ import {
     userById
 
 } from "../../server";
+import { Header } from "../Header/Header";
 
 export function EditUser({ match }) {
     let params = match.params;

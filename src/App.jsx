@@ -7,7 +7,7 @@ import { DiscoverDetail } from "./components/DetailTV/DiscoverDetail";
 //TV
 import { Discover } from "./components/TV/Discover";
 import {MovieDetail} from "./components/DetailMovie/MovieDetail";
-// import Search from "./components/Search/Search";
+import Search from "./components/Search/Search";
 import { Treding } from "./components/Treding/Treding";
 import { Dashboard } from "./components/Dashboard/Dashboard";
 import { EditUser } from "./components/Dashboard/EditUser";
