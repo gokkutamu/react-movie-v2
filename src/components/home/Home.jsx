@@ -10,6 +10,8 @@ import {
 import RBCarousel from "react-bootstrap-carousel";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import '../Home/Aminition/Home.css';
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
@@ -139,6 +141,42 @@ export function Home() {
       <img src={i.poster} alt={i.title} className="pic" />
     );
   });
+  if (localStorage.getItem('myData') == '100') {
+    var list = document.getElementById("logout-user");
+    console.log(list);
+    if (list != null) {
+      list.innerHTML = "";
+    }
+  }
+  let history = useHistory();
+  function logout123(event) {
+    event.preventDefault();
+
+    axios.get('http://localhost/Passport/Passport/public/api/auth/logout', {
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': "Bearer " + localStorage.getItem('myData')
+      }
+    })
+      .then(res => {
+        if (res.status == 200) {
+          // history.push('/');
+          console.log('oki em tâm đen');
+          localStorage.setItem('myData', '');
+          if (localStorage.getItem('myData') === '') {
+            var list = document.getElementById("logout-user");
+            console.log(list);
+            if (list != null) {
+              list.innerHTML = "";
+            }
+          }
+        }
+      })
+      .catch(error => {
+        console.log(error.status);
+      });
+  }
 
   return (
 
@@ -261,3 +299,4 @@ export function Home() {
     </div>
   );
 }
+localStorage.setItem('myData', '100');

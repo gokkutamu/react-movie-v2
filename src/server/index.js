@@ -292,8 +292,8 @@ export const fetchKeyDetail = async (keyword_id) => {
             }
         });
         return data;
-    } catch (error) { 
-        
+    } catch (error) {
+
     }
 }
 
@@ -316,7 +316,7 @@ export const fetchMovieByKeyword = async (keyword_id) => {
             popularity: m['popularity'],
         }))
         return modifiedData;
-    } catch (error) {}
+    } catch (error) { }
 }
 // Chi tiet truyen hinh
 export const fetchTVDetail = async (id) => {
@@ -395,8 +395,8 @@ export const fetchPeople = async () => {
             id: m['id'],
             img: posterUrl + m['profile_path'],
             title: m['name'],
-            name:m['title'],
-            popularity:m['popularity'],
+            name: m['title'],
+            popularity: m['popularity'],
         }))
         return modifiedData;
     } catch (error) {
@@ -488,7 +488,7 @@ export const fetchSessionTV = async (number_count) => {
     } catch (error) { }
 }
 // Session_episode
-export const fetchSession_episode = async (id , season_number) => {
+export const fetchSession_episode = async (id, season_number) => {
     try {
         const { data } = await axios.get(`${tvUrl}/${id}/season/${season_number}`, {
             params: {
@@ -515,7 +515,7 @@ export const fetchSession_episode = async (id , season_number) => {
      }
 }
 // episode
-export const fetchepisode = async (id , season_number,episode_number ) => {
+export const fetchepisode = async (id, season_number, episode_number) => {
     try {
         const { data } = await axios.get(`${tvUrl}/${id}/season/${season_number}/episode/${episode_number}`, {
             params: {

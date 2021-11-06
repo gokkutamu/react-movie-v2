@@ -11,6 +11,13 @@ import Axios from "axios";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 export function Dashboard() {
+    const split =  (params) => {
+        var test1 = params.slice(11,13);
+        return test1; 
+    }
+    const itemId = (id) => {
+        return getRamdomString(6)+getRamdom(10000, 99999)+id+getRamdomString(8)+getRamdom(100, 999)
+    }
     const [users, setUsers] = useState([]);
     useEffect(() => {
         const fetchAPI = async () => {
@@ -21,7 +28,8 @@ export function Dashboard() {
 
     const deleteUser = (id) => {
         async function fetchDeleteUser(id) {
-            const repo = await Axios.get(`http://localhost:82/Passport/public/api/auth/destroy/${id}`, {
+            
+            const repo = await Axios.get(`http://localhost/Passport/public/api/auth/destroy/${id}`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -32,11 +40,24 @@ export function Dashboard() {
             })
             return repo.data;
         }
-        fetchDeleteUser(id)
+        fetchDeleteUser(id)          
             .then(result => {
-                const filterData = users.filter(item => item.id !== id)
+                var idOld = split(id);
+                const filterData = users.filter(item => item.id != idOld);
                 setUsers(filterData)
             })
+    }
+    const getRamdom = (min, max) => {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+    const getRamdomString = (length) => {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for (var i = 0; i < length; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
     }
     const getListUser = users.map((c) => {
         return (
@@ -53,7 +74,7 @@ export function Dashboard() {
                     <Link to={`/profile/${c.id}`}>
                         <i className="fa fa-eye" aria-hidden="true" title="View"></i>
                     </Link>
-                    <button className="btnDel" onClick={e => { deleteUser(c.id) }}>
+                    <button className="btnDel" onClick={e => { deleteUser(getRamdomString(6)+getRamdom(10000, 99999)+c.id+getRamdomString(8)+getRamdom(100, 999)) }}>
                         <i className="fa fa-eraser" aria-hidden="true" title="Delete"></i>
                     </button>
                 </div>
