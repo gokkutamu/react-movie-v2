@@ -23,7 +23,7 @@ export function Episode({ match }) {
         };
         fetchAPI();
     }, []);
-    //  Danh sách các tập phim
+    //  Danh sách các diễn viên của tập phim
     const listEpisode = Episodes.slice(0, 50).map((c, i) => {
         return (
             <div className="col-md-4 start-profile" key={i}>

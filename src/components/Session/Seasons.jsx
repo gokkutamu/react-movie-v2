@@ -5,7 +5,6 @@ import {
 } from "../../server";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Link } from "react-router-dom";
-// import "../Style.css";
 import dateFormat from 'dateformat';
 import "./Seasons.css";
 import { Header } from "../Header/Header";
@@ -46,7 +45,7 @@ export function Seasons({ match }) {
                             <h5>{c.name}</h5>
                             Năm {c.date} | Tập {c.episode_count}
                             <p>
-                                {c.name} của {detail.name} được công chiếu ngày {dateFormat(c.date,"dddd mmmm d yyyy")}
+                                {c.name} của {detail.name} được công chiếu ngày {dateFormat(c.date, "dddd mmmm d yyyy")}
                             </p>
                         </div>
                     </div>

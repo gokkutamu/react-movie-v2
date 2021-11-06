@@ -51,7 +51,7 @@ export function Sessions_Episode({ match }) {
                     </div>
                     <div className="col-md-3">
                         <div className="date">
-                            {(dateFormat(c.air_date,"dddd mmmm d yyyy"))}
+                            {(dateFormat(c.air_date, "dddd mmmm d yyyy"))}
                         </div>
                     </div>
                 </div>

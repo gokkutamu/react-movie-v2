@@ -45,7 +45,7 @@ export function Register() {
         //     console.log(repo.data);
         // }
         if (password == password_confirmation) {
-            axios.post("http://localhost/Passport/public/api/auth/signup", { name, email, password,password_confirmation })
+            axios.post("http://localhost/Passport/public/api/auth/signup", { name, email, password, password_confirmation })
                 .then(res => {
                     history.push('login');
                 })

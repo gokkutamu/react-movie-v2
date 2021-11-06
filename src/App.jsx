@@ -18,9 +18,9 @@ import { Seasons } from "./components/Session/Seasons";
 import { Sessions_Episode } from "./components/Session-episode/sesions-episode";
 import { Episode } from "./components/Episodes/Episode";
 import { Register } from "./components/Account/Register"
-import { Login }  from "./components/Account/Login";
 import { Logout }  from "./components/Account/Logout";
-import { Profile } from "./components/Profile/Profile";
+import { Login }  from "./components/Account/Login";
+import { Profile } from "./components/Profile/Profiles";
 import { Profiles } from "./components/Person/Proflie";
 
 export function App() {
@@ -34,7 +34,6 @@ export function App() {
 
         <Route path="/tredding" component={Treding} exact />
         <Route path="/search" component={Search} exact />
-        <Route path="/session/:id/seasons" component={Seasons} exact/>
         <Route path="/movie/:id" component={MovieDetail} />
         <Route path="/keyword/:keyword_id/movie" component={Keyword} />
 
