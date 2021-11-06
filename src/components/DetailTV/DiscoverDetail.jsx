@@ -299,11 +299,9 @@ export function DiscoverDetail({ match }) {
                                                     <h2>Chi tiết phim</h2>
                                                     <p>{detail.overview}</p>
                                                 </div>
-
                                             </div>
                                         </li>
                                     </ul>
-
                                 </div>
                             </div>
                         </div>
