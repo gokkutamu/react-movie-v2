@@ -11,7 +11,7 @@ import {
 
 } from "../../server";
 
-const db = 'http://localhost/Api_react_movie/public/api/list-user';
+const db = 'http://localhost/Passport/public/api/auth/signup';
 export function Register() {
 
     const [email, setEmail] = useState("");
@@ -28,7 +28,7 @@ export function Register() {
     }, []);
 
     function validateForm() {
-        return email.length > 0 && password.length > 0;
+        return name.length > 0 && email.length > 0 && password.length > 0;
     }
     let history = useHistory();
 
@@ -43,12 +43,12 @@ export function Register() {
         //     console.log(repo.data);
         // }
         if (password == password_confirmation) {
-            axios.post("http://localhost/Passport/public/api/auth/signup", { name, email, password,password_confirmation })
+            axios.post("http://localhost/Passport/public/api/auth/signup", { name, email, password, password_confirmation })
                 .then(res => {
                     history.push('login');
                 })
                 .catch(error => {
-                    if (error.response.status == "400") {
+                    if (error.response.status == "422") {
                         Swal.fire({
                             title: 'Error!',
                             text: 'Email already exists ',
