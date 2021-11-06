@@ -9,8 +9,6 @@ import {
     userById
 
 } from "../../server";
-import { Header } from "../Header/Header";
-import { Footer } from "../Footer/Footer";
 
 export function EditUser({ match }) {
     let params = match.params;
@@ -56,7 +54,30 @@ export function EditUser({ match }) {
 
         <div className="main-container">
             <div className="header">
-               <Header/>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <nav>
+                                <ul className="menu">
+                                    <li className="nav-hover"><a href="/">Home</a></li>
+                                    <li className="nav-hover"><a href="/tredding">Treding Movie</a></li>
+                                    <li className="nav-hover"><a href="/search">Search</a></li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="/login">Login</a>
+                                        </div>
+                                    </li>
+                                    <li className="nav-hover">
+                                        <div className="login-templeta">
+                                            <a href="#">Register</a>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </nav>
+                        </div>
+                    </div>
+                </div>
 
             </div>
             <div className="Login">
@@ -95,7 +116,6 @@ export function EditUser({ match }) {
                     </Button>
                 </Form>
             </div>
-            <Footer/>
         </div>
 
     );

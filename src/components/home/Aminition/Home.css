@@ -15,7 +15,7 @@
 }
 .card {
   box-shadow: 0px 0px 6px 5px #00000096;
-  /* border-radius: 30% !important; */
+  border-radius: 30% !important;
   overflow: hidden;
 }
  .button .icon{
@@ -57,8 +57,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 1010px;
-    margin: 20px auto;
+    max-width: 720px;
+    margin: 0 auto;
     list-style: none;
   }
   
@@ -98,8 +98,6 @@
   .text-effect {
     overflow: hidden;
     position: relative;
-    margin-left: 22px;
-    width: 96%;
     filter: contrast(110%) brightness(190%);
   }
   .carousel-caption {
@@ -229,7 +227,9 @@
   }
 
 /* Tiểu sử */
-
+.biography .panel {
+  box-shadow: 0px 0px 10px 5px black;
+}
 .panel {
   text-align: left;
   width: 750px;
@@ -260,6 +260,8 @@
 .list {
   display: flex;
   overflow: auto;
+  background: black;
+  box-shadow: 0px 0px 10px 5px white;
   border-radius: 20px;
 }
 .tv{

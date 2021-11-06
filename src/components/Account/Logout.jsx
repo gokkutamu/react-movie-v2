@@ -10,7 +10,7 @@ export function Logout() {
     function handleSubmit(event) {
         event.preventDefault();
 
-        axios.post('http://localhost/Passport/Passport/public/api/auth/logout')
+        axios.post('http://localhost/Passport/public/api/auth/logout')
             .then(res => {
                 if (res.status == 200) {
                     history.push('/login');

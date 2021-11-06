@@ -7,7 +7,7 @@ import { DiscoverDetail } from "./components/DetailTV/DiscoverDetail";
 //TV
 import { Discover } from "./components/TV/Discover";
 import {MovieDetail} from "./components/DetailMovie/MovieDetail";
-import Search from "./components/Search/Search";
+// import Search from "./components/Search/Search";
 import { Treding } from "./components/Treding/Treding";
 import { Dashboard } from "./components/Dashboard/Dashboard";
 import { EditUser } from "./components/Dashboard/EditUser";
@@ -18,6 +18,7 @@ import { Episode } from "./components/Episodes/Episode";
 import { Register } from "./components/Account/Register"
 // import { Login }  from "./components/Account/Login";
 import { Logout }  from "./components/Account/Logout";
+import { Login }  from "./components/Account/Login";
 import { Profile } from "./components/Profile/Profile";
 import { Profiles } from "./components/Person/Proflie";
 
@@ -45,7 +46,7 @@ export function App() {
 
         <Route path="/register" component={Register} exact />
         <Route path="/logout" component={Logout} exact />
-        <Route path="/profile" component={Profile} exact />
+        <Route path="/profile" component={Profile} exact /> 
         <Route path="/dashboard" component={Dashboard} exact/>
         <Route path="/edit/:id" component={EditUser} exact/>
       </Switch>

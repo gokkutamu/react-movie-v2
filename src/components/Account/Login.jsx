@@ -29,20 +29,18 @@ export function Login() {
         data.append("email", email);
         data.append("password", password);
         
-        axios.post('http://localhost/Passport/Passport/public/api/auth/login', { email, password })
+        axios.post('http://localhost/Passport/public/api/auth/login', { email, password })
             .then(res => {
                 if (res.status == 200) {
                     history.push('/');
-                    localStorage.setItem('myData', res.data.access_token);
+                    sessionStorage.setItem('myData', res.data.access_token);
                 }else{
-                    localStorage.setItem('myData', 400);
+                    sessionStorage.setItem('myData', '100');
                 }
-                console.log(res);
                 // var tokenAll = res.data.access_token;
                 // console.log(tokenAll);
             })
             .then(result => {
-                console.log(result)
                 alert("Ban da login thanh cong")
             })
             .catch(error => {
