@@ -12,8 +12,6 @@ import SearchIcon from "@material-ui/icons/Search";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../Home/Aminition/Home.css";
-import "../Footer/Footer";
-import "../Header/Header";
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 

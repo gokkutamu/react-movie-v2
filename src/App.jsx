@@ -3,13 +3,11 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import { Home } from "./components/Home/Home";
 import { Person } from "./components/Person/Person";
-
 import { DiscoverDetail } from "./components/DetailTV/DiscoverDetail";
-
 //TV
 import { Discover } from "./components/TV/Discover";
 import {MovieDetail} from "./components/DetailMovie/MovieDetail";
-import Search from "./components/Search/Search";
+// import Search from "./components/Search/Search";
 import { Treding } from "./components/Treding/Treding";
 import { Dashboard } from "./components/Dashboard/Dashboard";
 import { EditUser } from "./components/Dashboard/EditUser";
@@ -31,9 +29,9 @@ export function App() {
         <Route path="/" component={Home} exact />
         <Route path="/discover/tv" component={Discover} />
         <Route path="/login" component={Login} exact />
-
         <Route path="/tredding" component={Treding} exact />
-        <Route path="/search" component={Search} exact />
+       	<Route path="/search" component={Search} exact />
+        <Route path="/session/:id/seasons" component={Seasons} exact/>
         <Route path="/movie/:id" component={MovieDetail} />
         <Route path="/keyword/:keyword_id/movie" component={Keyword} />
 
@@ -47,7 +45,7 @@ export function App() {
 
         <Route path="/register" component={Register} exact />
         <Route path="/logout" component={Logout} exact />
-        <Route path="/profile" component={Profile} exact />
+        <Route path="/profile" component={Profile} exact /> 
         <Route path="/dashboard" component={Dashboard} exact/>
         <Route path="/edit/:id" component={EditUser} exact/>
       </Switch>

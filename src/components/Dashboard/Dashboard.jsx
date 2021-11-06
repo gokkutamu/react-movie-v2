@@ -11,6 +11,13 @@ import Axios from "axios";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 export function Dashboard() {
+    const split = (params) => {
+        var test1 = params.slice(11, 13);
+        return test1;
+    }
+    const itemId = (id) => {
+        return getRamdomString(6) + getRamdom(10000, 99999) + id + getRamdomString(8) + getRamdom(100, 999)
+    }
     const [users, setUsers] = useState([]);
     useEffect(() => {
         const fetchAPI = async () => {
@@ -33,28 +40,40 @@ export function Dashboard() {
         }
         fetchDeleteUser(id)
             .then(result => {
-                const filterData = users.filter(item => item.id !== id)
+                var idOld = split(id);
+                const filterData = users.filter(item => item.id != idOld);
                 setUsers(filterData)
             })
+    }
+    const getRamdom = (min, max) => {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+    const getRamdomString = (length) => {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for (var i = 0; i < length; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
     }
     const getListUser = users.map((c) => {
         return (
             <li className="table-row" key={c.id}>
-                <div className="col col-1" data-label="Job Id">{c.id}</div>
-                <div className="col col-1" data-label="Customer Name">{c.name}</div>
+                <div className="col col-1" data-label="Job Id">#</div>
+                <div className="col col-3" data-label="Customer Name">{c.name}</div>
                 <div className="col col-2" data-label="Amount">{c.email}</div>
                 <div className="col col-2" data-label="Payment Status">{dateFormat(c.created_at, "dd/mm/yyyy")}</div>
                 <div className="col col-2" data-label="Payment Status">{dateFormat(c.updated_at, "dd/mm/yyyy")}</div>
-                <div className="col col-1 custom-group-icon" data-label="Payment Status">
-                    <Link to={`/edit/${c.id}`}>
-                        <i className="fa fa-pencil-square-o" aria-hidden="true" title="Update"></i>
-                    </Link>
-                    <Link to={`/profile/${c.id}`}>
-                        <i className="fa fa-eye" aria-hidden="true" title="View"></i>
-                    </Link>
-                    <button className="btnDel" onClick={e => { deleteUser(c.id) }}>
-                        <i className="fa fa-eraser" aria-hidden="true" title="Delete"></i>
-                    </button>
+                <div className="col col-2 custom-group-icon" data-label="Payment Status">
+                    
+                        <Link to={`/edit/${getRamdomString(6)}${getRamdom(10000, 99999)}${c.id}${getRamdomString(8)}${getRamdom(100, 999)}`}>
+                            <i className="fa fa-pencil-square-o" aria-hidden="true" title="Update"></i>
+                        </Link>
+                        <button className="btnDel" onClick={e => { deleteUser(getRamdomString(6) + getRamdom(10000, 99999) + c.id + getRamdomString(8) + getRamdom(100, 999)) }}>
+                            <i className="fa fa-eraser" aria-hidden="true" title="Delete"></i>
+                        </button>
+                   
                 </div>
             </li>
         );
@@ -62,26 +81,26 @@ export function Dashboard() {
     return (
         <div className="dashboard-content">
             <div className="header">
-               <Header/>
+                <Header />
             </div>
             <div className="dashboard-block">
                 <div className="container">
 
-                    <h2 className="user-title">List Users</h2>
+                    <h2 className="user-title">Danh Sách Người Dùng</h2>
                     <ul className="responsive-table">
                         <li className="table-header">
-                            <div className="col col-1">ID</div>
-                            <div className="col col-1">Name</div>
+                            <div className="col col-1">Id</div>
+                            <div className="col col-3">Tên</div>
                             <div className="col col-2">Email</div>
-                            <div className="col col-2">Created date</div>
-                            <div className="col col-2">Updated date</div>
-                            <div className="col col-1">Action</div>
+                            <div className="col col-2">Ngày Tạo</div>
+                            <div className="col col-2">Ngày Sửa</div>
+                            <div className="col col-2">Hành Động</div>
                         </li>
                         {getListUser}
                     </ul>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
 
     )

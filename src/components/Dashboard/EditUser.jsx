@@ -9,11 +9,13 @@ import {
     userById
 
 } from "../../server";
-import { Header } from "../Header/Header";
-import { Footer } from "../Footer/Footer";
 
 export function EditUser({ match }) {
     let params = match.params;
+    const split =  (params) => {
+        var test1 = params.slice(11,13);
+        return test1; 
+    }
     const [arrayUserByID, setUserById] = useState([]);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -21,7 +23,7 @@ export function EditUser({ match }) {
     let [version, setVersion] = useState("");
     useEffect(() => {
         const fetchAPI = async () => {
-            setUserById(await userById(params.id));
+            setUserById(await userById(split(params.id)));
         };
         fetchAPI();
     }, []);
@@ -110,7 +112,6 @@ export function EditUser({ match }) {
                     </Button>
                 </Form>
             </div>
-            <Footer/>
         </div>
 
     );

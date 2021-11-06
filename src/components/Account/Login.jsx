@@ -42,7 +42,6 @@ export function Login() {
                 // console.log(tokenAll);
             })
             .then(result => {
-                console.log(result)
                 alert("Ban da login thanh cong")
             })
             .catch(error => {

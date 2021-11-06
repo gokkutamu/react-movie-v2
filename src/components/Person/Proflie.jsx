@@ -5,7 +5,6 @@ import {
 } from "../../server";
 
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
-import { Link } from "react-router-dom";
 import "../Home/Aminition/Home.css";
 import '../Person/Style.css';
 import { Header } from "../Header/Header";

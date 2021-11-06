@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
 import "./Profile.css";
-
 import { Footer } from "../Footer/Footer";
 import { Header } from "../Header/Header";
+
 export function Profile() {
     const logo = require('./img/caheo.png');
     const [profile, setProfile] = useState([]);
-    let history = useHistory();
+  
     function handleSubmit(event) {
         event.preventDefault();
         axios.get('http://localhost/Passport/Passport/public/api/auth/user', {
