@@ -24,7 +24,7 @@ export function EditUser({ match }) {
     let [version, setVersion] = useState("");
     useEffect(() => {
         const fetchAPI = async () => {
-            setUserById(await userById(split(params.id)));
+            setUserById(await userById(params.id));
         };
         fetchAPI();
     }, []);
