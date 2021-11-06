@@ -14,7 +14,7 @@ export function Profile() {
         axios.get('http://localhost/Passport/Passport/public/api/auth/user', {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem('myData')
+                'Authorization': 'Bearer ' + sessionStorage.getItem('myData')
             }
         })
             .then(res => {

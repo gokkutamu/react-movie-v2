@@ -33,9 +33,9 @@ export function Login() {
             .then(res => {
                 if (res.status == 200) {
                     history.push('/');
-                    localStorage.setItem('myData', res.data.access_token);
+                    sessionStorage.setItem('myData', res.data.access_token);
                 } else {
-                    localStorage.setItem('myData', 400);
+                    sessionStorage.setItem('myData', 400);
                 }
                 console.log(res);
                 // var tokenAll = res.data.access_token;
