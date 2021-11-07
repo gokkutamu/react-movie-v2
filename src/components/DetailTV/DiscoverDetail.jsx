@@ -206,6 +206,7 @@ export function DiscoverDetail({ match }) {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
     }
+    console.log(detail);
     return (
         <div className="main-container">
 
@@ -281,7 +282,7 @@ export function DiscoverDetail({ match }) {
                                                 Ngày phát hành:
                                             </div>
                                             <div className="transformers-right">
-                                                {dateFormat(detail.release_date)}
+                                            {dateFormat(detail.release_date, "dd/mm/yyyy")}
                                             </div>
                                         </li>
                                         <li>
@@ -289,7 +290,7 @@ export function DiscoverDetail({ match }) {
                                                 Thời lượng:
                                             </div>
                                             <div className="transformers-right">
-                                                {detail.runtime} phút
+                                                {detail.episode_run_time} phút
                                             </div>
                                         </li>
                                         <li>
@@ -298,11 +299,9 @@ export function DiscoverDetail({ match }) {
                                                     <h2>Chi tiết phim</h2>
                                                     <p>{detail.overview}</p>
                                                 </div>
-
                                             </div>
                                         </li>
                                     </ul>
-
                                 </div>
                             </div>
                         </div>
