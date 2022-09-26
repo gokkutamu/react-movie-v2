@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import './Footer.css'
-
-export function Footer() {
+import React from "react";
+export function TheEnd() {
     return (
         <footer className="footer">
             <div className="container">
@@ -70,5 +68,5 @@ export function Footer() {
             <div className="bg bg2"></div>
             <div className="bg bg3"></div>
         </footer>
-    )
+    );
 }

@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-    fetchKeyDetail,
-    fetchMovieByKeyword,
-} from "../../server";
-import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
+
 import "../Style/MovieDetail.css";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
-
+import { fetchKeyDetail, fetchMovieByKeyword } from "../../server";
 
 export function Keyword({ match }) {
     let params = match.params;
@@ -21,8 +17,7 @@ export function Keyword({ match }) {
         fetchAPI();
     }, [params.id]);
 
-    // Show lisst keyword : a
-    const keywrrord = keyword.slice(0, 20).map((c, i) => {
+    const keywords = keyword.slice(0, 20).map((c, i) => {
         return (
             <li className="keywword" key={i}>
                 <div className="row">
@@ -51,12 +46,10 @@ export function Keyword({ match }) {
         );
     });
 
-
-
     return (
         <div className="main-container">
             <div className="hearder">
-                <Header/>
+                <Header />
             </div>
             <div className="pading-top-name-key">
                 <h4>
@@ -67,12 +60,12 @@ export function Keyword({ match }) {
                 <div className="container">
                     <div className="ul-keyword-com">
                         <ul>
-                            {keywrrord}
+                            {keywords}
                         </ul>
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 }

@@ -5,15 +5,14 @@ import {
 } from "../../server";
 
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
-import "../Home/Aminition/Home.css";
+import "../Home/Animation/Home.css";
 import '../Person/Style.css';
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 
-
 export function Profiles({ match }) {
     let params = match.params;
-    const [detail, setDetail] = useState([]);
+    const [setDetail] = useState([]);
     const [profile, setProfile] = useState([]);
     useEffect(() => {
         const fetchAPI = async () => {
@@ -22,11 +21,13 @@ export function Profiles({ match }) {
         };
         fetchAPI();
     }, [params.id]);
-
-    //Nhận danh sách profile của preson
+    
+    /**
+     * List of authors and actors.
+     * @returns void
+     * */ 
     const listProfile = profile.slice(0, 10).map((item, input) => {
         return (
-
             <div className="col-md-3 col-sm-6 padding-profile" key={input}>
                 <div className="border-profile">
                     <div className="top-profile">
@@ -47,6 +48,7 @@ export function Profiles({ match }) {
 
         );
     });
+
     return (
         <div className="top-header">
             <Header/>
@@ -68,7 +70,4 @@ export function Profiles({ match }) {
         </div>
 
     );
-
-
-
 }

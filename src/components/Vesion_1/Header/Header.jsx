@@ -42,37 +42,9 @@ export function Header() {
                     <nav>
                         <ul className="menu">
                             <li className="nav-hover"><a href="/">Home</a></li>
-                            <li className="nav-hover"><a href="/tredding">Trending</a></li>
+                            <li className="nav-hover"><a href="/trending">Trending</a></li>
                             <li className="nav-hover"><a href="/search">Search</a></li>
                             <li className="nav-hover"><a href="/discover/tv">TV Show</a></li>
-                            <li className="nav-hover">
-                                <div className="login-templeta">
-                                    <a href="/profile">Profile</a>
-                                </div>
-                            </li>
-                            <li className="nav-hover">
-                                <div className="login-templeta">
-                                    <a href="/dashboard">Dashbroad</a>
-                                </div>
-                            </li>
-                            <li className="nav-hover">
-                                <div className="login-templeta">
-                                    <a href="/login">Login</a>
-                                </div>
-                            </li>
-                            <div className="logout" id="logout-user">
-                                <li className="nav-hover" onClick={logout123}>
-                                    <div className="login-templeta">
-                                        <a href="#">Logout</a>
-                                    </div>
-                                </li>
-                            </div>
-
-                            <li className="nav-hover">
-                                <div className="login-templeta">
-                                    <a href="/register">Register</a>
-                                </div>
-                            </li>
                         </ul>
 
                     </nav>
