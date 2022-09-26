@@ -1,28 +1,23 @@
+/**
+ * Movie trending screen
+ * */ 
 import React, { useState, useEffect } from "react";
-import {
-    fetchTredding,
-} from "../../server";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Link } from "react-router-dom";
-import "../Home/Aminition/Home.css";
-import "../Footer/Footer";
+
+import "../Home/Animation/Home.css";
 import { Footer } from "../Footer/Footer";
-import "../Header/Header";
 import { Header } from "../Header/Header";
-export function Treding() {
+import { fetchTredding } from "../../server";
 
-
+export function Trending() {
     const [trending, setTrending] = useState([]);
-
-
     useEffect(() => {
         const fetchAPI = async () => {
             setTrending(await fetchTredding(28));
-
         };
         fetchAPI();
     }, []);
-
 
     const trendingList = trending.slice(0, 18).map((value, i) => {
         return (
@@ -35,43 +30,29 @@ export function Treding() {
                 </div>
                 <div className="title-movie">
                     {value.title || value.name}
-
                 </div>
-
             </div>
         );
     });
 
-
-
-
-
     return (
         <div className="trending-main">
-         {/* header */}
             <Header/>
-
             <div className="trending">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <h2>XU HƯỚNG PHIM HÔM NAY</h2>
+                            <h2>TODAY'S MOVIE TRENDS</h2>
                             <div className="list-tv">
                                 <div className="row">
                                     {trendingList}
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
-
-            {/* Footer */}
             <Footer />
-
         </div>
-
     );
 }

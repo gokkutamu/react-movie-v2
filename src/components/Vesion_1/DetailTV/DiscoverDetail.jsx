@@ -13,7 +13,7 @@ import { Modal } from "react-bootstrap";
 import ReactPlayer from "react-player";
 import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
-import "../Home/Aminition/Home.css";
+import "../Home/Animation/Home.css";
 import "../Style/MovieDetail.css";
 import dateFormat from 'dateformat';
 import { Header } from "../Header/Header";

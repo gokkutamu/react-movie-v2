@@ -8,7 +8,7 @@ import {
 
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Link } from "react-router-dom";
-import "../Home/Aminition/Home.css";
+import "../Home/Animation/Home.css";
 import '../Person/Style.css';
 
 import InfiniteCarousel from "react-leaf-carousel";

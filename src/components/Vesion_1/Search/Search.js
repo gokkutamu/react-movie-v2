@@ -11,7 +11,7 @@ import "./Search.css";
 import SearchIcon from "@material-ui/icons/Search";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "../Home/Aminition/Home.css";
+import "../Home/Animation/Home.css";
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 
@@ -45,53 +45,29 @@ const Search = () => {
     useEffect(() => {
         window.scroll(0, 0);
         fetchSearch();
-        // eslint-disable-next-line
     }, [type, 1]);
 
     return (
-
         <div>
             <div className="hearder">
-                {/* Header */}
-                <Header/>
+                <Header />
             </div>
             <ThemeProvider theme={darkTheme}>
                 <div className="search">
-                    <TextField
-                        style={{ flex: 1 }}
-                        className="searchBox"
-                        label="Search"
-                        variant="filled"
-                        onChange={(e) => setSearchText(e.target.value)}
-                    />
-                    <Button
-                        onClick={fetchSearch}
-                        variant="contained"
-                        style={{ marginLeft: 10 }}
-                    >
+                    <TextField style={{ flex: 1 }} className="searchBox" label="Search" variant="filled" onChange={(e) => setSearchText(e.target.value)} />
+                    <Button onClick={fetchSearch} variant="contained" style={{ marginLeft: 10 }}>
                         <SearchIcon fontSize="large" />
                     </Button>
                 </div>
-                <Tabs
-                    value={type}
-                    indicatorColor="primary"
-                    textColor="primary"
-                    onChange={(event, newValue) => {
-                        setType(newValue);
-                        setPage(1);
-                    }}
-                    style={{ paddingBottom: 5 }}
-                    aria-label="disabled tabs example"
-                >
-                    <Tab style={{ width: "50%", marginLeft: "175px" }} label="Tìm kiếm phim" />
-                    <Tab style={{ width: "50%", marginLeft: "175px" }} label="Phim truyền hình" />
+                <Tabs value={type} indicatorColor="primary" textColor="primary" onChange={(event, newValue) => { setType(newValue); setPage(1); }} style={{ paddingBottom: 5 }} aria-label="disabled tabs example">
+                    <Tab style={{ width: "50%", marginLeft: "175px" }} label="Movie Search" />
+                    <Tab style={{ width: "50%", marginLeft: "175px" }} label="TV series" />
                 </Tabs>
             </ThemeProvider>
             <div className="trending">
                 <div className="container">
                     <div className="list-search">
                         <div className="row">
-
                             {content &&
                                 content.map((c) => (
                                     <div className="col-md-2">
@@ -111,9 +87,7 @@ const Search = () => {
                     </div>
                 </div>
             </div>
-
-         {/* footer */}
-         <Footer/>
+            <Footer />
         </div>
     );
 };
