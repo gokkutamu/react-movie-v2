@@ -1,72 +1,85 @@
 import React from "react";
+const arrow = {
+    '0' : '/img/project-logo.png',
+    '1' : '/img/footer-bottom-img.png',
+};
+
 export function TheEnd() {
     return (
         <footer className="footer">
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-3 col-sm-6">
-                        <div className="widget">
-                            <div className="image-logo"></div>
-                            <p>7th Harley Place, London W1G 8LZ United Kingdom</p>
-                            <h6><span>Call us: </span>(+880) 111 222 3456</h6>
-                        </div>
-                    </div>
-                    <div className="col-lg-3 col-sm-6">
-                        <div className="widget">
-                            <h4>Legal</h4>
-                            <ul>
-                                <li><a className="text-ami" href="#">Terms of Use</a></li>
-                                <li><a className="text-ami" href="#">Privacy Policy</a></li>
-                                <li><a className="text-ami" href="#">Security</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="col-lg-3 col-sm-6">
-                        <div className="widget">
-                            <h4>Account</h4>
-                            <ul>
-                                <li><a className="text-ami" href="#">My Account</a></li>
-                                <li><a className="text-ami" href="#">Watchlist</a></li>
-                                <li><a className="text-ami" href="#">Collections</a></li>
-                                <li><a className="text-ami" href="#">User Guide</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="col-lg-3 col-sm-6">
-                        <div className="widget">
-                            <h4>Newsletter</h4>
-                            <p>Subscribe to our newsletter system now to get latest news from us.</p>
-                            <form action="#">
-                                <input className="input-from" type="text" placeholder="Enter your email.." />
-                                <button>SUBSCRIBE NOW</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <hr />
-            </div>
-            <div className="copyright">
+            <div className="footer-top">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-lg-6 text-center text-lg-left">
-                            <div className="copyright-content">
-                                <p><a className="text-ami" target="_blank" href="https://github.com/mytien0906/movie-reactjs">GitHub</a></p>
-                            </div>
-                        </div>
-                        <div className="col-lg-6 text-center text-lg-right">
-                            <div className="copyright-content">
-                                <a className="text-ami" href="#">
-                                    Back to top
-                                    <i className="icofont icofont-arrow-up"></i>
+                    <div className="footer-brand-wrapper">
+                        <a href="/" className="logo">
+                            <img src={arrow[0]} alt="Filmlane logo" />
+                        </a>
+                        <ul className="footer-list">
+                            <li>
+                                <a href="./" className="footer-link">Home</a>
+                            </li>
+                            <li>
+                                <a href="#" className="footer-link">Movie</a>
+                            </li>
+                            <li>
+                                <a href="#" className="footer-link">TV Show</a>
+                            </li>
+                            <li>
+                                <a href="#" className="footer-link">Web Series</a>
+                            </li>
+                            <li>
+                                <a href="#" className="footer-link">Pricing</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="divider"></div>
+                    <div className="quicklink-wrapper">
+                        <ul className="quicklink-list">
+                            <li>
+                                <a href="#" className="quicklink-link">Faq</a>
+                            </li>
+                            <li>
+                                <a href="#" className="quicklink-link">Help center</a>
+                            </li>
+                            <li>
+                                <a href="#" className="quicklink-link">Terms of use</a>
+                            </li>
+                            <li>
+                                <a href="#" className="quicklink-link">Privacy</a>
+                            </li>
+                        </ul>
+                        <ul className="social-list">
+                            <li>
+                                <a href="#" className="social-link">
+                                    <ion-icon name="logo-facebook"></ion-icon>
                                 </a>
-                            </div>
-                        </div>
+                            </li>
+                            <li>
+                                <a href="#" className="social-link">
+                                    <ion-icon name="logo-twitter"></ion-icon>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" className="social-link">
+                                    <ion-icon name="logo-pinterest"></ion-icon>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" className="social-link">
+                                    <ion-icon name="logo-linkedin"></ion-icon>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div className="bg"></div>
-            <div className="bg bg2"></div>
-            <div className="bg bg3"></div>
+            <div className="footer-bottom">
+                <div className="container">
+                    <p className="copyright">
+                        &copy; 2022 <a href="#">codewithsadee</a>. All Rights Reserved
+                    </p>
+                    <img src={arrow[1]} alt="Online banking companies logo" className="footer-bottom-img" />
+                </div>
+            </div>
         </footer>
     );
 }

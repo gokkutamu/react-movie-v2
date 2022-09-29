@@ -12,6 +12,8 @@
     "bootstrap": "^4.5.0",
     "dateformat": "^4.5.1",
     "dompurify": "^2.3.3",
+    "dotenv": "^16.0.2",
+    "env-cmd": "^10.1.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-bootstrap-carousel": "^4.0.6",
