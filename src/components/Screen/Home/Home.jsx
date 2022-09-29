@@ -3,18 +3,23 @@
  * @version 2 ( change 26/09/2022 ).
 */
 import React, { useState, useEffect } from "react";
-import { ReactBootstrap_Carousel } from "react-bootstrap-carousel";
-import { Link } from "react-router-dom";
+// import { ReactBootstrap_Carousel } from "react-bootstrap-carousel";
+// import { Link } from "react-router-dom";
 
 import { Heading } from "../../Master/Heading";
 import { TheEnd } from "../../Master/TheEnd";
-import { getMovie } from "../../../containers/services/vesion_1";
+import { Upcoming } from "../List/Upcoming";
+import { getMovie, getUpcoming, getGenre } from "../../../containers/services/vesion_1";
 export function Home() {
     const [heroPlaying, setHeroPlaying] = useState([]);
+    const [upComing, setUpcoming] = useState([]);
+    const [categories, setGenres] = useState([]);
 
     useEffect(() => {
         const fetchAPI = async () => {
             setHeroPlaying(await getMovie());
+            setGenres(await getGenre());
+            setUpcoming(await getUpcoming());
         };
         fetchAPI();
     }, []);
@@ -28,6 +33,7 @@ export function Home() {
             <div></div>
         );
     });
+
     return (
         <div>
             <Heading></Heading>
@@ -67,6 +73,8 @@ export function Home() {
                             </div>
                         </div>
                     </section>
+                    {/* Upcoming */}
+                    <Upcoming></Upcoming>
                     <section className="cta">
                         <div className="container">
                             <div className="title-wrapper">
@@ -84,9 +92,6 @@ export function Home() {
                 </article>
             </main>
             <TheEnd></TheEnd>
-            <a href="#top" className="go-top" data-go-top>
-                <ion-icon name="chevron-up"></ion-icon>
-            </a>
         </div>
     );
 }

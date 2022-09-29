@@ -581,16 +581,12 @@ body.active {
     color: var(--citrine);
 }
 
-
-
-
-
 /*-----------------------------------*\
    * #UPCOMING
 \*-----------------------------------*/
 
 .upcoming {
-    background: url("/img/hero-bg.jpg") no-repeat;
+    background: url("/img/upcoming-bg.png") no-repeat;
     background-size: cover;
     background-position: center;
     padding-block: var(--section-padding);
@@ -630,10 +626,6 @@ body.active {
     min-width: 100%;
     scroll-snap-align: start;
 }
-
-
-
-
 
 /*-----------------------------------*\
    * #SERVICE
@@ -1033,9 +1025,6 @@ body.active {
   \*-----------------------------------*/
 
 .movie-detail {
-    background: url("/img/movie-detail-bg.png") no-repeat;
-    background-size: cover;
-    background-position: center;
     padding-top: 160px;
     padding-bottom: var(--section-padding);
 }

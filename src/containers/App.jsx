@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { Home } from "../components/Screen/Home/Home";
+import { Movie } from "../components/Screen/Detail/Movie";
 
 export function App() {
   return (
@@ -19,8 +20,8 @@ export function App() {
         {/* <Route path="/trending" component={Trending} exact /> */}
 
         {/* Movie screen */}
-        {/* <Route path="/discover/tv" component={Discover} />
-        <Route path="/movie/:id" component={MovieDetail} /> */}
+        {/* <Route path="/discover/tv" component={Discover} /> */}
+        <Route path="/movie/:id" component={Movie} />
 
         {/* Actor profile screen */}
         {/* <Route path="/person/:id" component={Person} />

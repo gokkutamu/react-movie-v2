@@ -1,33 +1,110 @@
 import axios from 'axios';
 
-console.log(process.env.API_KEY)
-// Connect
-const apiKey = 'a4999a28333d1147dbac0d104526337a';
-const url = 'https://api.themoviedb.org/3';
-
 /**
  * Movie list
  * @method GET
  * @returns void
  */ 
 export const getMovie = async () => {
-    const urlImage = 'https://image.tmdb.org/t/p/original/';
+    
     try {
-        const { data } = await axios.get(`${url}/movie/now_playing`, {
+        const { data } = await axios.get(`${process.env.REACT_APP_URL}/movie/now_playing`, {
             params: {
-                api_key: apiKey,
-                language: 'vi-VN',
+                api_key: process.env.REACT_APP_API_KEY,
+                language: 'en-US',
                 page: 1
             }
         })
         const modifiedData = data['results'].map((val) => ({
-            id: val['id'],
-            backPoster: urlImage + val['backdrop_path'],
-            popularity: val['popularith'],
             title: val['title'],
-            poster: urlImage + val['poster_path'],
-            overview: val['overview'],
-            rating: val['vote_average'],
+            adult: val['adult'] == true ? 'HD' : '3D',
+            popularity: val['popularity'],
+            release_date: val['release_date'],
+            vote_average: val['vote_average'],
+            vote_count: val['vote_count'],
+            poster_path: process.env.REACT_APP_URL_IMAGE + val['poster_path'],
+            backdrop_path: process.env.REACT_APP_URL_IMAGE + val['backdrop_path']
+        }))
+        return modifiedData;
+    } catch (error) { }
+}
+
+/**
+ * Movie detail
+ * @method GET 
+ * @var integer id
+ */ 
+export const getMovieById = async (id) => {
+    try {
+        const { data } = await axios.get(`${process.env.REACT_APP_URL}/movie/${id}`, {
+            params: {
+                api_key: process.env.REACT_APP_API_KEY,
+                language: 'en-US'
+            }
+        });
+        return data;
+    } catch (error) { }
+}
+
+/**
+ * Movie video
+ * @method GET
+ * */ 
+export const getVideo = async (id) => {
+    try {
+        const { data } = await axios.get(`${process.env.REACT_APP_URL}/movie/${id}/videos`, {
+            params: {
+                api_key: process.env.REACT_APP_API_KEY,
+            }
+        });
+        return data['results'][0];
+    } catch (error) { }
+}
+
+/**
+ * Upcoming lists
+ * @method GET
+ */ 
+export const getUpcoming = async (genre_ids) => {
+    try {
+        const { data } = await axios.get(`${process.env.REACT_APP_URL}/movie/upcoming`, {
+            params: {
+                api_key: process.env.REACT_APP_API_KEY,
+                language: 'en-US',
+                page: 1,
+                with_genres: genre_ids
+            }
+        });
+        const modifiedData = data['results'].map((val) => ({
+            uid: val['id'] ? val['id'] : val['tv_id'],
+            title: val['title'] ? val['title'] : val['name'],
+            adult: val['adult'] == true ? 'HD' : '3D',
+            popularity: val['popularity'],
+            release_date: val['release_date'],
+            vote_average: val['vote_average'],
+            vote_count: val['vote_count'],
+            poster_path: process.env.REACT_APP_URL_IMAGE + val['poster_path'],
+            backdrop_path: process.env.REACT_APP_URL_IMAGE + val['backdrop_path']
+        }));
+        return modifiedData;
+    } catch (error) { }
+}
+
+/**
+ * Genre lists
+ * @method GET
+ */ 
+export const getGenre = async () => {
+    try {
+        const { data } = await axios.get(`${process.env.REACT_APP_URL}/genre/movie/list`, {
+            params: {
+                api_key: process.env.REACT_APP_API_KEY,
+                language: 'en-US',
+            }
+        })
+        const modifiedData = data['genres'].map((g) => ({
+            id: g['id'],
+            name: g['name']
         }))
         return modifiedData;
     } catch (error) { }
