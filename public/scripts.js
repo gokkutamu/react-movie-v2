@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * navbar variables
  */

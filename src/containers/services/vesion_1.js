@@ -101,7 +101,7 @@ export const getGenre = async () => {
                 api_key: process.env.REACT_APP_API_KEY,
                 language: 'en-US',
             }
-        })
+        });
         const modifiedData = data['genres'].map((g) => ({
             id: g['id'],
             name: g['name']
