@@ -16,14 +16,11 @@ import { getMovieById, getVideo } from "../../../containers/services/vesion_1";
 export function Movie({ match }) {
 
     let params = match.params;
-    let genres = [];
     const [movie, setMovieById] = useState([]);
     const [video, setVideo] = useState([]);
-    const [isOpen, setIsOpen] = useState(false);
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     useEffect(() => {
         const mAPI = async () => {
@@ -54,11 +51,13 @@ export function Movie({ match }) {
     const ModalPlayer = (props) => {
         const youtubeUrl = "https://www.youtube.com/watch?v=";
         return (
-            <Modal {...props} show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+            <Modal {...props} show={show} onHide={handleClose} backdrop="static" keyboard={false} size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered>
                 <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter" style={{ color: "#000000", fontWeight: "bolder" }}>{movie.title}</Modal.Title>
+                    <Modal.Title id="contained-modal-title-vcenter" style={{ color: "#ffff", fontFamily: "fantasy" }}>{movie.title}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{ backgroundColor: "#000000" }}>
+                <Modal.Body>
                     <ReactPlayer className="container-fluid" url={youtubeUrl + video.key} playing width="100%" />
                 </Modal.Body>
                 <Modal.Footer>
@@ -72,6 +71,8 @@ export function Movie({ match }) {
 
     return (
         <div>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+                integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
             <link rel="stylesheet" href="/System.css" />
             <Heading></Heading>
             <main>
@@ -130,7 +131,7 @@ export function Movie({ match }) {
                                     <span>Download</span>
                                     <ion-icon name="download-outline"></ion-icon>
                                 </a>
-                            </div>   
+                            </div>
                         </div>
                     </section>
                 </article>

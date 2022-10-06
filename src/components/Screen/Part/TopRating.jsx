@@ -1,30 +1,30 @@
 /**
  * The stone dam built the house of (Tam) likes.
- * @version 2 ( change 29/09/2022 ).
+ * @version 2 ( change 06/10/2022 ).
 */
 import React, { useState, useEffect } from "react";
-import dateFormat from 'dateformat';
+import dateFormat from "dateformat";
 
-import { getGenre, getUpcoming } from "../../../containers/services/vesion_1";
+import { getTopRating, getGenre } from "../../../containers/services/vesion_1";
 
-export function Upcoming() {
-    const [upComing, setUpcoming] = useState([]);
-    const [categories, setGenres] = useState([]);
+export function TopRating() {
+    const [ratings, setTopRating] = useState([]);
+    const [categories, setCategory] = useState([]);
 
     useEffect(() => {
-        const fetchAPI = async () => {
-            setGenres(await getGenre());
-            setUpcoming(await getUpcoming());
+        const parseApi = async () => {
+            setCategory(await getGenre());
+            setTopRating(await getTopRating());
         };
-        fetchAPI();
+        parseApi();
     }, []);
 
-    // Click function load page.
+    // Click function load page
     const handleGenreClick = async (genre_ids) => {
-        setUpcoming(await getUpcoming(genre_ids));
+        setTopRating(await getTopRating(genre_ids));
     };
 
-    const Categories = categories.map((item, index) => {
+    const Categories = categories.slice(0, 5).map((item, index) => {
         return (
             <li key={index}>
                 <button className="filter-btn" onClick={() => handleGenreClick(item.id)}>{item.name}</button>
@@ -33,10 +33,10 @@ export function Upcoming() {
     });
 
     /**
-     * List Upcoming
-     * @map Upcoming
+     * Top rating
+    * @map review movie
     */
-    const Upcoming = upComing.slice(0, 15).map((val, key) => {
+    const TopRating = ratings.slice(0, 4).map((val, key) => {
         return (
             <li key={key}>
                 <div className="movie-card">
@@ -68,19 +68,15 @@ export function Upcoming() {
     });
 
     return (
-        <section className="upcoming">
+        <section className="top-rated">
             <div className="container">
-                <div className="flex-wrapper">
-                    <div className="title-wrapper">
-                        <p className="section-subtitle">Online Streaming</p>
-                        <h2 className="h2 section-title">Upcoming Movies</h2>
-                    </div>
-                    <ul className="filter-list">
-                        {Categories}
-                    </ul>
-                </div>
-                <ul className="movies-list  has-scrollbar">
-                    {Upcoming}
+                <p className="section-subtitle">Online Streaming</p>
+                <h2 className="h2 section-title">Top Rated Movies</h2>
+                <ul className="filter-list">
+                    { Categories }
+                </ul>
+                <ul className="movies-list">
+                    { TopRating }
                 </ul>
             </div>
         </section>

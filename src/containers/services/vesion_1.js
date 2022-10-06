@@ -14,7 +14,7 @@ export const getMovie = async () => {
                 language: 'en-US',
                 page: 1
             }
-        })
+        });
         const modifiedData = data['results'].map((val) => ({
             title: val['title'],
             adult: val['adult'] == true ? 'HD' : '3D',
@@ -24,7 +24,7 @@ export const getMovie = async () => {
             vote_count: val['vote_count'],
             poster_path: process.env.REACT_APP_URL_IMAGE + val['poster_path'],
             backdrop_path: process.env.REACT_APP_URL_IMAGE + val['backdrop_path']
-        }))
+        }));
         return modifiedData;
     } catch (error) { }
 }
@@ -105,7 +105,84 @@ export const getGenre = async () => {
         const modifiedData = data['genres'].map((g) => ({
             id: g['id'],
             name: g['name']
-        }))
+        }));
+        return modifiedData;
+    } catch (error) { }
+}
+
+/**
+ * The latest movie pictures (1)
+ * @method GET
+ */
+export const getImageOne = async () => {
+    try {
+        const { data } = await axios.get(`${process.env.REACT_APP_URL}/trending/movie/day`, {
+            params: {
+                api_key: process.env.REACT_APP_API_KEY,
+                language: 'en-US',
+            }
+        });
+        const modifiedData = data['results'].map((val) => ({
+            poster_path: process.env.REACT_APP_URL_IMAGE + val['poster_path'],
+            backdrop_path: process.env.REACT_APP_URL_IMAGE + val['backdrop_path']
+        }));
+        return modifiedData;
+    } catch (error) { }
+}
+
+/**
+ * Top rated movies.
+ * @method GET
+*/
+export const getTopRating = async (genre_ids) => {
+    try {
+        const { data } = await axios.get(`${process.env.REACT_APP_URL}/movie/top_rated`, {
+            params: {
+                api_key: process.env.REACT_APP_API_KEY,
+                language: 'en-US',
+                page: 1,
+                with_genres: genre_ids
+            }
+        });
+        const modifiedData = data['results'].map((val) => ({
+            uid: val['id'] ? val['id'] : val['tv_id'],
+            title: val['title'] ? val['title'] : val['name'],
+            adult: val['adult'] == true ? 'HD' : '3D',
+            popularity: val['popularity'],
+            release_date: val['release_date'],
+            vote_average: val['vote_average'],
+            vote_count: val['vote_count'],
+            poster_path: process.env.REACT_APP_URL_IMAGE + val['poster_path'],
+            backdrop_path: process.env.REACT_APP_URL_IMAGE + val['backdrop_path']
+        }));
+        return modifiedData;
+    } catch (error) { }
+}
+
+/**
+ * This query looks for any TV show that has an episode with an air date in the next 7 days.
+ * @method GET
+*/
+export const getWatchingTV = async () => {
+    try {
+        const { data } = await axios.get(`${process.env.REACT_APP_URL}/tv/on_the_air`, {
+            params: {
+                api_key: process.env.REACT_APP_API_KEY,
+                language: 'en-US',
+                page: 1,
+            }
+        });
+        const modifiedData = data['results'].map((val) => ({
+            uid: val['id'] ? val['id'] : val['tv_id'],
+            title: val['title'] ? val['title'] : val['name'],
+            adult: val['adult'] == true ? 'HD' : '3D',
+            popularity: val['popularity'],
+            first_air_date: val['first_air_date'],
+            vote_average: val['vote_average'],
+            vote_count: val['vote_count'],
+            poster_path: process.env.REACT_APP_URL_IMAGE + val['poster_path'],
+            backdrop_path: process.env.REACT_APP_URL_IMAGE + val['backdrop_path']
+        }));
         return modifiedData;
     } catch (error) { }
 }
