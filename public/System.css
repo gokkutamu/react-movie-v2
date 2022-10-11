@@ -550,9 +550,6 @@ body.active {
   \*-----------------------------------*/
 
 .hero {
-    background: url("/img/hero-bg.jpg") no-repeat;
-    background-size: cover;
-    background-position: center;
     min-height: 750px;
     height: 100vh;
     max-height: 1000px;
@@ -632,7 +629,6 @@ body.active {
   \*-----------------------------------*/
 
 .service {
-    background: url("/img/hero-bg.jpg") no-repeat;
     background-size: cover;
     background-position: center;
     padding-block: var(--section-padding);
@@ -747,7 +743,6 @@ body.active {
   \*-----------------------------------*/
 
 .top-rated {
-    background: url("/img/hero-bg.jpg") no-repeat;
     background-size: cover;
     background-position: center;
     padding-block: var(--section-padding);
@@ -798,16 +793,11 @@ body.active {
     right: 0;
 }
 
-
-
-
-
 /*-----------------------------------*\
    * #TV SEREIS
   \*-----------------------------------*/
 
 .tv-series {
-    background: url("/img/hero-bg.jpg") no-repeat;
     background-size: cover;
     background-position: center;
     padding-block: var(--section-padding);
@@ -879,10 +869,6 @@ body.active {
     background: var(--citrine);
     color: var(--eerie-black);
 }
-
-
-
-
 
 /*-----------------------------------*\
    * #FOOTER
@@ -985,10 +971,6 @@ body.active {
     margin-inline: auto;
 }
 
-
-
-
-
 /*-----------------------------------*\
    * #GO TO TOP
   \*-----------------------------------*/
@@ -1015,10 +997,6 @@ body.active {
     opacity: 1;
     visibility: visible;
 }
-
-
-
-
 
 /*-----------------------------------*\
    * #MOVIE DETAIL 
@@ -1155,10 +1133,6 @@ body.active {
     font-size: 16px;
 }
 
-
-
-
-
 /*-----------------------------------*\
    * #MEDIA QUERIES
   \*-----------------------------------*/
@@ -1168,55 +1142,37 @@ body.active {
    */
 
 @media (min-width: 550px) {
-
     /**
      * CUSTOM PROPERTY
      */
-
     :root {
-
         /**
        * typography
        */
-
         --fs-1: 42px;
-
     }
-
-
-
     /**
      * REUSED STYLE
      */
-
     .container {
         max-width: 540px;
         margin-inline: auto;
     }
-
     /* MOVIE CARD */
-
     .movies-list {
         grid-template-columns: 1fr 1fr;
         gap: 60px 30px;
     }
 
-
-
     /**
      * HERO
      */
-
     .hero {
         min-height: unset;
     }
-
     .hero-content {
         margin-top: 20px;
     }
-
-
-
     /**
      * UPCOMING
      */
@@ -1224,111 +1180,75 @@ body.active {
     .upcoming .movies-list>li {
         min-width: calc(50% - 15px);
     }
-
-
-
     /**
      * SERVICE
      */
-
     .service-list>li:first-child {
         padding-bottom: 30px;
     }
-
     .service-card {
         display: flex;
         align-items: center;
         gap: 20px;
     }
-
     .service-card .card-icon {
         margin-bottom: 0;
     }
-
     .service-card .card-content {
         width: calc(100% - 115px);
     }
-
-
-
     /**
      * MOVIE DETAIL
      */
-
     .detail-subtitle {
         --fs-5: 22px;
     }
-
     .detail-title {
         --fs-1: 46px;
     }
-
 }
-
-
-
-
 
 /**
    * responsive for large than 768px screen
    */
-
 @media (min-width: 768px) {
-
     /**
      * CUSTOM PROPERTY
      */
-
     :root {
-
         /**
        * typography
        */
-
         --fs-2: 36px;
-
     }
-
-
-
     /**
      * REUSED STYLE
      */
-
     .container {
         max-width: 720px;
     }
-
-
-
     /**
      * HEADER
      */
-
     .header .container {
         gap: 30px;
     }
-
     .header-actions {
         display: flex;
         margin-left: auto;
         align-items: center;
         gap: 35px;
     }
-
     .header-actions .btn-primary {
         display: none;
     }
-
     .search-btn {
         position: relative;
         color: var(--white);
     }
-
     .search-btn ion-icon {
         --ionicon-stroke-width: 80px;
     }
-
     .search-btn::after {
         content: "";
         position: absolute;
@@ -1338,82 +1258,59 @@ body.active {
         width: 2px;
         height: 14px;
     }
-
     .lang-wrapper {
         display: flex;
         align-items: center;
         gap: 5px;
     }
-
     .lang-wrapper label {
         color: var(--citrine);
         font-size: 20px;
     }
-
     .lang-wrapper select {
         color: var(--white);
         font-size: var(--fs-9);
         font-weight: var(--fw-700);
     }
-
     .lang-wrapper option {
         color: var(--black);
     }
-
-
-
     /**
      * HERO
      */
-
     .hero-content {
         margin-top: 90px;
     }
-
-
-
     /**
      * SERVICE
      */
-
     .service-btn {
         right: -20px;
         padding: 40px 50px;
     }
-
     .service-content {
         padding-inline: 40px;
     }
-
-
-
     /**
      * CTA
      */
-
     .cta-form {
         position: relative;
         max-width: 530px;
         margin-inline: auto;
     }
-
     .cta .email-field {
         margin-bottom: 0;
     }
-
     .cta-form-btn {
         position: absolute;
         top: 2px;
         right: 2px;
         bottom: 2px;
     }
-
-
-
     /**
      * FOOTER
      */
-
     .footer-brand-wrapper .logo {
         margin: 0;
     }
@@ -1437,9 +1334,6 @@ body.active {
     .footer-bottom-img {
         margin-inline: 0;
     }
-
-
-
     /**
      * MOVIE DETAIL
      */
@@ -1454,32 +1348,21 @@ body.active {
 
 }
 
-
-
-
-
 /**
    * responsive for large than 992px screen
    */
 
 @media (min-width: 992px) {
-
     /**
      * REUSED STYLE
      */
-
     .container {
         max-width: 960px;
     }
-
     /* MOVIE CARD */
-
     .movies-list {
         grid-template-columns: repeat(3, 1fr);
     }
-
-
-
     /**
      * HEADER
      */
@@ -1788,4 +1671,8 @@ body.active {
         transform: rotate(-0.25turn);
     }
 
+}
+.modal-content {
+    background: #000;
+    box-shadow: 0px 0px 1px 1px grey;
 }

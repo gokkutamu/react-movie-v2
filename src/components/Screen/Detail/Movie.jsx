@@ -4,9 +4,10 @@
  * @var string Movie details
 */
 import React, { useState, useEffect } from "react";
-import { Modal } from "react-bootstrap";
 import ReactPlayer from "react-player";
 import dateFormat from 'dateformat';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 import { Heading } from "../../Master/Heading";
 import { TheEnd } from "../../Master/TheEnd";
@@ -15,10 +16,11 @@ import { getMovieById, getVideo } from "../../../containers/services/vesion_1";
 export function Movie({ match }) {
 
     let params = match.params;
-    let genres = [];
     const [movie, setMovieById] = useState([]);
     const [video, setVideo] = useState([]);
-    const [isOpen, setIsOpen] = useState(false);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
 
     useEffect(() => {
         const mAPI = async () => {
@@ -27,8 +29,8 @@ export function Movie({ match }) {
         };
         mAPI();
     }, [params.id]);
-    genres = movie.genres;
-    // css background
+
+    // Css background
     const backdrop_path = {
         background: 'black', //`url(http://image.tmdb.org/t/p/original/${movie.backdrop_path}) no-repeat`
         backgroundSize: 'cover',
@@ -37,8 +39,8 @@ export function Movie({ match }) {
 
     // Category detail
     let category_lists = [];
-    if (genres) {
-        category_lists = genres.map((g, i) => {
+    if (movie.genres) {
+        category_lists = movie.genres.map((g, i) => {
             return (
                 <a href="#" key={i}>{g.name}</a>
             );
@@ -49,21 +51,28 @@ export function Movie({ match }) {
     const ModalPlayer = (props) => {
         const youtubeUrl = "https://www.youtube.com/watch?v=";
         return (
-            <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+            <Modal {...props} show={show} onHide={handleClose} backdrop="static" keyboard={false} size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered>
                 <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter" style={{ color: "#000000", fontWeight: "bolder" }}>
-                        {movie.title}
-                    </Modal.Title>
+                    <Modal.Title id="contained-modal-title-vcenter" style={{ color: "#ffff", fontFamily: "fantasy" }}>{movie.title}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{ backgroundColor: "#000000" }}>
+                <Modal.Body>
                     <ReactPlayer className="container-fluid" url={youtubeUrl + video.key} playing width="100%" />
                 </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                </Modal.Footer>
             </Modal>
         );
     };
 
     return (
         <div>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+                integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
             <link rel="stylesheet" href="/System.css" />
             <Heading></Heading>
             <main>
@@ -72,16 +81,15 @@ export function Movie({ match }) {
                         <div className="container">
                             <figure className="movie-detail-banner">
                                 <img src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.name} />
-                                <ModalPlayer show={isOpen} onHide={() => { setIsOpen(false); }}/>
-                                <button className="play-btn" onClick={() => setIsOpen(true)}>
+                                <button className="play-btn" onClick={() => setShow(true)}>
                                     <ion-icon name="play-circle-outline"></ion-icon>
                                 </button>
+                                <ModalPlayer show={show} onHide={() => { setShow(false); }} />
                             </figure>
                             <div className="movie-detail-content">
                                 <p className="detail-subtitle">{movie.title ? movie.title : movie.name}</p>
                                 <h1 className="h1 detail-title">
                                     {movie.original_title}
-                                    {/* Free <strong>{ movie.original_title }</strong> */}
                                 </h1>
                                 <div className="meta-wrapper">
                                     <div className="badge-wrapper">
@@ -114,7 +122,7 @@ export function Movie({ match }) {
                                         <p className="title">Prime Video</p>
                                         <p className="text">Streaming Channels</p>
                                     </div>
-                                    <button className="btn btn-primary" onClick={() => setIsOpen(true)}>
+                                    <button className="btn btn-primary" onClick={() => setShow(true)}>
                                         <ion-icon name="play"></ion-icon>
                                         <span>Watch Now</span>
                                     </button>
