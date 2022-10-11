@@ -1,91 +1,68 @@
-import React, { } from "react";
-const arrow = {
-    '0' : '/img/project-logo.png',
-};
+import React, { useRef, useEffect } from 'react';
 
-export function Heading() {
+import { Link, useLocation } from 'react-router-dom';
+
+import '../UI/heading.scss';
+
+import logo from '../UI/assets/tmovie.png';
+
+const headerNav = [
+    {
+        display: 'Home',
+        path: '/'
+    },
+    {
+        display: 'Movies',
+        path: '/movie'
+    },
+    {
+        display: 'TV Series',
+        path: '/tv'
+    }
+];
+
+const Heading = () => {
+
+    const { pathname } = useLocation();
+    const headerRef = useRef(null);
+
+    const active = headerNav.findIndex(e => e.path === pathname);
+
+    useEffect(() => {
+        const shrinkHeader = () => {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                headerRef.current.classList.add('shrink');
+            } else {
+                headerRef.current.classList.remove('shrink');
+            }
+        }
+        window.addEventListener('scroll', shrinkHeader);
+        return () => {
+            window.removeEventListener('scroll', shrinkHeader);
+        };
+    }, []);
+
     return (
-        <header className="header" data-header>
-            <div className="container">
-                <div className="overlay"></div>
-                <a href="/" className="logo">
-                    <img src={arrow[0]} alt="logo" />
-                </a>
-                <div className="header-actions">
-                    <button className="search-btn">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </button>
-                    <div className="lang-wrapper">
-                        <label for="language">
-                            <ion-icon name="globe-outline"></ion-icon>
-                        </label>
-                        <select name="language" id="language">
-                            <option value="en">EN</option>
-                            <option value="au">AU</option>
-                            <option value="ar">AR</option>
-                            <option value="tu">TU</option>
-                        </select>
-                    </div>
-                    <button className="btn btn-primary">Sign in</button>
+        <div ref={headerRef} className="header">
+            <div className="header__wrap container">
+                <div className="logo">
+                    <img src={logo} alt="" />
+                    <Link to="/">tMovies</Link>
                 </div>
-                <button className="menu-open-btn" data-menu-open-btn>
-                    <ion-icon name="reorder-two"></ion-icon>
-                </button>
-                <nav className="navbar" data-navbar>
-                    <div className="navbar-top">
-                        <a href="./index.html" className="logo">
-                            <img src={arrow[0]} alt="Filmlane logo" />
-                        </a>
-                        <button className="menu-close-btn" data-menu-close-btn>
-                            <ion-icon name="close-outline"></ion-icon>
-                        </button>
-                    </div>
-                    <ul className="navbar-list">
-                        <li>
-                            <a href="/" className="navbar-link">Home</a>
-                        </li>
-                        <li>
-                            <a href="#" className="navbar-link">Movie</a>
-                        </li>
-                        <li>
-                            <a href="#" className="navbar-link">Tv Show</a>
-                        </li>
-                        <li>
-                            <a href="#" className="navbar-link">Web Series</a>
-                        </li>
-                        <li>
-                            <a href="#" className="navbar-link">Pricing</a>
-                        </li>
-                    </ul>
-                    <ul className="navbar-social-list">
-                        <li>
-                            <a href="#" className="navbar-social-link">
-                                <ion-icon name="logo-twitter"></ion-icon>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="navbar-social-link">
-                                <ion-icon name="logo-facebook"></ion-icon>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="navbar-social-link">
-                                <ion-icon name="logo-pinterest"></ion-icon>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="navbar-social-link">
-                                <ion-icon name="logo-instagram"></ion-icon>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="navbar-social-link">
-                                <ion-icon name="logo-youtube"></ion-icon>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                <ul className="header__nav">
+                    {
+                        headerNav.map((e, i) => (
+                            <li key={i} className={`${i === active ? 'active' : ''}`}>
+                                <Link to={e.path}>
+                                    {e.display}
+                                </Link>
+                            </li>
+                        ))
+                    }
+                </ul>
             </div>
-        </header>
+        </div>
     );
 }
+
+export default Heading;

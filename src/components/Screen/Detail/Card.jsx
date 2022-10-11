@@ -1,0 +1,33 @@
+import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
+
+import services from '../../../containers/services/services';
+import config from '../../../containers/services/config';
+
+const Card = props => {
+    const { category } = useParams();
+    const [casts, setCasts] = useState([]);
+
+    useEffect(() => {
+        const getCredits = async () => {
+            const res = await services.credits(category, props.id);
+            setCasts(res.cast.slice(0, 5));
+        }
+        getCredits();
+    }, [category, props.id]);
+
+    return (
+        <div className="casts">
+            {
+                casts.map((item, i) => (
+                    <div key={i} className="casts__item">
+                        <div className="casts__item__img" style={{ backgroundImage: `url(${config.w500Image(item.profile_path)})` }}></div>
+                        <p className="casts__item__name">{item.name}</p>
+                    </div>
+                ))
+            }
+        </div>
+    );
+}
+
+export default Card;

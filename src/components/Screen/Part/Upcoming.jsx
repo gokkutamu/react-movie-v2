@@ -5,7 +5,7 @@
 import React, { useState, useEffect } from "react";
 import dateFormat from 'dateformat';
 
-import { getGenre, getUpcoming } from "../../../containers/services/vesion_1";
+import { getGenre, getUpcoming } from "../../../containers/services/services";
 
 export function Upcoming() {
     const [upComing, setUpcoming] = useState([]);

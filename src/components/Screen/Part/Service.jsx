@@ -4,7 +4,7 @@
 */
 import React, { useState, useEffect } from "react";
 
-import { getImageOne } from "../../../containers/services/vesion_1";
+import { getImageOne } from "../../../containers/services/services";
 
 export function Service() {
 

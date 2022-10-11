@@ -4,10 +4,8 @@
 */
 import React, { useState, useEffect } from "react";
 
-import { Heading } from "../../Master/Heading";
-import { TheEnd } from "../../Master/TheEnd";
 import { Upcoming } from "../Part/Upcoming";
-import { getImageOne } from "../../../containers/services/vesion_1";
+import { getImageOne } from "../../../containers/services/services";
 import { Service } from "../Part/Service";
 import { TopRating } from "../Part/TopRating";
 import { WatchingTv } from "../Part/WatchingTv";
@@ -72,7 +70,6 @@ export function Home() {
 
     return (
         <div>
-            <Heading></Heading>
             <main>
                 <article>
                     { HeroPlaying }
@@ -100,7 +97,6 @@ export function Home() {
                     </section>
                 </article>
             </main>
-            <TheEnd></TheEnd>
         </div>
     );
 }

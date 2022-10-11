@@ -6,7 +6,7 @@
 import React, { useState, useEffect } from "react";
 import dateFormat from "dateformat";
 
-import { getWatchingTV } from "../../../containers/services/vesion_1";
+import { getWatchingTV } from "../../../containers/services/services";
 
 export function WatchingTv() {
     const [watching, setWatchingTV] = useState([]);
