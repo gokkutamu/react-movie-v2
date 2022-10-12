@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import services from '../../../containers/services/services';
 
-const Video = props => {
+const VideoList = props => {
     const { category } = useParams();
     const [videos, setVideos] = useState([]);
 
@@ -26,7 +26,7 @@ const Video = props => {
     );
 }
 
-const Videos = props => {
+const Video = props => {
     const item = props.item;
     const iframeRef = useRef(null);
 
@@ -50,4 +50,4 @@ const Videos = props => {
     )
 }
 
-export default Video;
+export default VideoList;

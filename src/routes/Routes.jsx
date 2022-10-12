@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import { Home } from "../components/Screen/Home/Home";
+import Home from "../components/Screen/Home/Home";
 import MovieDetail from "../components/Screen/Detail/MovieDetail";
 
 const Routes = () => {

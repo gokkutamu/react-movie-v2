@@ -1,7 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import Routes from "../routes/Routes";
-import 'boxicons';
 import './App.scss';
 
 import Heading from "../components/Master/Heading";

@@ -1,11 +1,15 @@
+/**
+ * The stone dam built the house of (Tam) likes.
+ * @version 2 ( change 26/09/2022 ).
+ * @var string part footer.
+*/
 import React from 'react';
-
-import '../UI/theEnd.scss';
-
 import { Link } from 'react-router-dom';
 
+// Package (sass, images)
+import '../UI/theEnd.scss';
 import bg from '../UI/assets/footer-bg.jpg';
-import logo from '../UI/assets/tmovie.png';
+import logo from '../UI/assets/imdb_logo.png';
 
 const TheEnd = () => {
     return (
@@ -14,7 +18,7 @@ const TheEnd = () => {
                 <div className="footer__content__logo">
                     <div className="logo">
                         <img src={logo} alt="" />
-                        <Link to="/">tMovies</Link>
+                        <Link to="/">TMDb</Link>
                     </div>
                 </div>
                 <div className="footer__content__menus">

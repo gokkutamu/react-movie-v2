@@ -1,10 +1,15 @@
+/**
+ * The stone dam built the house of (Tam) likes.
+ * @version 2.
+ * @package parts/CastList
+*/
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 
 import services from '../../../containers/services/services';
 import config from '../../../containers/services/config';
 
-const Card = props => {
+const CastList = props => {
     const { category } = useParams();
     const [casts, setCasts] = useState([]);
 
@@ -30,4 +35,4 @@ const Card = props => {
     );
 }
 
-export default Card;
+export default CastList;
