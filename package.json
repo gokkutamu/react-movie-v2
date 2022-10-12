@@ -3,28 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.4",
-    "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
-    "bootstrap": "^4.5.0",
-    "dateformat": "^4.5.1",
-    "dompurify": "^2.3.3",
+    "boxicons": "^2.1.4",
     "dotenv": "^16.0.2",
     "env-cmd": "^10.1.0",
+    "query-string": "^7.1.1",
     "react": "^16.13.1",
-    "react-bootstrap": "^1.0.1",
-    "react-bootstrap-carousel": "^4.0.6",
     "react-dom": "^16.13.1",
-    "react-leaf-carousel": "^2.0.3",
-    "react-motion-drawer": "^3.1.0",
-    "react-player": "^2.0.1",
-    "react-rating-stars-component": "^1.0.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "typescript": "^3.9.3"
+    "swiper": "^6.8.4",
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "set port=4200 && react-scripts start",
@@ -46,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "sass": "^1.55.0"
   }
 }

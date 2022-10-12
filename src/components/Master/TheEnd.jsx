@@ -1,85 +1,48 @@
-import React from "react";
-const arrow = {
-    '0' : '/img/project-logo.png',
-    '1' : '/img/footer-bottom-img.png',
-};
+/**
+ * The stone dam built the house of (Tam) likes.
+ * @version 2 ( change 26/09/2022 ).
+ * @var string part footer.
+*/
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export function TheEnd() {
+// Package (sass, images)
+import '../UI/theEnd.scss';
+import bg from '../UI/assets/footer-bg.jpg';
+import logo from '../UI/assets/imdb_logo.png';
+
+const TheEnd = () => {
     return (
-        <footer className="footer">
-            <div className="footer-top">
-                <div className="container">
-                    <div className="footer-brand-wrapper">
-                        <a href="/" className="logo">
-                            <img src={arrow[0]} alt="Filmlane logo" />
-                        </a>
-                        <ul className="footer-list">
-                            <li>
-                                <a href="./" className="footer-link">Home</a>
-                            </li>
-                            <li>
-                                <a href="#" className="footer-link">Movie</a>
-                            </li>
-                            <li>
-                                <a href="#" className="footer-link">TV Show</a>
-                            </li>
-                            <li>
-                                <a href="#" className="footer-link">Web Series</a>
-                            </li>
-                            <li>
-                                <a href="#" className="footer-link">Pricing</a>
-                            </li>
-                        </ul>
+        <div className="footer" style={{backgroundImage: `url(${bg})`}}>
+            <div className="footer__content container">
+                <div className="footer__content__logo">
+                    <div className="logo">
+                        <img src={logo} alt="" />
+                        <Link to="/">TMDb</Link>
                     </div>
-                    <div className="divider"></div>
-                    <div className="quicklink-wrapper">
-                        <ul className="quicklink-list">
-                            <li>
-                                <a href="#" className="quicklink-link">Faq</a>
-                            </li>
-                            <li>
-                                <a href="#" className="quicklink-link">Help center</a>
-                            </li>
-                            <li>
-                                <a href="#" className="quicklink-link">Terms of use</a>
-                            </li>
-                            <li>
-                                <a href="#" className="quicklink-link">Privacy</a>
-                            </li>
-                        </ul>
-                        <ul className="social-list">
-                            <li>
-                                <a href="#" className="social-link">
-                                    <ion-icon name="logo-facebook"></ion-icon>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" className="social-link">
-                                    <ion-icon name="logo-twitter"></ion-icon>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" className="social-link">
-                                    <ion-icon name="logo-pinterest"></ion-icon>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" className="social-link">
-                                    <ion-icon name="logo-linkedin"></ion-icon>
-                                </a>
-                            </li>
-                        </ul>
+                </div>
+                <div className="footer__content__menus">
+                    <div className="footer__content__menu">
+                        <Link to="/">Home</Link>
+                        <Link to="/">Contact us</Link>
+                        <Link to="/">Term of services</Link>
+                        <Link to="/">About us</Link>
+                    </div>
+                    <div className="footer__content__menu">
+                        <Link to="/">Live</Link>
+                        <Link to="/">FAQ</Link>
+                        <Link to="/">Premium</Link>
+                        <Link to="/">Pravacy policy</Link>
+                    </div>
+                    <div className="footer__content__menu">
+                        <Link to="/">You must watch</Link>
+                        <Link to="/">Recent release</Link>
+                        <Link to="/">Top IMDB</Link>
                     </div>
                 </div>
             </div>
-            <div className="footer-bottom">
-                <div className="container">
-                    <p className="copyright">
-                        &copy; 2022 <a href="#">codewithsadee</a>. All Rights Reserved
-                    </p>
-                    <img src={arrow[1]} alt="Online banking companies logo" className="footer-bottom-img" />
-                </div>
-            </div>
-        </footer>
+        </div>
     );
 }
+
+export default TheEnd;
