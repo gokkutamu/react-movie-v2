@@ -1,9 +1,15 @@
+/**
+ * The stone dam built the house of (Tam) likes.
+ * @version 2.
+ * @package parts/MovieCard
+*/
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from './Button/Button';
 
 import { category } from '../../../containers/services/services';
 import config from '../../../containers/services/config';
+
 import '../../UI/movie-card.scss';
 
 const MovieCard = props => {

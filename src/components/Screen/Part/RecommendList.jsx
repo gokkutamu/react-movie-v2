@@ -1,7 +1,7 @@
 /**
  * The stone dam built the house of (Tam) likes.
  * @version 2.
- * @package parts/MovieList.
+ * @package parts/RecommendationList.
 */
 import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,7 +15,7 @@ import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 import '../../UI/similar.scss';
 
-const MovieList = props => {
+const RecommendList = props => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -23,7 +23,7 @@ const MovieList = props => {
             let response = null;
             const params = {};
 
-            if (props.type !== 'similar') {
+            if (props.type !== 'recommendations') {
                 switch (props.category) {
                     case category.movie:
                         response = await services.getMovies(props.type, { params });
@@ -31,8 +31,9 @@ const MovieList = props => {
                     default:
                         response = await services.getWatchingTV(props.type, { params });
                 }
-            } else {
-                response = await services.similar(props.category, props.id);
+            }
+            else {
+                response = await services.recommendations(props.category, props.id);
             }
             setItems(response.results);
         }
@@ -54,9 +55,9 @@ const MovieList = props => {
     );
 }
 
-MovieList.propTypes = {
+RecommendList.propTypes = {
     category: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired
 }
 
-export default MovieList;
+export default RecommendList;

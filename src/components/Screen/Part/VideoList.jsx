@@ -1,3 +1,8 @@
+/**
+ * The stone dam built the house of (Tam) likes.
+ * @version 2.
+ * @package parts/VideoList.
+*/
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from "react-router-dom";
 
@@ -45,7 +50,7 @@ const Video = props => {
                 ref={iframeRef}
                 width="100%"
                 title="video"
-            ></iframe>
+            />
         </div>
     )
 }

@@ -14,6 +14,7 @@ import '../../UI/detail.scss';
 import CastList from '../Part/CastList';
 import VideoList from '../Part/VideoList';
 import MovieList from '../Part/MovieList';
+import RecommendList from '../Part/RecommendList';
 
 const MovieDetail = () => {
     const { category, id } = useParams();
@@ -60,15 +61,27 @@ const MovieDetail = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="container">
-                            <div className="section mb-3">
-                                <VideoList id={item.id} />
-                            </div>
-                            <div className="section mb-3">
-                                <div className="section__header mb-2">
-                                    <h2>Similar</h2>
+                        <div className="movie__similar">
+                            <div className="container">
+                                <div className="section mb-3">
+                                    <VideoList id={item.id} />
                                 </div>
-                                <MovieList category={category} type="similar" id={item.id} />
+                                <div className="section mb-3">
+                                    <div className="section__header mb-2">
+                                        <h2>Similar</h2>
+                                    </div>
+                                    <MovieList category={category} type="similar" id={item.id} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="movie__recommendations">
+                            <div className="container">
+                                <div className="section mb-3">
+                                    <div className="section__header mb-2">
+                                        <h2>Recommendations</h2>
+                                    </div>
+                                    <RecommendList category={category} type="recommendations" id={item.id} />
+                                </div>
                             </div>
                         </div>
                     </>
