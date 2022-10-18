@@ -72,13 +72,30 @@ iframe {
 }
 
 .mb-2 {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .section {
     padding: 0 2rem;
 }
 
+.section.bg_image {
+    background: linear-gradient(to right, rgba(rgb(11, 11, 63), 0.75) 0%, rgba(black, 0.75) 100%);
+    color: #fff;
+    transition: all 0.5s;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 .section__header {
-    @include flex(center, space-between);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+}
+
+.section__header h2 {
+    font-size: 25px;
+    margin-right: 50px;
 }
