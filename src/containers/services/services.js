@@ -3,7 +3,7 @@ import client from "./client";
 /**
  * Application category
  * */
-export const category = { movie: 'movie', tv: 'tv' }
+export const category = { movie: 'movie', tv: 'tv', trending: 'trending' }
 export const movieTypes = { 
     upcoming: 'upcoming', 
     popular: 'popular', 
@@ -17,6 +17,10 @@ export const watchingTVTypes = {
     on_the_air: 'on_the_air', 
     airing_today: 'airing_today', 
     latest: 'latest' 
+}
+export const trendingType = {
+    day: 'day',
+    week: 'week'
 }
 
 /**
